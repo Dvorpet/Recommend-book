@@ -20,6 +20,7 @@ The deliverable is a small website with two parts:
 | `src/export_prototype.py` | Trains the chosen model on all cleaned data and exports the prototype JSON |
 | `site/index.html` | The website: presentation + prototype |
 | `site/proto-data.json` | Model output used by the prototype |
+| `site/pdf/` | PDF versions: kick-off deck (EN, CZ) and prototype walkthrough |
 
 ## Reproduce
 

@@ -80,7 +80,7 @@ ul.clean li::marker{color:var(--accent)}
 table{border-collapse:collapse;width:100%;font-size:.9em}
 th,td{text-align:left;padding:.42em .6em;border-bottom:1px solid var(--line);vertical-align:top}
 th{font:500 .82em var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
-td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+td.r,th.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 tr.best td{background:var(--accent-soft)}
 
 /* title slide */
@@ -118,6 +118,8 @@ tr.best td{background:var(--accent-soft)}
 .box.w{border-color:var(--warn);background:var(--warn-soft)}
 .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.5em}
 .band{display:grid;gap:.6em}
+.flow.compact{gap:.4em}.flow.compact .lane{gap:.3em}.flow.compact .box{padding:.28em .55em;font-size:.76em;line-height:1.3}
+#s10 .card table{font-size:.82em}#s10 .card th,#s10 .card td{padding:.28em .5em}#s10 .card{padding:.7em .9em}#s10 .card p{font-size:.92em}
 /* gantt */
 .gantt{display:grid;grid-template-columns:15em repeat(6,1fr) 3em;gap:.3em .3em;align-items:center;font-size:.86em}
 .gantt .h{font:500 .8em var(--mono);color:var(--muted);text-align:center}
@@ -147,6 +149,20 @@ body.present .pnav{display:flex}
 
 
 /* ---------- layout B: sticky bar + outline ---------- */
+.pdfs{font-size:12.5px;color:var(--muted);padding:8px 8px 0;border-top:1px solid var(--line);margin-top:8px}
+.pdfs a{color:var(--accent);font-weight:600}
+@page{size:1280px 720px;margin:0}
+@media print{
+  html,body{background:#fff !important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .bar,.side,.deck-hint,.proto-view,.pnav,.title-start,.toast{display:none !important}
+  .layout{display:block !important;max-width:none !important;margin:0 !important}
+  .main-col,.layout .deck{max-width:none !important;margin:0 !important;padding:0 !important}
+  .deck{display:block !important}
+  .slide{width:1280px !important;height:720px !important;aspect-ratio:auto !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;break-after:page;page-break-after:always;margin:0 !important}
+  .slide:last-child{break-after:auto}
+}
+
 .btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600;padding:6px 14px}
 .cta{border:0;cursor:pointer}
 .title-start{font-size:1.15em;margin:0 0 1.6em}
@@ -258,6 +274,63 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
 .how-cols{display:grid;gap:16px}
 @media (max-width:900px){.pv-cols,.how,.how-cols{grid-template-columns:1fr}.hero .cover{width:84px}}
 
+/* ---------- prototype v2: shop mock-up ---------- */
+.pv-controls{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin:18px 0 14px;border-bottom:1px solid var(--line)}
+.pv-controls .pv-tabs{margin:0;border:0}
+.hl-toggle{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--ink);padding-bottom:8px;cursor:pointer}
+.hl-toggle input{accent-color:var(--accent);width:16px;height:16px}
+.rec-mark{display:inline-block;font:600 .85em var(--mono);color:var(--warn);background:var(--warn-soft);padding:0 .45em;border-radius:4px;white-space:nowrap}
+.shop{--s-bg:#ffffff;--s-ink:#1e1b18;--s-muted:#6b665f;--s-line:#e7e3dc;--s-brand:#7a2e2e;
+  background:var(--s-bg);color:var(--s-ink);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+:root[data-theme="dark"] .shop{--s-bg:#1c1a18;--s-ink:#efebe5;--s-muted:#aaa39a;--s-line:#34302b;--s-brand:#e08f7c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .shop{--s-bg:#1c1a18;--s-ink:#efebe5;--s-muted:#aaa39a;--s-line:#34302b;--s-brand:#e08f7c}}
+.shop-top{display:flex;gap:16px;align-items:center;padding:12px 20px;border-bottom:1px solid var(--s-line);flex-wrap:wrap}
+.shop-logo{display:flex;gap:8px;align-items:center;font:700 19px var(--display);color:var(--s-brand);background:none;border:0;cursor:pointer;padding:0}
+.shop-search{flex:1;min-width:200px;max-width:420px;margin:0}
+.shop .pv-search input{background:var(--s-bg);color:var(--s-ink);border-color:var(--s-line);border-radius:99px;padding:8px 14px;font-size:14px}
+.shop .sugg{background:var(--s-bg);border-color:var(--s-line)}
+.shop .sugg button{color:var(--s-ink)}
+.persona{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--s-muted);margin-left:auto}
+.persona select{font:500 13px var(--body);padding:6px 8px;border:1px solid var(--s-line);border-radius:6px;background:var(--s-bg);color:var(--s-ink)}
+.basket{display:flex;gap:4px;align-items:center;color:var(--s-ink);font-size:13px}
+.basket b{background:var(--s-brand);color:#fff;border-radius:99px;min-width:18px;text-align:center;font-size:11px;padding:1px 5px}
+.shop-body{padding:20px 20px 28px;display:grid;gap:26px;grid-template-columns:minmax(0,1fr)}
+.shop-body[hidden]{display:none}
+.shop-body>*{min-width:0}
+.shop .muted{color:var(--s-muted)}
+.banner{border-radius:10px;padding:26px 28px;background:var(--s-brand);color:#fff;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.banner h2{font-size:28px;margin:0 0 6px;color:#fff}
+.banner p{margin:0;opacity:.9}
+.blk{position:relative;border-radius:10px}
+.blk-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.blk-head h3{margin:0;font-size:19px;color:var(--s-ink)}
+.blk-head .sub{font-size:13px;color:var(--s-muted)}
+.tag{font:600 11px var(--mono);border-radius:4px;padding:2px 7px;white-space:nowrap}
+.tag.new{color:var(--warn);background:var(--warn-soft)}
+.tag.old{color:var(--s-muted);border:1px solid var(--s-line)}
+.shop:not(.hl) .tag{display:none}
+.shop.hl .blk.rec{outline:2px dashed var(--warn);outline-offset:8px}
+.row{display:grid;grid-auto-flow:column;grid-auto-columns:136px;gap:16px;overflow-x:auto;padding-bottom:6px;justify-content:start}
+.shop .bk{color:var(--s-ink)}
+.shop .bk .a{color:var(--s-muted)}
+.shop .bk .why{color:var(--warn)}
+.shop:not(.hl) .bk .why{color:var(--s-muted)}
+.crumbs{font-size:13px;color:var(--s-muted)}
+.crumbs button{background:none;border:0;color:var(--s-brand);cursor:pointer;padding:0;font:inherit}
+.pdp{display:grid;grid-template-columns:180px minmax(0,1fr) 260px;gap:28px;align-items:start}
+.pdp h2{font-size:30px;margin:0 0 4px;color:var(--s-ink)}
+.pdp .by{font-size:16px;margin-bottom:12px}
+.stars{color:#c9932b;letter-spacing:1px}
+.buy{display:inline-flex;gap:8px;align-items:center;margin-top:16px;font:600 15px var(--body);background:var(--s-brand);color:#fff;border:0;border-radius:8px;padding:11px 20px;cursor:pointer}
+.buy-note{font-size:12px;margin-top:8px}
+.side-box{border:1px solid var(--s-line);border-radius:10px;padding:14px 16px}
+.side-box h4{margin:0 0 8px;font-size:15px;font-family:var(--display);color:var(--s-ink)}
+.side-box ol{margin:0;padding-left:1.2em;font-size:13px;display:grid;gap:4px}
+.side-box li.trap{color:var(--warn);font-weight:600}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--page);padding:10px 16px;border-radius:8px;font-size:14px;z-index:20;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media (max-width:900px){.pdp{grid-template-columns:110px minmax(0,1fr)}.pdp .side-box{grid-column:1/-1}.persona{margin-left:0}}
+
 @media (max-width: 760px){
   .slide{aspect-ratio:auto}
   .s{position:relative;font-size:14px;padding:22px 18px 40px}
@@ -289,20 +362,22 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
   <button class="btn primary" id="present"><span class="en">▶ Start presentation</span><span class="cs">▶ Spustit prezentaci</span></button>
 </div></header>
 <div class="layout" id="layout">
-<aside class="side" id="side"><nav aria-label="Outline"><a href="#s1" data-for="s1"><i>01</i><span class="en">Title</span><span class="cs">Titul</span></a>
-  <div class="g"><span class="en">Brief &amp; goals</span><span class="cs">Zadání a cíle</span></div><a href="#s2" data-for="s2"><i>02</i><span class="en">Executive summary</span><span class="cs">Shrnutí</span></a><a href="#s3" data-for="s3"><i>03</i><span class="en">Goal &amp; success metrics</span><span class="cs">Cíl a metriky úspěchu</span></a><a href="#s4" data-for="s4"><i>04</i><span class="en">Assumptions &amp; open questions</span><span class="cs">Předpoklady a otázky</span></a>
-  <div class="g"><span class="en">Solution for PoC</span><span class="cs">Řešení PoC</span></div><a href="#s5" data-for="s5"><i>05</i><span class="en">What the data says</span><span class="cs">Co říkají data</span></a><a href="#s6" data-for="s6"><i>06</i><span class="en">PoC focus &amp; roadmap</span><span class="cs">Zaměření PoC a výhled</span></a><a href="#s7" data-for="s7"><i>07</i><span class="en">Approach &amp; results</span><span class="cs">Přístup a výsledky</span></a><a href="#s8" data-for="s8"><i>08</i><span class="en">PoC architecture</span><span class="cs">Architektura PoC</span></a><a href="#s9" data-for="s9"><i>09</i><span class="en">Validation</span><span class="cs">Validace</span></a>
-  <div class="g"><span class="en">Productionalization</span><span class="cs">Produkce</span></div><a href="#s10" data-for="s10"><i>10</i><span class="en">Production design</span><span class="cs">Návrh produkce</span></a>
-  <div class="g"><span class="en">Team &amp; delivery</span><span class="cs">Tým a dodávka</span></div><a href="#s11" data-for="s11"><i>11</i><span class="en">Team &amp; delivery</span><span class="cs">Tým a řízení</span></a><a href="#s12" data-for="s12"><i>12</i><span class="en">Plan &amp; next steps</span><span class="cs">Plán a další kroky</span></a><a href="#try" data-for="try"><i>→</i><span class="en">Try it yourself</span><span class="cs">Vyzkoušejte si to</span></a>
-  <div class="g"><span class="en">Appendix</span><span class="cs">Přílohy</span></div><a href="#a1" data-for="a1"><i>A1</i><span class="en">Example lists</span><span class="cs">Ukázky doporučení</span></a><a href="#a2" data-for="a2"><i>A2</i><span class="en">Delivery detail &amp; risks</span><span class="cs">Detail řízení a rizika</span></a>
-</nav><button class="cta side-cta start-present"><span class="en">▶ Start presentation</span><span class="cs">▶ Spustit prezentaci</span></button></aside>
+<aside class="side" id="side"><nav aria-label="Outline"><a href="#title" data-for="title"><i>·</i><span class="en">Title</span><span class="cs">Titul</span></a>
+  <div class="g"><span class="en">Why &amp; what</span><span class="cs">Proč a co</span></div><a href="#s1" data-for="s1"><i>01</i><span class="en">Executive summary</span><span class="cs">Shrnutí</span></a><a href="#s2" data-for="s2"><i>02</i><span class="en">Goals &amp; success metrics</span><span class="cs">Cíle a metriky úspěchu</span></a>
+  <div class="g"><span class="en">Solution for PoC</span><span class="cs">Řešení PoC</span></div><a href="#s3" data-for="s3"><i>03</i><span class="en">Dataset analysis</span><span class="cs">Analýza dat</span></a><a href="#s4" data-for="s4"><i>04</i><span class="en">Recommendation approach</span><span class="cs">Přístup k doporučování</span></a><a href="#s5" data-for="s5"><i>05</i><span class="en">PoC architecture</span><span class="cs">Architektura PoC</span></a>
+  <div class="g"><span class="en">Scoping, team &amp; delivery</span><span class="cs">Rozsah, tým a dodávka</span></div><a href="#s6" data-for="s6"><i>06</i><span class="en">Scope &amp; deliverables</span><span class="cs">Rozsah a výstupy</span></a><a href="#s7" data-for="s7"><i>07</i><span class="en">Project plan · 30 MD</span><span class="cs">Plán · 30 MD</span></a><a href="#s8" data-for="s8"><i>08</i><span class="en">Team &amp; responsibilities</span><span class="cs">Tým a odpovědnosti</span></a><a href="#s9" data-for="s9"><i>09</i><span class="en">Validation &amp; evaluation</span><span class="cs">Validace a evaluace</span></a>
+  <div class="g"><span class="en">Productionalization</span><span class="cs">Produkce</span></div><a href="#s10" data-for="s10"><i>10</i><span class="en">Production architecture</span><span class="cs">Produkční architektura</span></a>
+  <div class="g"><span class="en">Wrap-up</span><span class="cs">Závěr</span></div><a href="#s11" data-for="s11"><i>11</i><span class="en">Risks &amp; open questions</span><span class="cs">Rizika a otázky</span></a><a href="#s12" data-for="s12"><i>12</i><span class="en">Next steps &amp; decisions</span><span class="cs">Další kroky a rozhodnutí</span></a><a href="#try" data-for="try"><i>→</i><span class="en">Try it yourself</span><span class="cs">Vyzkoušejte si to</span></a>
+  <div class="g"><span class="en">Appendix</span><span class="cs">Přílohy</span></div><a href="#a1" data-for="a1"><i>A1</i><span class="en">Example lists</span><span class="cs">Ukázky doporučení</span></a><a href="#a2" data-for="a2"><i>A2</i><span class="en">Delivery detail</span><span class="cs">Detail řízení</span></a><a href="#a3" data-for="a3"><i>A3</i><span class="en">How the model works</span><span class="cs">Jak model funguje</span></a><a href="#a4" data-for="a4"><i>A4</i><span class="en">How we tested</span><span class="cs">Jak jsme testovali</span></a>
+</nav><div class="pdfs"><span class="en">Download PDF:</span><span class="cs">Stáhnout PDF:</span> <a href="pdf/Book-Recommendations-PoC-Kickoff-EN.pdf">EN</a> · <a href="pdf/Book-Recommendations-PoC-Kickoff-CZ.pdf">CZ</a> · <a href="pdf/Prototype-walkthrough-EN.pdf"><span class="en">prototype</span><span class="cs">prototyp</span></a></div>
+<button class="cta side-cta start-present"><span class="en">▶ Start presentation</span><span class="cs">▶ Spustit prezentaci</span></button></aside>
 <div class="main-col">
-<p class="deck-hint"><span class="en">12 slides + 2 appendix. Scroll to read, or press “Start presentation” and use ← → keys.</span><span class="cs">12 slidů + 2 přílohy. Čtěte scrollováním, nebo stiskněte „Spustit prezentaci“ a ovládejte šipkami ← →.</span></p>
+<p class="deck-hint"><span class="en">12 slides + 4 appendix. Scroll to read, or press “Start presentation” and use ← → keys.</span><span class="cs">12 slidů + 4 přílohy. Čtěte scrollováním, nebo stiskněte „Spustit prezentaci“ a ovládejte šipkami ← →.</span></p>
 
 <main class="deck" id="deck">
 
-<!-- 01 -->
-<section class="slide" id="s1"><div class="s title-s">
+<!-- title -->
+<section class="slide" id="title"><div class="s title-s">
   <div class="kicker"><span>PoC kick-off</span><span class="n">30 MD · 6 <span class="en">weeks</span><span class="cs">týdnů</span></span></div>
   <div>
     <h1><span class="en">Recommendations that help readers find their next book</span><span class="cs">Doporučování, které čtenářům pomůže najít další knihu</span></h1>
@@ -318,43 +393,48 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
   </div>
 </div></section>
 
-<!-- 02 -->
-<section class="slide" id="s2"><div class="s">
-  <div class="kicker"><span class="n">02</span><span class="en">Executive summary</span><span class="cs">Shrnutí</span></div>
-  <h2><span class="en">The PoC answers one business question: will recommendations sell more books, and is it worth building?</span><span class="cs">PoC odpoví na jednu byznysovou otázku: prodají doporučení víc knih a vyplatí se je postavit?</span></h2>
-  <p class="lead small" style="margin-top:-.6em"><span class="en">You have heard recommendation engines can drive sales, and you gave us 30 MD to find out. I lead the solution team; this is our plan.</span><span class="cs">Slyšeli jste, že doporučovací systémy zvyšují prodeje, a dali jste nám 30 MD, abychom to ověřili. Vedu tým řešení; tohle je náš plán.</span></p>
+<!-- s1 -->
+<section class="slide" id="s1"><div class="s">
+  <div class="kicker"><span class="n">01</span><span class="en">Executive summary &amp; business opportunity</span><span class="cs">Shrnutí a byznysová příležitost</span><span class="brief"><span class="en">Brief · Situation</span><span class="cs">Zadání · Situace</span></span></div>
+  <h2><span class="en">You don’t need a recommendation engine. You need readers to find their next book, and buy it</span><span class="cs">Nepotřebujete doporučovací systém. Potřebujete, aby čtenáři našli další knihu a koupili ji</span></h2>
   <div class="body g3">
     <div class="card">
-      <span class="pill g"><span class="en">Before kick-off</span><span class="cs">Před kick-offem</span></span>
-      <h3 style="margin-top:.5em"><span class="en">We already ran a data spike</span><span class="cs">Už jsme udělali datový průzkum</span></h3>
-      <p class="small"><span class="en">Analysed the shared dataset (1.15 M interactions) and compared 5 recommendation approaches offline. The data shaped this proposal.</span><span class="cs">Analyzovali jsme sdílený dataset (1,15 mil. interakcí) a offline porovnali 5 přístupů k doporučování. Návrh vychází z dat.</span></p>
+      <span class="pill g"><span class="en">The opportunity</span><span class="cs">Příležitost</span></span>
+      <h3 style="margin-top:.5em"><span class="en">Three levers on revenue</span><span class="cs">Tři páky na tržby</span></h3>
+      <ul class="clean small">
+        <li><span class="en"><b>Discovery:</b> a relevant next book instead of a dead end</span><span class="cs"><b>Objevování:</b> relevantní další kniha místo slepé uličky</span></li>
+        <li><span class="en"><b>Conversion:</b> more visits end with a purchase</span><span class="cs"><b>Konverze:</b> víc návštěv skončí nákupem</span></li>
+        <li><span class="en"><b>Basket:</b> one more book per order (series, same author)</span><span class="cs"><b>Košík:</b> o knihu víc v objednávce (série, stejný autor)</span></li>
+      </ul>
+      <p class="small muted" style="margin-top:.6em"><span class="en">The PoC must show whether these levers move, and whether it pays to build.</span><span class="cs">PoC musí ukázat, jestli se tyto páky pohnou a jestli se vyplatí stavět.</span></p>
     </div>
     <div class="card tint">
-      <span class="pill"><span class="en">What we learned</span><span class="cs">Co jsme zjistili</span></span>
+      <span class="pill"><span class="en">What your data already told us</span><span class="cs">Co nám už řekla vaše data</span></span>
       <ul class="clean small" style="margin-top:.5em">
-        <li><span class="en"><b>Most customers are new or occasional.</b> “Similar books” on the product page reaches everyone, so it is the biggest lever.</span><span class="cs"><b>Většina zákazníků je nová nebo nakupuje zřídka.</b> „Podobné knihy“ na detailu produktu osloví všechny, je to největší páka.</span></li>
-        <li><span class="en"><b>On the public data, a simple model ranked 3.5× better than the bestseller list</b> and used 77 % of the catalogue, not 0.1 %. Your data will give its own number; measuring it is the PoC.</span><span class="cs"><b>Na veřejných datech měl jednoduchý model 3,5× lepší pořadí než žebříček bestsellerů</b> a využil 77 % katalogu místo 0,1 %. Vaše data dají vlastní číslo; změřit ho je úkolem PoC.</span></li>
-        <li><span class="en"><b>The shared data cannot prove sales lift.</b> It has no orders, prices or dates. Your data and an A/B test can.</span><span class="cs"><b>Sdílená data nárůst prodejů neprokážou.</b> Chybí objednávky, ceny i data. Prokážou to vaše data a A/B test.</span></li>
+        <li><span class="en"><b>Most readers are new or occasional</b>, so “similar books” on the book page, which works for everyone, is the biggest lever.</span><span class="cs"><b>Většina čtenářů je nových nebo občasných</b>, proto je největší pákou „podobné knihy“ na detailu knihy, které fungují pro každého.</span></li>
+        <li><span class="en"><b>On your ratings, a simple model ranked 3.5× better than the bestseller list</b> and used 77 % of the catalogue, not 0.1 %. The PoC re-tests it on your order history.</span><span class="cs"><b>Na vašich hodnoceních měl jednoduchý model 3,5× lepší pořadí než bestsellery</b> a využil 77 % katalogu místo 0,1 %. PoC to ověří znovu na historii objednávek.</span></li>
+        <li><span class="en"><b>Ratings alone cannot prove sales lift.</b> Orders and an A/B test can.</span><span class="cs"><b>Samotná hodnocení nárůst prodejů neprokážou.</b> Objednávky a A/B test ano.</span></li>
       </ul>
     </div>
     <div class="card">
       <span class="pill g"><span class="en">What we propose</span><span class="cs">Co navrhujeme</span></span>
       <h3 style="margin-top:.5em"><span class="en">30 MD · 6 weeks · 3 decision gates</span><span class="cs">30 MD · 6 týdnů · 3 rozhodovací body</span></h3>
       <ul class="clean small">
-        <li><span class="en">2 use cases: similar books, picked for you</span><span class="cs">2 use casy: podobné knihy, vybráno pro vás</span></li>
-        <li><span class="en">Models trained and validated on your data</span><span class="cs">Modely natrénované a ověřené na vašich datech</span></li>
-        <li><span class="en">Working demo, production design, business case</span><span class="cs">Funkční demo, návrh produkce, business case</span></li>
-        <li><span class="en">Go / no-go for a live A/B pilot</span><span class="cs">Rozhodnutí go / no-go o živém A/B pilotu</span></li>
+        <li><span class="en">Book page + “picked for you”, on your data</span><span class="cs">Detail knihy + „vybráno pro vás“ na vašich datech</span></li>
+        <li><span class="en">Proof: beats bestsellers offline and in a blind test by your experts</span><span class="cs">Důkaz: porazí bestsellery offline i ve slepém testu vašich expertů</span></li>
+        <li><span class="en">Production design, business case, go / no-go for an A/B pilot</span><span class="cs">Návrh produkce, business case, go / no-go pro A/B pilot</span></li>
+        <li class="muted"><span class="en">Not in 30 MD: live integration and running the A/B test (slide 06)</span><span class="cs">Mimo 30 MD: živá integrace a spuštění A/B testu (slide 06)</span></li>
       </ul>
     </div>
   </div>
-  <div class="foot"><span>DataSentics × Online Book Shop</span><span>02 / 12</span></div>
+  <p class="small muted"><span class="en">I lead the solution team. Before this meeting we analysed the data you shared and tested five approaches, so this plan rests on evidence, not assumptions.</span><span class="cs">Vedu tým řešení. Před touto schůzkou jsme analyzovali data, která jste nám poslali, a otestovali pět přístupů, takže plán stojí na důkazech, ne na předpokladech.</span></p>
+  <div class="foot"><span>DataSentics × Online Book Shop</span><span>01 / 12</span></div>
 </div></section>
 
-<!-- 03 -->
-<section class="slide" id="s3"><div class="s">
-  <div class="kicker"><span class="n">03</span><span class="en">Business goal &amp; success metrics</span><span class="cs">Byznysový cíl a metriky úspěchu</span><span class="brief"><span class="en">Brief · Scoping</span><span class="cs">Zadání · Rozsah</span></span></div>
-  <h2><span class="en">“More sales” breaks down into levers a recommendation can actually move</span><span class="cs">„Víc prodejů“ se dá rozložit na páky, kterými doporučení opravdu pohne</span></h2>
+<!-- s2 -->
+<section class="slide" id="s2"><div class="s">
+  <div class="kicker"><span class="n">02</span><span class="en">Business goals &amp; success metrics</span><span class="cs">Byznysové cíle a metriky úspěchu</span><span class="brief"><span class="en">Brief · Definition of success</span><span class="cs">Zadání · Definice úspěchu</span></span></div>
+  <h2><span class="en">The PoC proves the engine is worth a live test. The live test proves it sells</span><span class="cs">PoC prokáže, že engine stojí za živý test. Živý test prokáže, že prodává</span></h2>
   <div class="body g-6-4">
     <div class="card" style="display:grid;gap:.8em;align-content:start">
       <div class="small muted"><span class="en">Revenue tree</span><span class="cs">Strom tržeb</span></div>
@@ -380,158 +460,100 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
           <li><span class="en">Integration path and run cost agreed with IT</span><span class="cs">S IT je odsouhlasená cesta integrace a provozní náklady</span></li>
           <li><span class="en">Business case built on your own traffic and conversion numbers</span><span class="cs">Business case postavený na vaší návštěvnosti a konverzích</span></li>
         </ul>
-        <p class="small muted" style="margin-top:.4em;font-size:.78em"><span class="en">Why 20 %: deliberately conservative (+250 % on the public data). The final bar is checked against the break-even uplift in the business case.</span><span class="cs">Proč 20 %: záměrně konzervativně (na veřejných datech +250 %). Konečnou laťku ověříme proti návratnosti v business case.</span></p>
+        <p class="small muted" style="margin-top:.4em;font-size:.78em"><span class="en">Why 20 %: deliberately conservative (+250 % on your ratings). The final bar is checked against the break-even uplift in the business case.</span><span class="cs">Proč 20 %: záměrně konzervativně (na vašich hodnoceních +250 %). Konečnou laťku ověříme proti návratnosti v business case.</span></p>
       </div>
       <div class="card warn small"><span class="en"><b>Offline ≠ online.</b> The PoC shows the model is good. Only a live A/B test shows it sells.</span><span class="cs"><b>Offline ≠ online.</b> PoC ukáže, že je model dobrý. Že prodává, ukáže až živý A/B test.</span></div>
     </div>
   </div>
-  <div class="foot"><span>DataSentics × Online Book Shop</span><span>03 / 12</span></div>
+  <div class="foot"><span>DataSentics × Online Book Shop</span><span>02 / 12</span></div>
 </div></section>
 
-<!-- 04 -->
-<section class="slide" id="s4"><div class="s">
-  <div class="kicker"><span class="n">04</span><span class="en">Assumptions &amp; open questions</span><span class="cs">Předpoklady a otevřené otázky</span><span class="brief"><span class="en">Brief · Open questions</span><span class="cs">Zadání · Otevřené otázky</span></span></div>
-  <h2><span class="en">This plan rests on six assumptions. Each one is a question we need you to answer</span><span class="cs">Plán stojí na šesti předpokladech. Ke každému potřebujeme od vás odpověď</span></h2>
-  <div class="body" style="align-content:start;gap:1em">
-    <table>
-      <thead><tr><th style="width:31%"><span class="en">We assume</span><span class="cs">Předpokládáme</span></th><th style="width:31%"><span class="en">If it is wrong</span><span class="cs">Když to neplatí</span></th><th><span class="en">Question for you</span><span class="cs">Otázka pro vás</span></th></tr></thead>
-      <tbody>
-        <tr><td><span class="en"><b>Order history</b> of 2+ years with customer ID, date and price</span><span class="cs"><b>Historie objednávek</b> za 2+ roky s ID zákazníka, datem a cenou</span></td><td class="muted"><span class="en">We cannot test “what did they buy next”. Re-scope at G1</span><span class="cs">Nejde otestovat „co koupili příště“. Úprava rozsahu v G1</span></td><td><span class="en">How many years of orders, and with which fields?</span><span class="cs">Kolik let objednávek a s jakými poli?</span></td></tr>
-        <tr><td><span class="en"><b>Enough customers are known</b> (logged in or identifiable)</span><span class="cs"><b>Dost zákazníků je známých</b> (přihlášení nebo identifikovatelní)</span></td><td class="muted"><span class="en">Personal picks reach few people; we focus on the product page</span><span class="cs">Osobní tipy osloví málo lidí; zaměříme se na detail knihy</span></td><td><span class="en">What share of visits and orders is logged in?</span><span class="cs">Jaký podíl návštěv a objednávek je přihlášený?</span></td></tr>
-        <tr><td><span class="en"><b>Catalogue</b> with stable IDs, genre and stock</span><span class="cs"><b>Katalog</b> se stabilními ID, žánrem a skladem</span></td><td class="muted"><span class="en">Harder edition matching and no help for new titles</span><span class="cs">Těžší párování edic a žádná pomoc pro nové tituly</span></td><td><span class="en">What does a catalogue record contain today?</span><span class="cs">Co dnes obsahuje záznam v katalogu?</span></td></tr>
-        <tr><td><span class="en"><b>The shop can show a widget</b> fed by an external API</span><span class="cs"><b>E-shop umí zobrazit widget</b> plněný z externího API</span></td><td class="muted"><span class="en">Production path changes: platform plug-in or file feed</span><span class="cs">Mění se cesta do produkce: plug-in platformy nebo souborový feed</span></td><td><span class="en">Which platform, who owns integration, any current vendor?</span><span class="cs">Jaká platforma, kdo vlastní integraci, máte dnes dodavatele?</span></td></tr>
-        <tr><td><span class="en"><b>Consent and a DPA</b> allow us to process purchase data</span><span class="cs"><b>Souhlasy a DPA</b> nám dovolí zpracovat nákupní data</span></td><td class="muted"><span class="en">We work only inside your environment, or personalisation waits</span><span class="cs">Pracujeme jen ve vašem prostředí, nebo personalizace počká</span></td><td><span class="en">Does consent cover personalisation? Can data leave your cloud?</span><span class="cs">Pokrývá souhlas personalizaci? Mohou data opustit váš cloud?</span></td></tr>
-        <tr><td><span class="en"><b>Revenue per session</b> is the KPI, with traffic for an A/B test</span><span class="cs"><b>Tržba na návštěvu</b> je hlavní KPI a provoz stačí na A/B test</span></td><td class="muted"><span class="en">Different success criteria and a longer pilot</span><span class="cs">Jiná kritéria úspěchu a delší pilot</span></td><td><span class="en">Which KPI matters most, and what uplift pays back the investment?</span><span class="cs">Které KPI je nejdůležitější a jaký nárůst investici vrátí?</span></td></tr>
-      </tbody>
-    </table>
-    <p class="small muted"><span class="en">Also to agree: business rules we must respect (own titles, publisher deals, age limits) and the people named on the team slide.</span><span class="cs">Dále dohodnout: byznysová pravidla, která musíme respektovat (vlastní tituly, dohody s vydavateli, věkové limity), a lidi ze slidu o týmu.</span></p>
-  </div>
-  <div class="foot"><span>DataSentics × Online Book Shop</span><span>04 / 12</span></div>
-</div></section>
-
-<!-- 05 -->
-<section class="slide" id="s5"><div class="s">
-  <div class="kicker"><span class="n">05</span><span class="en">What the shared data tells us</span><span class="cs">Co říkají sdílená data</span><span class="brief"><span class="en">Brief · Solution for PoC</span><span class="cs">Zadání · Řešení PoC</span></span></div>
-  <h2><span class="en">The data is large but thin: most people and most books appear only once</span><span class="cs">Dat je hodně, ale jsou řídká: většina lidí i knih se objeví jen jednou</span></h2>
-  <div class="body g4">
-    <div class="card" style="display:flex;flex-direction:column;gap:.5em">
-      <div class="num">56 %</div>
-      <p class="small"><span class="en">of users have <b>one</b> interaction. Only 22 % have five or more, enough for real personalisation.</span><span class="cs">uživatelů má <b>jedinou</b> interakci. Jen 22 % jich má pět a víc, což stačí na skutečnou personalizaci.</span></p>
-      <div class="vbars" style="height:6.5em" aria-label="Users by number of interactions">
-        <div class="w" style="height:93%"><span>56</span></div><div style="height:37%"><span>22</span></div><div style="height:15%"><span>9</span></div><div style="height:9%"><span>5</span></div><div style="height:9%"><span>5</span></div><div style="height:4%"><span>2</span></div>
-      </div>
-      <div class="vlabels"><span>1</span><span>2–4</span><span>5–9</span><span>10–19</span><span>20–99</span><span>100+</span></div>
-      <p class="small muted" style="font-size:.72em"><span class="en">% of users by interaction count</span><span class="cs">% uživatelů podle počtu interakcí</span></p>
-    </div>
-    <div class="card" style="display:flex;flex-direction:column;gap:.5em">
-      <div class="num">62 %</div>
-      <p class="small"><span class="en">of “ratings” are <b>0</b>, meaning the reader interacted with the book but did not score it. Scores given are mostly 7–10 (mean 7.6).</span><span class="cs">„hodnocení“ je <b>0</b>: čtenář s knihou interagoval, ale neohodnotil ji. Udělené známky jsou většinou 7–10 (průměr 7,6).</span></p>
-      <p class="small muted"><span class="en">→ We model <b>interest</b> (any interaction), not star ratings.</span><span class="cs">→ Modelujeme <b>zájem</b> (jakoukoli interakci), ne hvězdičky.</span></p>
-    </div>
-    <div class="card warn" style="display:flex;flex-direction:column;gap:.5em">
-      <div class="num w"><span class="en">4.4</span><span class="cs">4,4</span><span style="font-size:.45em">/10</span></div>
-      <p class="small"><span class="en">The most-interacted book, <i>Wild Animus</i> (2,502 interactions), was a mass giveaway that readers disliked. A naive bestseller list would push it to everyone.</span><span class="cs">Kniha s nejvíce interakcemi, <i>Wild Animus</i> (2 502), byla masově rozdávaná a čtenářům se nelíbila. Naivní žebříček bestsellerů by ji ukazoval všem.</span></p>
-      <p class="small muted"><span class="en">→ Even the baseline needs judgement.</span><span class="cs">→ I baseline potřebuje úsudek.</span></p>
-    </div>
-    <div class="card" style="display:flex;flex-direction:column;gap:.5em">
-      <div class="num">15</div>
-      <p class="small"><span class="en">ISBNs for <i>Harry Potter and the Sorcerer’s Stone</i>. Editions split one book’s signal into many.</span><span class="cs">ISBN má <i>Harry Potter a Kámen mudrců</i>. Edice tříští signál jedné knihy do mnoha.</span></p>
-      <ul class="clean small muted" style="font-size:.8em">
-        <li><span class="en">270 k ISBNs → 227 k works after merging</span><span class="cs">270 tis. ISBN → 227 tis. děl po sloučení</span></li>
-        <li><span class="en">10 % of ratings have no book metadata</span><span class="cs">10 % hodnocení nemá metadata knihy</span></li>
-        <li><span class="en">46 bulk “catalogue upload” accounts removed</span><span class="cs">odstraněno 46 účtů s hromadným nahráním katalogu</span></li>
-      </ul>
-    </div>
-  </div>
-  <div class="take"><span class="pill w"><span class="en">My take</span><span class="cs">Můj pohled</span></span><span class="en">The risk in this PoC is not the algorithm. It is the data and agreeing what “better” means. That is why gate G1 checks your data first and we agree success criteria today.</span><span class="cs">Riziko tohoto PoC není algoritmus. Jsou to data a shoda na tom, co znamená „lepší“. Proto G1 nejdřív prověří vaše data a kritéria úspěchu dohodneme dnes.</span></div>
-  <div class="card small" style="padding:.6em 1em"><span class="en"><b>What this dataset cannot tell us:</b> no orders, prices, dates, sessions or clicks, and no genres or descriptions. It is a public community dataset from 2004, not your customers. We use it to build and test the pipeline, then switch to your data.</span><span class="cs"><b>Co nám tento dataset neřekne:</b> chybí objednávky, ceny, data, návštěvy a kliky, i žánry a popisy. Je to veřejný komunitní dataset z roku 2004, ne vaši zákazníci. Použijeme ho k postavení a otestování pipeline, pak přejdeme na vaše data.</span></div>
-  <div class="foot"><span><span class="en">Source: Book-Crossing dataset (Books / Users / Ratings.csv)</span><span class="cs">Zdroj: Book-Crossing dataset (Books / Users / Ratings.csv)</span></span><span>05 / 12</span></div>
-</div></section>
-
-<!-- 06 -->
-<section class="slide" id="s6"><div class="s">
-  <div class="kicker"><span class="n">06</span><span class="en">PoC focus &amp; what comes after</span><span class="cs">Na co se zaměří PoC a co přijde potom</span><span class="brief"><span class="en">Brief · PoC focus &amp; improvements</span><span class="cs">Zadání · Zaměření PoC a vylepšení</span></span></div>
-  <h2><span class="en">Start where every visitor benefits, prove it, then grow placement by placement</span><span class="cs">Začneme tam, kde to pomůže každému návštěvníkovi, prokážeme to a pak rosteme po jednotlivých umístěních</span></h2>
-  <div class="body g-6-4">
+<!-- s3 -->
+<section class="slide" id="s3"><div class="s">
+  <div class="kicker"><span class="n">03</span><span class="en">Dataset analysis &amp; assumptions</span><span class="cs">Analýza dat a předpoklady</span><span class="brief"><span class="en">Brief · Solution for PoC · data</span><span class="cs">Zadání · Řešení PoC · data</span></span></div>
+  <h2><span class="en">We have who-read-what, but no purchases, dates or genres</span><span class="cs">Víme, kdo co četl, ale chybí nákupy, data i žánry</span></h2>
+  <div class="body g-4-6" style="grid-template-rows:auto auto">
     <div class="card" style="align-content:start">
-      <table>
-        <thead><tr><th><span class="en">Placement</span><span class="cs">Umístění</span></th><th><span class="en">What the shopper sees</span><span class="cs">Co zákazník uvidí</span></th><th><span class="en">Phase</span><span class="cs">Fáze</span></th></tr></thead>
+      <h3><span class="en">What the data you sent contains</span><span class="cs">Co obsahují data, která jste poslali</span></h3>
+      <table class="small">
+        <thead><tr><th><span class="en">Table</span><span class="cs">Tabulka</span></th><th><span class="en">Attributes</span><span class="cs">Atributy</span></th><th class="r"><span class="en">Rows</span><span class="cs">Řádky</span></th></tr></thead>
         <tbody>
-          <tr class="best"><td><b><span class="en">Book detail page</span><span class="cs">Detail knihy</span></b><br><span class="small muted"><span class="en">everyone, incl. anonymous</span><span class="cs">všichni, i anonymní</span></span></td><td><span class="en">“Readers who liked this also enjoyed…”</span><span class="cs">„Čtenářům této knihy se líbilo také…“</span></td><td><span class="pill">PoC · 1</span></td></tr>
-          <tr class="best"><td><b><span class="en">Homepage / account</span><span class="cs">Homepage / účet</span></b><br><span class="small muted"><span class="en">known customers with history</span><span class="cs">známí zákazníci s historií</span></span></td><td><span class="en">“Picked for you, because you read X”</span><span class="cs">„Vybráno pro vás, protože jste četli X“</span></td><td><span class="pill">PoC · 2</span></td></tr>
-          <tr><td><b><span class="en">New visitor</span><span class="cs">Nový návštěvník</span></b><br><span class="small muted"><span class="en">no history yet</span><span class="cs">zatím bez historie</span></span></td><td><span class="en">“Loved by readers”: popular <i>and</i> well rated</span><span class="cs">„Oblíbené u čtenářů“: populární <i>a</i> dobře hodnocené</span></td><td><span class="pill">Fallback</span></td></tr>
-          <tr><td><b><span class="en">Cart</span><span class="cs">Košík</span></b></td><td><span class="en">“Complete the series”</span><span class="cs">„Dokončete sérii“</span></td><td><span class="pill g"><span class="en">After</span><span class="cs">Po PoC</span></span></td></tr>
-          <tr><td><b><span class="en">Newsletter</span><span class="cs">Newsletter</span></b></td><td><span class="en">Personal picks in the weekly e-mail</span><span class="cs">Osobní tipy v týdenním e-mailu</span></td><td><span class="pill g"><span class="en">After</span><span class="cs">Po PoC</span></span></td></tr>
+          <tr><td><b>Books</b></td><td><span class="en">ISBN, title, author, year, publisher, cover URL</span><span class="cs">ISBN, název, autor, rok, vydavatel, URL obálky</span></td><td class="r"><span class="en">271 k</span><span class="cs">271 tis.</span></td></tr>
+          <tr><td><b>Ratings</b></td><td><span class="en">user, ISBN, rating 0–10</span><span class="cs">uživatel, ISBN, hodnocení 0–10</span></td><td class="r"><span class="en">1.15 M</span><span class="cs">1,15 mil.</span></td></tr>
+          <tr><td><b>Users</b></td><td><span class="en">ID, location, age (40 % missing)</span><span class="cs">ID, lokalita, věk (40 % chybí)</span></td><td class="r"><span class="en">279 k</span><span class="cs">279 tis.</span></td></tr>
         </tbody>
       </table>
-      <p class="small muted" style="margin-top:.7em"><span class="en">One similarity model powers both PoC placements, so the PoC stays small yet covers anonymous and known customers.</span><span class="cs">Obě umístění v PoC pohání jeden model podobnosti, takže PoC zůstane malý a přitom pokryje anonymní i známé zákazníky.</span></p>
+      <table class="small" style="margin-top:.7em">
+        <tbody>
+          <tr><td><span class="en">Ratings / interactions</span><span class="cs">Hodnocení / interakce</span></td><td><span class="pill"><span class="en">yes</span><span class="cs">ano</span></span></td></tr>
+          <tr><td><span class="en">Purchases, prices, orders</span><span class="cs">Nákupy, ceny, objednávky</span></td><td><span class="pill w"><span class="en">missing</span><span class="cs">chybí</span></span></td></tr>
+          <tr><td><span class="en">Dates, sessions, clicks</span><span class="cs">Data, návštěvy, kliky</span></td><td><span class="pill w"><span class="en">missing</span><span class="cs">chybí</span></span></td></tr>
+          <tr><td><span class="en">Genres, descriptions, stock</span><span class="cs">Žánry, anotace, sklad</span></td><td><span class="pill w"><span class="en">missing</span><span class="cs">chybí</span></span></td></tr>
+        </tbody>
+      </table>
     </div>
-    <div style="display:grid;gap:1em;align-content:start">
-      <div class="card tint small">
-        <h3><span class="en">The PoC delivers</span><span class="cs">PoC dodá</span></h3>
-        <ul class="clean">
-          <li><span class="en">Models trained and validated on your data</span><span class="cs">Modely natrénované a ověřené na vašich datech</span></li>
-          <li><span class="en">Expert blind test and a demo app</span><span class="cs">Slepý test expertů a demo aplikaci</span></li>
-          <li><span class="en">Production design, run cost, business case, A/B pilot plan</span><span class="cs">Návrh produkce, provozní náklady, business case, plán A/B pilotu</span></li>
-        </ul>
-        <p class="muted" style="margin-top:.5em"><span class="en">Not in the PoC: live integration, running the A/B test, real-time recommendations.</span><span class="cs">Mimo PoC: živá integrace, spuštění A/B testu, doporučení v reálném čase.</span></p>
+    <div style="display:grid;gap:.8em;align-content:start">
+      <div class="g4" style="display:grid;gap:.7em">
+        <div class="card"><div class="num">56 %</div><p class="small"><span class="en">of users have <b>one</b> interaction; only 22 % have 5+</span><span class="cs">uživatelů má <b>jedinou</b> interakci; jen 22 % má 5+</span></p></div>
+        <div class="card"><div class="num">62 %</div><p class="small"><span class="en">of ratings are <b>0</b>: interacted, not scored</span><span class="cs">hodnocení je <b>0</b>: interakce bez známky</span></p></div>
+        <div class="card warn"><div class="num w"><span class="en">4.4</span><span class="cs">4,4</span></div><p class="small"><span class="en">avg. rating of the most-interacted book (a giveaway)</span><span class="cs">prům. hodnocení nejčastější knihy (rozdávaný titul)</span></p></div>
+        <div class="card"><div class="num">15</div><p class="small"><span class="en">ISBNs for one Harry Potter book</span><span class="cs">ISBN pro jednu knihu Harryho Pottera</span></p></div>
       </div>
       <div class="card small">
-        <h3><span class="en">After the PoC, by value</span><span class="cs">Po PoC, podle hodnoty</span></h3>
-        <ol style="margin:0;padding-left:1.2em">
-          <li><span class="en">Live A/B pilot on the product page</span><span class="cs">Živý A/B pilot na detailu knihy</span></li>
-          <li><span class="en">Business rules: stock, margin, age, exclusions</span><span class="cs">Byznysová pravidla: sklad, marže, věk, výjimky</span></li>
-          <li><span class="en">Genres, blurbs and text embeddings for new titles</span><span class="cs">Žánry, anotace a textové embeddingy pro nové tituly</span></li>
-          <li><span class="en">Cart cross-sell and personal newsletter</span><span class="cs">Cross-sell v košíku a osobní newsletter</span></li>
-          <li><span class="en">In-session recommendations for anonymous visitors</span><span class="cs">Doporučení během návštěvy pro anonymní návštěvníky</span></li>
-        </ol>
+        <h3><span class="en">Assumptions we make, and how we treat bad data</span><span class="cs">Předpoklady a zacházení s vadnými daty</span></h3>
+        <ul class="clean">
+          <li><span class="en"><b>Any interaction = interest</b>; ratings 1–4 are not interest (1.7 % of scores)</span><span class="cs"><b>Jakákoli interakce = zájem</b>; hodnocení 1–4 zájem nejsou (1,7 % známek)</span></li>
+          <li><span class="en"><b>One book = one work</b>: 270 k ISBNs merged into 227 k works</span><span class="cs"><b>Jedna kniha = jedno dílo</b>: 270 tis. ISBN sloučeno do 227 tis. děl</span></li>
+          <li><span class="en"><b>Dropped and counted:</b> 10 % ratings without metadata, malformed ISBNs, 46 bulk-upload accounts</span><span class="cs"><b>Vyřazeno a spočítáno:</b> 10 % hodnocení bez metadat, vadná ISBN, 46 hromadných účtů</span></li>
+          <li><span class="en"><b>Not used:</b> age and location. Weak signal, and sensitive under GDPR</span><span class="cs"><b>Nepoužito:</b> věk a lokalita. Slabý signál a citlivé kvůli GDPR</span></li>
+        </ul>
       </div>
     </div>
+    <div class="take" style="grid-column:1/-1;align-self:start"><span class="pill w"><span class="en">My take</span><span class="cs">Můj pohled</span></span><span class="en">These ratings are enough to build and test the engine, and we already did. They cannot prove sales lift. The risk of this PoC is the order data, not the algorithm, so gate G1 checks it first.</span><span class="cs">Tato hodnocení stačí na postavení a otestování enginu a už jsme to udělali. Nárůst prodejů neprokážou. Riziko PoC jsou data o objednávkách, ne algoritmus, proto je G1 prověří jako první.</span></div>
   </div>
-  <div class="foot"><span>DataSentics × Online Book Shop</span><span>06 / 12</span></div>
+  <div class="foot"><span><span class="en">Source: your export (Books, Users, Ratings) · full analysis in the GitHub repo</span><span class="cs">Zdroj: váš export (Books, Users, Ratings) · celá analýza v GitHub repu</span></span><span>03 / 12</span></div>
 </div></section>
 
-<!-- 07 -->
-<section class="slide" id="s7"><div class="s">
-  <div class="kicker"><span class="n">07</span><span class="en">Solution for the PoC · approach</span><span class="cs">Řešení PoC · přístup</span><span class="brief"><span class="en">Brief · Solution for PoC</span><span class="cs">Zadání · Řešení PoC</span></span></div>
-  <h2><span class="en">Simple similarity beat the alternatives on the shared data, so we start there</span><span class="cs">Na sdílených datech vyhrála jednoduchá podobnost, proto začneme s ní</span></h2>
+<!-- s4 -->
+<section class="slide" id="s4"><div class="s">
+  <div class="kicker"><span class="n">04</span><span class="en">Proposed recommendation approach</span><span class="cs">Navržený přístup k doporučování</span><span class="brief"><span class="en">Brief · Solution for PoC · approach</span><span class="cs">Zadání · Řešení PoC · přístup</span></span></div>
+  <h2><span class="en">Start simple: “readers who read this also read”, tested against bestsellers</span><span class="cs">Začneme jednoduše: „čtenáři této knihy četli také“, otestováno proti bestsellerům</span></h2>
   <div class="body g-6-4">
-    <div class="card" style="display:grid;gap:.9em;align-content:start">
-      <div style="display:flex;justify-content:space-between;align-items:baseline">
-        <h3 style="margin:0"><span class="en">Offline test: did the model find books users really read?</span><span class="cs">Offline test: našel model knihy, které uživatelé opravdu četli?</span></h3>
-      </div>
-      <div class="small muted" style="margin-top:-.5em"><span class="en">NDCG@10 (ranking quality) · higher is better</span><span class="cs">NDCG@10 (kvalita pořadí) · víc je lépe</span></div>
-      <div class="hbar" id="chart-ndcg"></div>
-      <div class="small muted"><span class="en">Catalogue coverage · share of books ever recommended</span><span class="cs">Pokrytí katalogu · podíl knih, které model někdy doporučí</span></div>
-      <div class="hbar" id="chart-cov"></div>
-      <div class="take" style="margin-top:.3em"><span class="pill w"><span class="en">My take</span><span class="cs">Můj pohled</span></span><span class="en">In 30 MD I would rather ship a simple model the business trusts than a complex one nobody can explain. Complexity has to earn its place against the baseline.</span><span class="cs">Za 30 MD raději dodám jednoduchý model, kterému byznys věří, než složitý, který nikdo nevysvětlí. Složitost si musí místo proti baseline zasloužit.</span></div>
+    <div class="card" style="align-content:start">
+      <table class="small">
+        <thead><tr><th><span class="en">Approach</span><span class="cs">Přístup</span></th><th><span class="en">On this data</span><span class="cs">Na těchto datech</span></th><th class="r">NDCG@10</th><th class="r"><span class="en">Coverage</span><span class="cs">Pokrytí</span></th><th><span class="en">Role</span><span class="cs">Role</span></th></tr></thead>
+        <tbody>
+          <tr><td><b><span class="en">Popularity</span><span class="cs">Popularita</span></b><br><span class="muted"><span class="en">count / quality-weighted</span><span class="cs">počet / vážená kvalitou</span></span></td><td><span class="en">Works, but same list for all</span><span class="cs">Funguje, ale stejný seznam pro všechny</span></td><td class="r"><span class="en">0.019</span><span class="cs">0,019</span></td><td class="r"><span class="en">0.1 %</span><span class="cs">0,1 %</span></td><td><span class="pill g">baseline</span> <span class="pill g"><span class="en">cold start</span><span class="cs">cold start</span></span></td></tr>
+          <tr><td><b>Content-based</b><br><span class="muted"><span class="en">book attributes</span><span class="cs">vlastnosti knih</span></span></td><td><span class="en">Only title, author, publisher: too thin</span><span class="cs">Jen název, autor, vydavatel: příliš málo</span></td><td class="r muted">–</td><td class="r muted">–</td><td><span class="pill g"><span class="en">after PoC</span><span class="cs">po PoC</span></span></td></tr>
+          <tr class="best"><td><b>Item-kNN (BM25)</b><br><span class="muted"><span class="en">collaborative</span><span class="cs">kolaborativní</span></span></td><td><span class="en">Best ranking, explainable, cheap</span><span class="cs">Nejlepší pořadí, vysvětlitelné, levné</span></td><td class="r"><b><span class="en">0.066</span><span class="cs">0,066</span></b></td><td class="r"><b><span class="en">77 %</span><span class="cs">77 %</span></b></td><td><span class="pill"><span class="en">primary</span><span class="cs">hlavní</span></span></td></tr>
+          <tr><td><b>ALS</b><br><span class="muted"><span class="en">matrix factorisation</span><span class="cs">maticová faktorizace</span></span></td><td><span class="en">Close, but mostly bestsellers</span><span class="cs">Blízko, ale hlavně bestsellery</span></td><td class="r"><span class="en">0.054</span><span class="cs">0,054</span></td><td class="r"><span class="en">8.5 %</span><span class="cs">8,5 %</span></td><td><span class="pill g"><span class="en">challenger</span><span class="cs">vyzyvatel</span></span></td></tr>
+          <tr><td><b>Hybrid</b></td><td><span class="en">Needs genres and descriptions</span><span class="cs">Potřebuje žánry a anotace</span></td><td class="r muted">–</td><td class="r muted">–</td><td><span class="pill g"><span class="en">after PoC</span><span class="cs">po PoC</span></span></td></tr>
+        </tbody>
+      </table>
+      <p class="small muted" style="margin-top:.5em;font-size:.76em"><span class="en">Offline test on your ratings: 15.6 k readers × 29.4 k works, 20 % of each reader’s books hidden. Re-tested on orders in the PoC. Details: appendix A4.</span><span class="cs">Offline test na vašich hodnoceních: 15,6 tis. čtenářů × 29,4 tis. děl, u každého skryto 20 % knih. V PoC znovu na objednávkách. Podrobnosti: příloha A4.</span></p>
     </div>
-    <div style="display:grid;gap:.9em;align-content:start">
+    <div style="display:grid;gap:.8em;align-content:start">
       <div class="card tint small">
-        <h3><span class="en">Our pick: item-to-item similarity</span><span class="cs">Naše volba: podobnost knih</span></h3>
-        <ul class="clean">
-          <li><span class="en"><b>3.5× better</b> ranking than the bestseller list on the public data, 77 % catalogue coverage</span><span class="cs"><b>3,5× lepší</b> pořadí než žebříček bestsellerů na veřejných datech, pokrytí katalogu 77 %</span></li>
-          <li><span class="en">Explainable: “because you read <i>The Hobbit</i>”</span><span class="cs">Vysvětlitelné: „protože jste četli <i>Hobita</i>“</span></li>
-          <li><span class="en">One model serves the product page and the homepage</span><span class="cs">Jeden model obslouží detail knihy i homepage</span></li>
-          <li><span class="en">Cheap to train (seconds) and to run</span><span class="cs">Levný trénink (sekundy) i provoz</span></li>
-          <li><span class="en">Example lists, incl. where it fails: appendix A1</span><span class="cs">Ukázky seznamů, i kde model selhává: příloha A1</span></li>
-        </ul>
+        <h3><span class="en">How it works, in one breath</span><span class="cs">Jak to funguje, jednou větou</span></h3>
+        <p><span class="en">Two books are similar when the same readers read both. We discount very popular books and very heavy readers (BM25), so a mega-bestseller does not become “similar” to everything. Detail: appendix A3.</span><span class="cs">Dvě knihy jsou si podobné, když je čtou stejní čtenáři. Velmi populární knihy a velmi aktivní čtenáře srážíme (BM25), aby megabestseller nebyl „podobný“ všemu. Podrobně: příloha A3.</span></p>
       </div>
       <div class="card small">
-        <h3><span class="en">What we learned from the losers</span><span class="cs">Co nás naučili poražení</span></h3>
+        <h3><span class="en">Cold start, solved per case</span><span class="cs">Cold start, řešený podle situace</span></h3>
         <ul class="clean">
-          <li><span class="en"><b>ALS</b> scores close, but recommends mostly bestsellers (8.5 % coverage). It stays as a challenger on your richer data.</span><span class="cs"><b>ALS</b> je blízko, ale doporučuje hlavně bestsellery (pokrytí 8,5 %). Zůstává jako vyzyvatel na vašich bohatších datech.</span></li>
-          <li><span class="en"><b>Quality-weighted bestsellers</b> score <i>lower</i> offline than raw counts, yet are what we would show a human. Offline metrics reward popularity, so we confirm with people and A/B tests.</span><span class="cs"><b>Bestsellery vážené kvalitou</b> mají offline <i>horší</i> skóre než prostý počet, a přitom bychom člověku ukázali právě je. Offline metriky odměňují popularitu, proto ověřujeme s lidmi a A/B testem.</span></li>
+          <li><span class="en"><b>New visitor:</b> quality-weighted bestsellers</span><span class="cs"><b>Nový návštěvník:</b> bestsellery vážené kvalitou</span></li>
+          <li><span class="en"><b>One book viewed:</b> its similar books</span><span class="cs"><b>Viděl jednu knihu:</b> její podobné knihy</span></li>
+          <li><span class="en"><b>New title:</b> same author or series now; content model after PoC</span><span class="cs"><b>Nový titul:</b> teď stejný autor nebo série; obsahový model po PoC</span></li>
         </ul>
       </div>
+      <div class="take"><span class="pill w"><span class="en">My take</span><span class="cs">Můj pohled</span></span><span class="en">In 30 MD I would rather ship a model the business trusts than one nobody can explain. Complexity must beat the baseline to stay.</span><span class="cs">Za 30 MD raději dodám model, kterému byznys věří, než takový, který nikdo nevysvětlí. Složitost musí porazit baseline, jinak nezůstane.</span></div>
     </div>
   </div>
-  <div class="foot"><span><span class="en">15.6 k users × 29.4 k works · 20 % of each user’s books hidden at random · tuned on a separate validation split</span><span class="cs">15,6 tis. uživatelů × 29,4 tis. děl · u každého uživatele náhodně skryto 20 % knih · ladění na samostatném validačním vzorku</span></span><span>07 / 12</span></div>
+  <div class="foot"><span><span class="en">Try it: the prototype runs this exact model</span><span class="cs">Vyzkoušejte: prototyp běží přesně na tomto modelu</span></span><span>04 / 12</span></div>
 </div></section>
 
-<!-- 08 -->
-<section class="slide" id="s8"><div class="s">
-  <div class="kicker"><span class="n">08</span><span class="en">Solution for the PoC · architecture</span><span class="cs">Řešení PoC · architektura</span><span class="brief"><span class="en">Brief · Solution for PoC</span><span class="cs">Zadání · Řešení PoC</span></span></div>
+<!-- s5 -->
+<section class="slide" id="s5"><div class="s">
+  <div class="kicker"><span class="n">05</span><span class="en">PoC solution architecture</span><span class="cs">Architektura řešení PoC</span><span class="brief"><span class="en">Brief · Solution for PoC · architecture</span><span class="cs">Zadání · Řešení PoC · architektura</span></span></div>
   <h2><span class="en">PoC architecture: batch, offline and reproducible, with no changes to the live shop</span><span class="cs">Architektura PoC: dávková, offline a reprodukovatelná, bez zásahu do živého e-shopu</span></h2>
   <div class="body" style="grid-template-rows:auto auto">
     <div class="flow" style="grid-template-columns:1fr auto 1.15fr auto 1.15fr auto 1fr">
@@ -539,7 +561,7 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
         <div class="box"><b><span class="en">Order history</span><span class="cs">Historie objednávek</span></b><span class="en">export, 2–3 years</span><span class="cs">export, 2–3 roky</span></div>
         <div class="box"><b><span class="en">Catalogue</span><span class="cs">Katalog</span></b><span class="en">ISBN, author, genre, price</span><span class="cs">ISBN, autor, žánr, cena</span></div>
         <div class="box"><b><span class="en">Web events</span><span class="cs">Webové události</span></b><span class="en">views, if available</span><span class="cs">zobrazení, pokud jsou</span></div>
-        <div class="box w"><b>Book-Crossing</b><span class="en">until your data arrives</span><span class="cs">než dorazí vaše data</span></div>
+        <div class="box a"><b><span class="en">Ratings export</span><span class="cs">Export hodnocení</span></b><span class="en">received, already analysed</span><span class="cs">máme, už analyzováno</span></div>
       </div>
       <div class="arrow" aria-hidden="true">→</div>
       <div class="lane"><h4><span class="en">2 · Prepare</span><span class="cs">2 · Příprava</span></h4>
@@ -567,90 +589,111 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
       <div class="card small"><b><span class="en">Data stays with you</span><span class="cs">Data zůstávají u vás</span></b> · <span class="en">Work happens in your environment or a secured DataSentics workspace under a DPA; customer IDs pseudonymised.</span><span class="cs">Pracujeme ve vašem prostředí nebo v zabezpečeném workspace DataSentics podle DPA; ID zákazníků pseudonymizovaná.</span></div>
     </div>
   </div>
-  <div class="foot"><span>DataSentics × Online Book Shop</span><span>08 / 12</span></div>
+  <div class="foot"><span>DataSentics × Online Book Shop</span><span>05 / 12</span></div>
 </div></section>
 
-<!-- 09 -->
-<section class="slide" id="s9"><div class="s">
-  <div class="kicker"><span class="n">09</span><span class="en">How we check it makes sense</span><span class="cs">Jak ověříme, že to dává smysl</span><span class="brief"><span class="en">Brief · Check / validate / test</span><span class="cs">Zadání · Kontrola / validace / testy</span></span></div>
-  <h2><span class="en">Four checks, each one harder to fool than the last</span><span class="cs">Čtyři kontroly, každá těžší na oklamání než ta předchozí</span></h2>
-  <div class="body" style="align-content:start">
-    <div class="ladder">
-      <div class="step">
-        <span class="pill"><span class="en">1 · Data</span><span class="cs">1 · Data</span></span>
-        <div class="q"><span class="en">Is the input what we think it is?</span><span class="cs">Je vstup takový, jak si myslíme?</span></div>
-        <ul class="clean small"><li><span class="en">Reconcile totals with your finance numbers</span><span class="cs">Odsouhlasení součtů s vašimi finančními čísly</span></li><li><span class="en">Automated checks: duplicates, join rates, outliers, bulk accounts</span><span class="cs">Automatické kontroly: duplicity, úspěšnost joinů, odlehlé hodnoty, hromadné účty</span></li><li><span class="en">Unit tests on every cleaning step</span><span class="cs">Unit testy každého kroku čištění</span></li></ul>
-      </div>
-      <div class="step">
-        <span class="pill"><span class="en">2 · Model, offline</span><span class="cs">2 · Model, offline</span></span>
-        <div class="q"><span class="en">Does it predict what people bought next?</span><span class="cs">Předpovídá, co lidé koupili příště?</span></div>
-        <ul class="clean small"><li><span class="en">Train on the past, test on the last weeks of orders</span><span class="cs">Trénink na minulosti, test na posledních týdnech objednávek</span></li><li><span class="en">NDCG, recall and hit rate @10, always vs. baselines</span><span class="cs">NDCG, recall a hit rate @10, vždy proti baseline</span></li><li><span class="en">Coverage and novelty, results per customer segment</span><span class="cs">Pokrytí a novost, výsledky po segmentech zákazníků</span></li></ul>
-      </div>
-      <div class="step">
-        <span class="pill"><span class="en">3 · People</span><span class="cs">3 · Lidé</span></span>
-        <div class="q"><span class="en">Would a bookseller show this?</span><span class="cs">Ukázal by to knihkupec?</span></div>
-        <ul class="clean small"><li><span class="en">Blind test: our list vs. bestsellers, rated by your experts</span><span class="cs">Slepý test: náš seznam vs. bestsellery, hodnotí vaši experti</span></li><li><span class="en">Red-flag review: out-of-stock, wrong age group, duplicates</span><span class="cs">Kontrola varovných signálů: vyprodané, nevhodná věková skupina, duplicity</span></li></ul>
-      </div>
-      <div class="step">
-        <span class="pill w"><span class="en">4 · Market · after PoC</span><span class="cs">4 · Trh · po PoC</span></span>
-        <div class="q"><span class="en">Does it sell more?</span><span class="cs">Prodává víc?</span></div>
-        <ul class="clean small"><li><span class="en">A/B test on the product page, 50 / 50 traffic</span><span class="cs">A/B test na detailu knihy, provoz 50 / 50</span></li><li><span class="en">Revenue per session; CTR, add-to-cart, AOV</span><span class="cs">Tržba na návštěvu; CTR, přidání do košíku, AOV</span></li><li><span class="en">Guardrails: page speed, bounce rate. Duration from a power calculation on your traffic</span><span class="cs">Pojistky: rychlost stránky, bounce rate. Délka podle výpočtu síly testu z vaší návštěvnosti</span></li></ul>
-      </div>
+<!-- s6 -->
+<section class="slide" id="s6"><div class="s">
+  <div class="kicker"><span class="n">06</span><span class="en">PoC scope &amp; deliverables</span><span class="cs">Rozsah a výstupy PoC</span><span class="brief"><span class="en">Brief · PoC focus &amp; improvements</span><span class="cs">Zadání · Zaměření PoC a vylepšení</span></span></div>
+  <h2><span class="en">What 30 MD buys, what it does not, and what comes next</span><span class="cs">Co za 30 MD dostanete, co ne a co přijde potom</span></h2>
+  <div class="body g3">
+    <div class="card tint">
+      <h3><span class="en">In the PoC</span><span class="cs">V PoC</span></h3>
+      <ul class="clean small">
+        <li><span class="en"><b>Book page:</b> “readers also enjoyed”, for every visitor</span><span class="cs"><b>Detail knihy:</b> „čtenářům se líbilo také“ pro každého návštěvníka</span></li>
+        <li><span class="en"><b>Picked for you:</b> for customers with history</span><span class="cs"><b>Vybráno pro vás:</b> pro zákazníky s historií</span></li>
+        <li><span class="en"><b>Fallback:</b> quality-weighted bestsellers</span><span class="cs"><b>Záloha:</b> bestsellery vážené kvalitou</span></li>
+        <li><span class="en">Trained and validated on <b>your</b> orders and catalogue</span><span class="cs">Natrénováno a ověřeno na <b>vašich</b> objednávkách a katalogu</span></li>
+      </ul>
+      <h3 style="margin-top:.8em"><span class="en">Deliverables</span><span class="cs">Výstupy</span></h3>
+      <table class="small"><tbody>
+        <tr><td class="muted">D1</td><td><span class="en">Data quality report</span><span class="cs">Report kvality dat</span></td><td class="r muted"><span class="en">W1</span><span class="cs">T1</span></td></tr>
+        <tr><td class="muted">D2</td><td><span class="en">Clean data + pipeline code</span><span class="cs">Čistá data + kód pipeline</span></td><td class="r muted"><span class="en">W2</span><span class="cs">T2</span></td></tr>
+        <tr><td class="muted">D3</td><td><span class="en">Models + evaluation report</span><span class="cs">Modely + evaluační report</span></td><td class="r muted"><span class="en">W4</span><span class="cs">T4</span></td></tr>
+        <tr><td class="muted">D4</td><td><span class="en">Demo app + expert blind test</span><span class="cs">Demo + slepý test expertů</span></td><td class="r muted"><span class="en">W5</span><span class="cs">T5</span></td></tr>
+        <tr><td class="muted">D5</td><td><span class="en">Production design, run cost, business case, A/B plan</span><span class="cs">Návrh produkce, náklady, business case, plán A/B</span></td><td class="r muted"><span class="en">W6</span><span class="cs">T6</span></td></tr>
+      </tbody></table>
     </div>
-    <div class="card tint small" style="margin-top:.4em"><span class="en"><b>House rule for the team:</b> no metric is reported without its baseline, and every number can be reproduced from Git with one command.</span><span class="cs"><b>Pravidlo týmu:</b> žádná metrika bez baseline a každé číslo jde zreprodukovat z Gitu jedním příkazem.</span></div>
-  </div>
-  <div class="foot"><span>DataSentics × Online Book Shop</span><span>09 / 12</span></div>
-</div></section>
-
-<!-- 10 -->
-<section class="slide" id="s10"><div class="s">
-  <div class="kicker"><span class="n">10</span><span class="en">Productionalisation</span><span class="cs">Nasazení do produkce</span><span class="brief"><span class="en">Brief · Productionalization</span><span class="cs">Zadání · Produkce</span></span></div>
-  <h2><span class="en">In production: nightly models, a fast API with business rules, and a test on every change</span><span class="cs">V produkci: noční modely, rychlé API s byznysovými pravidly a test u každé změny</span></h2>
-  <div class="body" style="grid-template-rows:1fr auto">
-    <div class="flow" style="grid-template-columns:1fr auto 1.15fr auto 1.15fr auto 1.15fr auto .9fr">
-      <div class="lane"><h4><span class="en">Sources</span><span class="cs">Zdroje</span></h4>
-        <div class="box"><b><span class="en">Web &amp; app events</span><span class="cs">Události z webu a aplikace</span></b><span class="en">views, clicks, carts</span><span class="cs">zobrazení, kliky, košíky</span></div>
-        <div class="box"><b><span class="en">Orders</span><span class="cs">Objednávky</span></b>ERP / e-shop</div>
-        <div class="box"><b><span class="en">Catalogue &amp; stock</span><span class="cs">Katalog a sklad</span></b>PIM</div>
-      </div>
-      <div class="arrow" aria-hidden="true">→</div>
-      <div class="lane"><h4><span class="en">Data platform</span><span class="cs">Datová platforma</span></h4>
-        <div class="box"><b><span class="en">Ingestion</span><span class="cs">Načítání</span></b><span class="en">events streamed, orders daily</span><span class="cs">události streamem, objednávky denně</span></div>
-        <div class="box"><b>Lakehouse</b><span class="en">raw → clean → features</span><span class="cs">raw → čistá → featury</span></div>
-        <div class="box"><b><span class="en">Data quality gates</span><span class="cs">Kontroly kvality dat</span></b><span class="en">pipeline stops on bad data</span><span class="cs">při špatných datech se pipeline zastaví</span></div>
-      </div>
-      <div class="arrow" aria-hidden="true">→</div>
-      <div class="lane"><h4><span class="en">ML</span><span class="cs">ML</span></h4>
-        <div class="box"><b><span class="en">Nightly training</span><span class="cs">Noční trénink</span></b><span class="en">scheduled workflow</span><span class="cs">plánovaný workflow</span></div>
-        <div class="box"><b><span class="en">Model registry</span><span class="cs">Registr modelů</span></b><span class="en">champion vs. challenger</span><span class="cs">šampion vs. vyzyvatel</span></div>
-        <div class="box"><b><span class="en">Batch scoring</span><span class="cs">Dávkové skórování</span></b><span class="en">top-N per book &amp; customer</span><span class="cs">top-N pro knihu a zákazníka</span></div>
-      </div>
-      <div class="arrow" aria-hidden="true">→</div>
-      <div class="lane"><h4><span class="en">Serving</span><span class="cs">Servírování</span></h4>
-        <div class="box a"><b><span class="en">Recommendation API</span><span class="cs">API doporučení</span></b><span class="en">&lt; 50 ms, cached key-value store</span><span class="cs">&lt; 50 ms, cache key-value store</span></div>
-        <div class="box"><b><span class="en">Business rules</span><span class="cs">Byznysová pravidla</span></b><span class="en">in stock, not bought, exclusions</span><span class="cs">skladem, nekoupeno, výjimky</span></div>
-        <div class="box"><b><span class="en">Fallback</span><span class="cs">Záloha</span></b><span class="en">quality bestsellers if no data</span><span class="cs">kvalitní bestsellery, když nejsou data</span></div>
-      </div>
-      <div class="arrow" aria-hidden="true">→</div>
-      <div class="lane"><h4><span class="en">Channels</span><span class="cs">Kanály</span></h4>
-        <div class="box"><b><span class="en">Product page</span><span class="cs">Detail knihy</span></b></div>
-        <div class="box"><b>Homepage</b></div>
-        <div class="box"><b><span class="en">Cart, e-mail</span><span class="cs">Košík, e-mail</span></b></div>
-      </div>
+    <div class="card warn">
+      <h3><span class="en">Not in 30 MD, and why</span><span class="cs">Mimo 30 MD a proč</span></h3>
+      <ul class="clean small">
+        <li><span class="en"><b>Live integration</b> into the shop: needs your web team; we deliver the design and API contract</span><span class="cs"><b>Živá integrace</b> do e-shopu: potřebuje váš webový tým; dodáme návrh a kontrakt API</span></li>
+        <li><span class="en"><b>Running the A/B test:</b> needs integration and 4–6 weeks of traffic</span><span class="cs"><b>Spuštění A/B testu:</b> potřebuje integraci a 4–6 týdnů provozu</span></li>
+        <li><span class="en"><b>Real-time recommendations:</b> nightly lists are enough to prove value</span><span class="cs"><b>Doporučení v reálném čase:</b> na prokázání hodnoty stačí noční seznamy</span></li>
+        <li><span class="en"><b>Cart and e-mail</b> placements</span><span class="cs">Umístění v <b>košíku a e-mailu</b></span></li>
+        <li><span class="en"><b>Business rules engine</b> (stock, margin): designed, not built</span><span class="cs"><b>Engine byznysových pravidel</b> (sklad, marže): navržený, ne postavený</span></li>
+        <li><span class="en"><b>Catalogue enrichment</b> (genres, blurbs)</span><span class="cs"><b>Obohacení katalogu</b> (žánry, anotace)</span></li>
+      </ul>
     </div>
-    <div class="band g4" style="display:grid">
-      <div class="box"><b><span class="en">A/B testing</span><span class="cs">A/B testování</span></b><span class="en">feature flags, every new model earns rollout</span><span class="cs">feature flagy, každý nový model si nasazení musí zasloužit</span></div>
-      <div class="box"><b><span class="en">Monitoring</span><span class="cs">Monitoring</span></b><span class="en">data drift, coverage, CTR and revenue dashboard, alerts</span><span class="cs">drift dat, pokrytí, dashboard CTR a tržeb, alerty</span></div>
-      <div class="box"><b>MLOps</b><span class="en">CI/CD, tests, infrastructure as code, rollback in minutes</span><span class="cs">CI/CD, testy, infrastruktura jako kód, rollback během minut</span></div>
-      <div class="box"><b><span class="en">Security &amp; GDPR</span><span class="cs">Bezpečnost a GDPR</span></b><span class="en">pseudonymised IDs, consent, retention, access control</span><span class="cs">pseudonymizovaná ID, souhlasy, retence, řízení přístupů</span></div>
+    <div class="card">
+      <h3><span class="en">After a successful PoC</span><span class="cs">Po úspěšném PoC</span></h3>
+      <ol class="small" style="margin:0;padding-left:1.2em;display:grid;gap:.35em">
+        <li><span class="en"><b>A/B pilot</b> on the book page</span><span class="cs"><b>A/B pilot</b> na detailu knihy</span></li>
+        <li><span class="en"><b>Business rules:</b> stock, margin, age, exclusions</span><span class="cs"><b>Byznysová pravidla:</b> sklad, marže, věk, výjimky</span></li>
+        <li><span class="en"><b>Hybrid model:</b> genres, blurbs, text embeddings for new titles</span><span class="cs"><b>Hybridní model:</b> žánry, anotace, textové embeddingy pro nové tituly</span></li>
+        <li><span class="en"><b>Cart cross-sell</b> and personal newsletter</span><span class="cs"><b>Cross-sell v košíku</b> a osobní newsletter</span></li>
+        <li><span class="en"><b>Session-based</b> picks for anonymous visitors</span><span class="cs">Tipy podle <b>aktuální návštěvy</b> pro anonymní návštěvníky</span></li>
+      </ol>
+      <p class="small muted" style="margin-top:.7em"><span class="en">Ordered by expected value for effort; each step is its own decision.</span><span class="cs">Seřazeno podle očekávané hodnoty vůči úsilí; každý krok je samostatné rozhodnutí.</span></p>
+      <h3 style="margin-top:.8em"><span class="en">Run &amp; maintain</span><span class="cs">Provoz a údržba</span></h3>
+      <p class="small"><span class="en">Retraining and monitoring run automatically; a named owner reviews quality monthly and re-tunes quarterly. Run cost and effort are estimated in D5.</span><span class="cs">Přetrénování a monitoring běží automaticky; určený vlastník měsíčně kontroluje kvalitu a čtvrtletně model přelaďuje. Náklady a pracnost odhadneme v D5.</span></p>
     </div>
   </div>
-  <div class="foot"><span><span class="en">My take: same code as the PoC, scheduled and monitored. Real-time session features added only if the pilot shows it pays.</span><span class="cs">Můj pohled: stejný kód jako v PoC, jen naplánovaný a monitorovaný. Real-time featury přidáme, jen pokud pilot ukáže, že se vyplatí.</span></span><span>10 / 12</span></div>
+  <div class="foot"><span>DataSentics × Online Book Shop</span><span>06 / 12</span></div>
 </div></section>
 
-<!-- 11 -->
-<section class="slide" id="s11"><div class="s">
-  <div class="kicker"><span class="n">11</span><span class="en">Team, roles &amp; how we run delivery</span><span class="cs">Tým, role a řízení dodávky</span><span class="brief"><span class="en">Brief · Team &amp; roles · Managing delivery</span><span class="cs">Zadání · Tým a role · Řízení dodávky</span></span></div>
+<!-- s7 -->
+<section class="slide" id="s7"><div class="s">
+  <div class="kicker"><span class="n">07</span><span class="en">Project plan · 30 MD</span><span class="cs">Projektový plán · 30 MD</span><span class="brief"><span class="en">Brief · Project management</span><span class="cs">Zadání · Řízení projektu</span></span></div>
+  <h2><span class="en">Six weeks, three decision gates, and clear dependencies on your side</span><span class="cs">Šest týdnů, tři rozhodovací body a jasné závislosti na vaší straně</span></h2>
+  <div class="body" style="align-content:start;gap:1em">
+    <div class="gantt" role="table" aria-label="Project plan">
+      <div></div><div class="h"><span class="en">W1</span><span class="cs">T1</span></div><div class="h"><span class="en">W2</span><span class="cs">T2</span></div><div class="h"><span class="en">W3</span><span class="cs">T3</span></div><div class="h"><span class="en">W4</span><span class="cs">T4</span></div><div class="h"><span class="en">W5</span><span class="cs">T5</span></div><div class="h"><span class="en">W6</span><span class="cs">T6</span></div><div class="h">MD</div>
+      <div class="t"><span class="en">Discovery &amp; data access</span><span class="cs">Discovery a přístup k datům</span></div><div class="b"></div><div></div><div></div><div></div><div></div><div></div><div class="md">3</div>
+      <div class="t"><span class="en">Data prep &amp; quality</span><span class="cs">Příprava a kvalita dat</span></div><div class="b" style="opacity:.5"></div><div class="b"></div><div></div><div></div><div></div><div></div><div class="md">6</div>
+      <div class="t"><span class="en">Baselines &amp; models</span><span class="cs">Baseline a modely</span></div><div></div><div class="b" style="opacity:.5"></div><div class="b"></div><div class="b"></div><div></div><div></div><div class="md">8</div>
+      <div class="t"><span class="en">Offline eval &amp; expert test</span><span class="cs">Offline evaluace a test expertů</span></div><div></div><div></div><div></div><div class="b" style="opacity:.5"></div><div class="b"></div><div></div><div class="md">5</div>
+      <div class="t"><span class="en">Demo &amp; production design</span><span class="cs">Demo a návrh produkce</span></div><div></div><div></div><div></div><div></div><div class="b"></div><div class="b"></div><div class="md">4</div>
+      <div class="t"><span class="en">Business case &amp; readout</span><span class="cs">Business case a závěrečná prezentace</span></div><div></div><div></div><div></div><div></div><div></div><div class="b"></div><div class="md">2</div>
+      <div class="t muted"><span class="en">Contingency</span><span class="cs">Rezerva</span></div><div></div><div></div><div></div><div></div><div></div><div></div><div class="md muted">2</div>
+      <div></div><div class="gate">◆ G1</div><div></div><div></div><div class="gate">◆ G2</div><div></div><div class="gate">◆ G3</div><div class="md">30</div>
+    </div>
+    <div class="gantt" style="margin-top:-.4em" aria-label="Deliverables">
+      <div class="t muted small"><span class="en">Deliverable</span><span class="cs">Výstup</span></div>
+      <div class="small" style="text-align:center"><span class="en">Data quality report</span><span class="cs">Report kvality dat</span></div>
+      <div class="small" style="text-align:center"><span class="en">Clean data + baselines</span><span class="cs">Čistá data + baseline</span></div>
+      <div class="small" style="text-align:center"><span class="en">First models</span><span class="cs">První modely</span></div>
+      <div class="small" style="text-align:center"><span class="en">Evaluation report</span><span class="cs">Evaluační report</span></div>
+      <div class="small" style="text-align:center"><span class="en">Demo + expert test</span><span class="cs">Demo + test expertů</span></div>
+      <div class="small" style="text-align:center"><span class="en">Prod. design, business case</span><span class="cs">Návrh produkce, business case</span></div>
+      <div></div>
+    </div>
+    <div class="g2" style="display:grid;gap:1em">
+      <div class="card small">
+        <h3><span class="en">Milestones &amp; decision gates</span><span class="cs">Milníky a rozhodovací body</span></h3>
+        <table><tbody>
+          <tr><td><span class="pill w">G1</span></td><td><span class="en"><b>End W1 · data good enough?</b> If not, we re-scope rather than burn days</span><span class="cs"><b>Konec T1 · jsou data dost dobrá?</b> Pokud ne, upravíme rozsah, místo abychom pálili dny</span></td></tr>
+          <tr><td><span class="pill w">G2</span></td><td><span class="en"><b>End W4 · model beats the baseline</b> by the agreed margin?</span><span class="cs"><b>Konec T4 · poráží model baseline</b> o dohodnutý rozdíl?</span></td></tr>
+          <tr><td><span class="pill w">G3</span></td><td><span class="en"><b>End W6 · go / no-go</b> for the live A/B pilot</span><span class="cs"><b>Konec T6 · go / no-go</b> pro živý A/B pilot</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="card warn small">
+        <h3><span class="en">Dependencies on your side</span><span class="cs">Závislosti na vaší straně</span></h3>
+        <ul class="clean">
+          <li><span class="en"><b>Data export + DPA by day 3</b>, or the whole plan slides</span><span class="cs"><b>Export dat + DPA do 3. dne</b>, jinak se posune celý plán</span></li>
+          <li><span class="en"><b>2 category experts</b>: workshop in W1, blind test in W5</span><span class="cs"><b>2 experti na sortiment</b>: workshop v T1, slepý test v T5</span></li>
+          <li><span class="en"><b>Web / IT lead</b> for integration design in W5</span><span class="cs"><b>Vedoucí webu / IT</b> pro návrh integrace v T5</span></li>
+          <li><span class="en"><b>Sponsor</b> at Friday steering and each gate</span><span class="cs"><b>Sponzor</b> na pátečním steeringu a u každého gate</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><span class="en">2 MD contingency held by the solution lead, released only through steering</span><span class="cs">2 MD rezervy drží vedoucí řešení, uvolňují se jen přes steering</span></span><span>07 / 12</span></div>
+</div></section>
+
+<!-- s8 -->
+<section class="slide" id="s8"><div class="s">
+  <div class="kicker"><span class="n">08</span><span class="en">Team &amp; responsibilities</span><span class="cs">Tým a odpovědnosti</span><span class="brief"><span class="en">Brief · Team &amp; roles · Managing delivery</span><span class="cs">Zadání · Tým a role · Řízení dodávky</span></span></div>
   <h2><span class="en">A small DataSentics team, the right people on your side, and a weekly rhythm</span><span class="cs">Malý tým DataSentics, správní lidé na vaší straně a týdenní rytmus</span></h2>
   <div class="body g3">
     <div class="card">
@@ -681,71 +724,187 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
         <li><span class="en"><b>Decision &amp; risk log</b> shared with you; changes go via steering</span><span class="cs"><b>Log rozhodnutí a rizik</b> sdílený s vámi; změny jdou přes steering</span></li>
         <li><span class="en"><b>Quality:</b> peer-reviewed code, tracked experiments, no metric without a baseline</span><span class="cs"><b>Kvalita:</b> code review, sledované experimenty, žádná metrika bez baseline</span></li>
       </ul>
-      <p class="small muted" style="margin-top:.5em"><span class="en">Detail and top risks: appendix A2.</span><span class="cs">Podrobnosti a hlavní rizika: příloha A2.</span></p>
+      <p class="small muted" style="margin-top:.5em"><span class="en">Weekly detail: appendix A2 · risks: slide 11.</span><span class="cs">Detail týdne: příloha A2 · rizika: slide 11.</span></p>
+    </div>
+  </div>
+  <div class="foot"><span>DataSentics × Online Book Shop</span><span>08 / 12</span></div>
+</div></section>
+
+<!-- s9 -->
+<section class="slide" id="s9"><div class="s">
+  <div class="kicker"><span class="n">09</span><span class="en">Validation &amp; evaluation strategy</span><span class="cs">Strategie validace a evaluace</span><span class="brief"><span class="en">Brief · Check / validate / test</span><span class="cs">Zadání · Kontrola / validace / testy</span></span></div>
+  <h2><span class="en">Four checks, each one harder to fool than the last</span><span class="cs">Čtyři kontroly, každá těžší na oklamání než ta předchozí</span></h2>
+  <div class="body" style="align-content:start">
+    <div class="ladder">
+      <div class="step">
+        <span class="pill"><span class="en">1 · Data</span><span class="cs">1 · Data</span></span>
+        <div class="q"><span class="en">Is the input what we think it is?</span><span class="cs">Je vstup takový, jak si myslíme?</span></div>
+        <ul class="clean small"><li><span class="en">Reconcile totals with your finance numbers</span><span class="cs">Odsouhlasení součtů s vašimi finančními čísly</span></li><li><span class="en">Automated checks: duplicates, join rates, outliers, bulk accounts</span><span class="cs">Automatické kontroly: duplicity, úspěšnost joinů, odlehlé hodnoty, hromadné účty</span></li><li><span class="en">Unit tests on every cleaning step</span><span class="cs">Unit testy každého kroku čištění</span></li></ul>
+      </div>
+      <div class="step">
+        <span class="pill"><span class="en">2 · Model, offline</span><span class="cs">2 · Model, offline</span></span>
+        <div class="q"><span class="en">Does it predict what people bought next?</span><span class="cs">Předpovídá, co lidé koupili příště?</span></div>
+        <ul class="clean small"><li><span class="en">Train on the past, test on the last weeks of orders</span><span class="cs">Trénink na minulosti, test na posledních týdnech objednávek</span></li><li><span class="en">NDCG, recall and hit rate @10, always vs. baselines</span><span class="cs">NDCG, recall a hit rate @10, vždy proti baseline</span></li><li><span class="en">Coverage and novelty, results per customer segment</span><span class="cs">Pokrytí a novost, výsledky po segmentech zákazníků</span></li></ul>
+      </div>
+      <div class="step">
+        <span class="pill"><span class="en">3 · People</span><span class="cs">3 · Lidé</span></span>
+        <div class="q"><span class="en">Would a bookseller show this?</span><span class="cs">Ukázal by to knihkupec?</span></div>
+        <ul class="clean small"><li><span class="en">Blind test: our list vs. bestsellers, rated by your experts</span><span class="cs">Slepý test: náš seznam vs. bestsellery, hodnotí vaši experti</span></li><li><span class="en">Red-flag review: out-of-stock, wrong age group, duplicates</span><span class="cs">Kontrola varovných signálů: vyprodané, nevhodná věková skupina, duplicity</span></li></ul>
+      </div>
+      <div class="step">
+        <span class="pill w"><span class="en">4 · Market · after PoC</span><span class="cs">4 · Trh · po PoC</span></span>
+        <div class="q"><span class="en">Does it sell more?</span><span class="cs">Prodává víc?</span></div>
+        <ul class="clean small"><li><span class="en">A/B test on the product page, 50 / 50 traffic</span><span class="cs">A/B test na detailu knihy, provoz 50 / 50</span></li><li><span class="en">Revenue per session; CTR, add-to-cart, AOV</span><span class="cs">Tržba na návštěvu; CTR, přidání do košíku, AOV</span></li><li><span class="en">Guardrails: page speed, bounce rate. Duration from a power calculation on your traffic</span><span class="cs">Pojistky: rychlost stránky, bounce rate. Délka podle výpočtu síly testu z vaší návštěvnosti</span></li></ul>
+      </div>
+    </div>
+    <div class="card tint small" style="margin-top:.4em"><span class="en"><b>House rule for the team:</b> no metric is reported without its baseline, and every number can be reproduced from Git with one command.</span><span class="cs"><b>Pravidlo týmu:</b> žádná metrika bez baseline a každé číslo jde zreprodukovat z Gitu jedním příkazem.</span></div>
+  </div>
+  <div class="foot"><span>DataSentics × Online Book Shop</span><span>09 / 12</span></div>
+</div></section>
+
+<!-- s10 -->
+<section class="slide" id="s10"><div class="s">
+  <div class="kicker"><span class="n">10</span><span class="en">Production architecture</span><span class="cs">Produkční architektura</span><span class="brief"><span class="en">Brief · Productionalization</span><span class="cs">Zadání · Produkce</span></span></div>
+  <h2><span class="en">In production: nightly models, a fast API with business rules, an A/B test on every change</span><span class="cs">V produkci: noční modely, rychlé API s pravidly a A/B test u každé změny</span></h2>
+  <div class="body" style="grid-template-rows:1fr auto">
+    <div class="flow compact" style="grid-template-columns:1fr auto 1.15fr auto 1.15fr auto 1.15fr auto .9fr">
+      <div class="lane"><h4><span class="en">Sources</span><span class="cs">Zdroje</span></h4>
+        <div class="box"><b><span class="en">Web &amp; app events</span><span class="cs">Události z webu a aplikace</span></b><span class="en">views, clicks, carts</span><span class="cs">zobrazení, kliky, košíky</span></div>
+        <div class="box"><b><span class="en">Orders</span><span class="cs">Objednávky</span></b>ERP / e-shop</div>
+        <div class="box"><b><span class="en">Catalogue &amp; stock</span><span class="cs">Katalog a sklad</span></b>PIM</div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="lane"><h4><span class="en">Data platform</span><span class="cs">Datová platforma</span></h4>
+        <div class="box"><b><span class="en">Ingestion</span><span class="cs">Načítání</span></b><span class="en">events streamed, orders daily</span><span class="cs">události streamem, objednávky denně</span></div>
+        <div class="box"><b>Lakehouse</b><span class="en">raw → clean → features</span><span class="cs">raw → čistá → featury</span></div>
+        <div class="box"><b><span class="en">Data quality gates</span><span class="cs">Kontroly kvality dat</span></b><span class="en">pipeline stops on bad data</span><span class="cs">při špatných datech se pipeline zastaví</span></div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="lane"><h4><span class="en">ML</span><span class="cs">ML</span></h4>
+        <div class="box"><b><span class="en">Nightly training</span><span class="cs">Noční trénink</span></b><span class="en">scheduled workflow</span><span class="cs">plánovaný workflow</span></div>
+        <div class="box"><b><span class="en">Model registry</span><span class="cs">Registr modelů</span></b><span class="en">champion vs. challenger</span><span class="cs">šampion vs. vyzyvatel</span></div>
+        <div class="box"><b><span class="en">Batch scoring</span><span class="cs">Dávkové skórování</span></b><span class="en">top-N per book &amp; customer</span><span class="cs">top-N pro knihu a zákazníka</span></div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="lane"><h4><span class="en">Serving</span><span class="cs">Servírování</span></h4>
+        <div class="box a"><b><span class="en">Recommendation API</span><span class="cs">API doporučení</span></b><span class="en">&lt; 50 ms, cached key-value store</span><span class="cs">&lt; 50 ms, cache key-value store</span></div>
+        <div class="box"><b><span class="en">Business rules</span><span class="cs">Byznysová pravidla</span></b><span class="en">in stock, not bought, exclusions</span><span class="cs">skladem, nekoupeno, výjimky</span></div>
+        <div class="box"><b><span class="en">Fallback</span><span class="cs">Záloha</span></b><span class="en">quality bestsellers if no data</span><span class="cs">kvalitní bestsellery, když nejsou data</span></div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="lane"><h4><span class="en">Channels</span><span class="cs">Kanály</span></h4>
+        <div class="box"><b><span class="en">Product page</span><span class="cs">Detail knihy</span></b></div>
+        <div class="box"><b>Homepage</b></div>
+        <div class="box"><b><span class="en">Cart, e-mail</span><span class="cs">Košík, e-mail</span></b></div>
+      </div>
+    </div>
+    <div class="g2" style="display:grid;gap:1em">
+      <div class="card small">
+        <h3><span class="en">PoC vs. production</span><span class="cs">PoC vs. produkce</span></h3>
+        <table><thead><tr><th></th><th>PoC · 30 MD</th><th><span class="en">Production</span><span class="cs">Produkce</span></th></tr></thead><tbody>
+          <tr><td class="muted"><span class="en">Data</span><span class="cs">Data</span></td><td><span class="en">one-off exports</span><span class="cs">jednorázové exporty</span></td><td><span class="en">automated daily feeds + events</span><span class="cs">automatické denní feedy + události</span></td></tr>
+          <tr><td class="muted"><span class="en">Training</span><span class="cs">Trénink</span></td><td><span class="en">run by hand, tracked</span><span class="cs">ručně, sledovaně</span></td><td><span class="en">nightly job, champion vs. challenger</span><span class="cs">noční job, šampion vs. vyzyvatel</span></td></tr>
+          <tr><td class="muted"><span class="en">Serving</span><span class="cs">Servírování</span></td><td><span class="en">tables + demo app</span><span class="cs">tabulky + demo</span></td><td><span class="en">API &lt; 50 ms, rules, fallback</span><span class="cs">API &lt; 50 ms, pravidla, záloha</span></td></tr>
+          <tr><td class="muted"><span class="en">Proof</span><span class="cs">Důkaz</span></td><td><span class="en">offline metrics + experts</span><span class="cs">offline metriky + experti</span></td><td><span class="en">A/B test, revenue dashboard</span><span class="cs">A/B test, dashboard tržeb</span></td></tr>
+          <tr><td class="muted"><span class="en">Run</span><span class="cs">Provoz</span></td><td><span class="en">Git, MLflow</span><span class="cs">Git, MLflow</span></td><td><span class="en">CI/CD, drift alerts, named owner, rollback</span><span class="cs">CI/CD, alerty driftu, vlastník, rollback</span></td></tr>
+          <tr><td class="muted"><span class="en">Data protection</span><span class="cs">Ochrana dat</span></td><td><span class="en">pseudonymised extract, DPA</span><span class="cs">pseudonymizovaný výřez, DPA</span></td><td><span class="en">consent check, retention, access control</span><span class="cs">kontrola souhlasu, retence, přístupy</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="card small">
+        <h3><span class="en">Plugging into your shop</span><span class="cs">Napojení na váš e-shop</span></h3>
+        <table><tbody>
+          <tr><td><span class="pill">A</span></td><td><span class="en"><b>API call</b> from the shop for each page: most flexible, needs a developer</span><span class="cs"><b>Volání API</b> z e-shopu pro každou stránku: nejflexibilnější, potřebuje vývojáře</span></td></tr>
+          <tr><td><span class="pill">B</span></td><td><span class="en"><b>Platform plug-in</b> (e.g. Shopify, Magento, Shoptet) fed by our lists</span><span class="cs"><b>Plug-in platformy</b> (např. Shopify, Magento, Shoptet) plněný našimi seznamy</span></td></tr>
+          <tr><td><span class="pill">C</span></td><td><span class="en"><b>Nightly file feed</b> into the shop database: simplest start, no real-time</span><span class="cs"><b>Noční souborový feed</b> do databáze e-shopu: nejjednodušší start, bez real-time</span></td></tr>
+        </tbody></table>
+        <p class="muted" style="margin-top:.5em"><span class="en">Which one depends on your systems: e-shop platform, order system / ERP, catalogue (PIM), web analytics, newsletter tool. We map them in week 1 and pick in W5.</span><span class="cs">Kterou zvolit, závisí na vašich systémech: platforma e-shopu, objednávkový systém / ERP, katalog (PIM), webová analytika, nástroj na newsletter. Zmapujeme je v T1 a vybereme v T5.</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><span class="en">My take: same code as the PoC, scheduled and monitored. Real-time session features added only if the pilot shows it pays.</span><span class="cs">Můj pohled: stejný kód jako v PoC, jen naplánovaný a monitorovaný. Real-time featury přidáme, jen pokud pilot ukáže, že se vyplatí.</span></span><span>10 / 12</span></div>
+</div></section>
+
+<!-- s11 -->
+<section class="slide" id="s11"><div class="s">
+  <div class="kicker"><span class="n">11</span><span class="en">Risks, limitations &amp; open questions</span><span class="cs">Rizika, omezení a otevřené otázky</span><span class="brief"><span class="en">Brief · Open questions</span><span class="cs">Zadání · Otevřené otázky</span></span></div>
+  <h2><span class="en">What could go wrong, and what we need to learn from you</span><span class="cs">Co se může pokazit a co se od vás potřebujeme dozvědět</span></h2>
+  <div class="body g2">
+    <div class="card" style="align-content:start">
+      <h3><span class="en">Open questions for you</span><span class="cs">Otevřené otázky pro vás</span></h3>
+      <table class="small">
+        <thead><tr><th><span class="en">Question</span><span class="cs">Otázka</span></th><th><span class="en">Why it matters</span><span class="cs">Proč na tom záleží</span></th></tr></thead>
+        <tbody>
+          <tr><td><span class="en">How many years of orders, with customer ID, date, price?</span><span class="cs">Kolik let objednávek, s ID zákazníka, datem, cenou?</span></td><td class="muted"><span class="en">Without dates we cannot test “what they bought next”</span><span class="cs">Bez dat nejde otestovat „co koupili příště“</span></td></tr>
+          <tr><td><span class="en">What share of visits and orders is logged in?</span><span class="cs">Jaký podíl návštěv a objednávek je přihlášený?</span></td><td class="muted"><span class="en">Decides how far personal picks reach</span><span class="cs">Rozhoduje, kolik lidí osobní tipy osloví</span></td></tr>
+          <tr><td><span class="en">What does a catalogue record contain: genre, blurb, stock?</span><span class="cs">Co obsahuje záznam v katalogu: žánr, anotace, sklad?</span></td><td class="muted"><span class="en">New titles and business rules depend on it</span><span class="cs">Závisí na tom nové tituly a byznysová pravidla</span></td></tr>
+          <tr><td><span class="en">Which shop platform, and who owns integration?</span><span class="cs">Jaká platforma e-shopu a kdo vlastní integraci?</span></td><td class="muted"><span class="en">Sets the production path and its cost</span><span class="cs">Určuje cestu do produkce a její cenu</span></td></tr>
+          <tr><td><span class="en">Does consent cover personalisation? Can data leave your cloud?</span><span class="cs">Pokrývá souhlas personalizaci? Mohou data opustit váš cloud?</span></td><td class="muted"><span class="en">Where we work and what we may use</span><span class="cs">Kde pracujeme a co smíme použít</span></td></tr>
+          <tr><td><span class="en">Which KPI matters most, and what uplift pays back the investment?</span><span class="cs">Které KPI je nejdůležitější a jaký nárůst investici vrátí?</span></td><td class="muted"><span class="en">Fixes the success bar and pilot length</span><span class="cs">Určuje laťku úspěchu a délku pilotu</span></td></tr>
+          <tr><td><span class="en">Rules we must respect: own titles, publisher deals, age limits?</span><span class="cs">Pravidla, která musíme respektovat: vlastní tituly, dohody s vydavateli, věk?</span></td><td class="muted"><span class="en">Shapes the business-rules layer</span><span class="cs">Tvaruje vrstvu byznysových pravidel</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:grid;gap:.9em;align-content:start">
+      <div class="card">
+        <h3><span class="en">Top risks</span><span class="cs">Hlavní rizika</span></h3>
+        <table class="small">
+          <thead><tr><th><span class="en">Risk</span><span class="cs">Riziko</span></th><th><span class="en">Mitigation</span><span class="cs">Opatření</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill w"><span class="en">high</span><span class="cs">vysoké</span></span> <span class="en">Data access is late</span><span class="cs">Přístup k datům se zpozdí</span></td><td class="muted"><span class="en">Keep building on the ratings export meanwhile; G1</span><span class="cs">Mezitím stavíme na exportu hodnocení; G1</span></td></tr>
+            <tr><td><span class="pill w"><span class="en">high</span><span class="cs">vysoké</span></span> <span class="en">Offline gain does not hold online</span><span class="cs">Offline zisk neplatí online</span></td><td class="muted"><span class="en">A/B pilot with guardrails before any rollout</span><span class="cs">A/B pilot s pojistkami před nasazením</span></td></tr>
+            <tr><td><span class="pill g"><span class="en">med</span><span class="cs">střední</span></span> <span class="en">Order history thin or messy</span><span class="cs">Historie objednávek je slabá nebo chaotická</span></td><td class="muted"><span class="en">Re-scope at G1 to the book page only</span><span class="cs">V G1 zúžit na detail knihy</span></td></tr>
+            <tr><td><span class="pill g"><span class="en">med</span><span class="cs">střední</span></span> <span class="en">No integration capacity</span><span class="cs">Chybí kapacita na integraci</span></td><td class="muted"><span class="en">Name the owner today; agree API contract in W5</span><span class="cs">Vlastníka určit dnes; kontrakt API v T5</span></td></tr>
+            <tr><td><span class="pill g"><span class="en">med</span><span class="cs">střední</span></span> <span class="en">Scope creep</span><span class="cs">Rozšiřování rozsahu</span></td><td class="muted"><span class="en">Changes only via steering; backlog for later</span><span class="cs">Změny jen přes steering; backlog na později</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card warn small"><span class="en"><b>Limitations we state openly:</b> ratings cannot prove sales; without dates the offline test uses a random split, which flatters metrics; metadata is too thin for content models.</span><span class="cs"><b>Omezení, která říkáme otevřeně:</b> hodnocení neprokážou prodeje; bez dat používá offline test náhodný split, který metriky přikrášluje; metadata nestačí na obsahové modely.</span></div>
     </div>
   </div>
   <div class="foot"><span>DataSentics × Online Book Shop</span><span>11 / 12</span></div>
 </div></section>
 
-<!-- 12 -->
+<!-- s12 -->
 <section class="slide" id="s12"><div class="s">
-  <div class="kicker"><span class="n">12</span><span class="en">Plan, gates &amp; next steps</span><span class="cs">Plán, rozhodovací body a další kroky</span><span class="brief"><span class="en">Brief · Next steps</span><span class="cs">Zadání · Další kroky</span></span></div>
-  <h2><span class="en">Six weeks, three decision gates, and the first steps start today</span><span class="cs">Šest týdnů, tři rozhodovací body a první kroky začínají dnes</span></h2>
-  <div class="body" style="align-content:start;gap:1em">
-    <div class="gantt" role="table" aria-label="Project plan">
-      <div></div><div class="h"><span class="en">W1</span><span class="cs">T1</span></div><div class="h"><span class="en">W2</span><span class="cs">T2</span></div><div class="h"><span class="en">W3</span><span class="cs">T3</span></div><div class="h"><span class="en">W4</span><span class="cs">T4</span></div><div class="h"><span class="en">W5</span><span class="cs">T5</span></div><div class="h"><span class="en">W6</span><span class="cs">T6</span></div><div class="h">MD</div>
-      <div class="t"><span class="en">Discovery &amp; data access</span><span class="cs">Discovery a přístup k datům</span></div><div class="b"></div><div></div><div></div><div></div><div></div><div></div><div class="md">3</div>
-      <div class="t"><span class="en">Data prep &amp; quality</span><span class="cs">Příprava a kvalita dat</span></div><div class="b" style="opacity:.5"></div><div class="b"></div><div></div><div></div><div></div><div></div><div class="md">6</div>
-      <div class="t"><span class="en">Baselines &amp; models</span><span class="cs">Baseline a modely</span></div><div></div><div class="b" style="opacity:.5"></div><div class="b"></div><div class="b"></div><div></div><div></div><div class="md">8</div>
-      <div class="t"><span class="en">Offline eval &amp; expert test</span><span class="cs">Offline evaluace a test expertů</span></div><div></div><div></div><div></div><div class="b" style="opacity:.5"></div><div class="b"></div><div></div><div class="md">5</div>
-      <div class="t"><span class="en">Demo &amp; production design</span><span class="cs">Demo a návrh produkce</span></div><div></div><div></div><div></div><div></div><div class="b"></div><div class="b"></div><div class="md">4</div>
-      <div class="t"><span class="en">Business case &amp; readout</span><span class="cs">Business case a závěrečná prezentace</span></div><div></div><div></div><div></div><div></div><div></div><div class="b"></div><div class="md">2</div>
-      <div class="t muted"><span class="en">Contingency</span><span class="cs">Rezerva</span></div><div></div><div></div><div></div><div></div><div></div><div></div><div class="md muted">2</div>
-      <div></div><div class="gate">◆ G1</div><div></div><div></div><div class="gate">◆ G2</div><div></div><div class="gate">◆ G3</div><div class="md">30</div>
+  <div class="kicker"><span class="n">12</span><span class="en">Next steps &amp; decisions needed</span><span class="cs">Další kroky a potřebná rozhodnutí</span><span class="brief"><span class="en">Brief · Next steps</span><span class="cs">Zadání · Další kroky</span></span></div>
+  <h2><span class="en">Five decisions today, and we start tomorrow</span><span class="cs">Pět rozhodnutí dnes a zítra začínáme</span></h2>
+  <div class="body g2" style="align-items:start">
+    <div class="card tint">
+      <h3><span class="en">Decisions we need today</span><span class="cs">Rozhodnutí, která potřebujeme dnes</span></h3>
+      <ol style="margin:0;padding-left:1.2em;display:grid;gap:.55em">
+        <li><span class="en"><b>Success criteria and gates</b> (slide 02, 07)</span><span class="cs"><b>Kritéria úspěchu a rozhodovací body</b> (slide 02, 07)</span></li>
+        <li><span class="en"><b>First placement:</b> the book page</span><span class="cs"><b>První umístění:</b> detail knihy</span></li>
+        <li><span class="en"><b>Your people:</b> product owner, data owner, 2 category experts</span><span class="cs"><b>Vaši lidé:</b> product owner, vlastník dat, 2 experti na sortiment</span></li>
+        <li><span class="en"><b>Where data is processed:</b> your cloud or our workspace under a DPA</span><span class="cs"><b>Kde se data zpracují:</b> ve vašem cloudu, nebo v našem workspace podle DPA</span></li>
+        <li><span class="en"><b>Steering slot:</b> Fridays, 30 minutes</span><span class="cs"><b>Termín steeringu:</b> pátky, 30 minut</span></li>
+      </ol>
     </div>
-    <div class="gantt" style="margin-top:-.4em" aria-label="Deliverables">
-      <div class="t muted small"><span class="en">Deliverable</span><span class="cs">Výstup</span></div>
-      <div class="small" style="text-align:center"><span class="en">Data quality report</span><span class="cs">Report kvality dat</span></div>
-      <div class="small" style="text-align:center"><span class="en">Clean data + baselines</span><span class="cs">Čistá data + baseline</span></div>
-      <div class="small" style="text-align:center"><span class="en">First models</span><span class="cs">První modely</span></div>
-      <div class="small" style="text-align:center"><span class="en">Evaluation report</span><span class="cs">Evaluační report</span></div>
-      <div class="small" style="text-align:center"><span class="en">Demo + expert test</span><span class="cs">Demo + test expertů</span></div>
-      <div class="small" style="text-align:center"><span class="en">Prod. design, business case</span><span class="cs">Návrh produkce, business case</span></div>
-      <div></div>
-    </div>
-    <div class="g2" style="display:grid;gap:1em">
-      <div class="card small">
-        <h3><span class="en">Decision gates</span><span class="cs">Rozhodovací body</span></h3>
-        <table><tbody>
-          <tr><td><span class="pill w">G1</span></td><td><span class="en"><b>Data good enough?</b> If not, we re-scope rather than burn days</span><span class="cs"><b>Jsou data dost dobrá?</b> Pokud ne, upravíme rozsah, místo abychom pálili dny</span></td></tr>
-          <tr><td><span class="pill w">G2</span></td><td><span class="en"><b>Model beats the baseline</b> by the agreed margin?</span><span class="cs"><b>Poráží model baseline</b> o dohodnutý rozdíl?</span></td></tr>
-          <tr><td><span class="pill w">G3</span></td><td><span class="en"><b>Go / no-go</b> for the live A/B pilot</span><span class="cs"><b>Go / no-go</b> pro živý A/B pilot</span></td></tr>
-        </tbody></table>
-      </div>
-      <div class="card tint small">
-        <h3><span class="en">Next steps</span><span class="cs">Další kroky</span></h3>
-        <table><tbody>
-          <tr><td class="muted"><span class="en">Today</span><span class="cs">Dnes</span></td><td><span class="en">Agree scope, success criteria and gates; name the PO, data owner and 2 experts</span><span class="cs">Odsouhlasit rozsah, kritéria a gate; určit PO, vlastníka dat a 2 experty</span></td></tr>
-          <tr><td class="muted"><span class="en">Days 1–3</span><span class="cs">Dny 1–3</span></td><td><span class="en">We send the data export spec; DPA signed; workspace access</span><span class="cs">Pošleme specifikaci exportu; podpis DPA; přístup do workspace</span></td></tr>
-          <tr><td class="muted"><span class="en">Week 1</span><span class="cs">Týden 1</span></td><td><span class="en">Workshop with category experts; <b>G1 data quality readout</b></span><span class="cs">Workshop s experty na sortiment; <b>G1 vyhodnocení kvality dat</b></span></td></tr>
-        </tbody></table>
-      </div>
+    <div class="card">
+      <h3><span class="en">What happens next</span><span class="cs">Co se stane potom</span></h3>
+      <table class="small"><tbody>
+        <tr><td class="muted"><span class="en">Day 1</span><span class="cs">Den 1</span></td><td><span class="en">We send the data export spec and DPA draft</span><span class="cs">Pošleme specifikaci exportu dat a návrh DPA</span></td></tr>
+        <tr><td class="muted"><span class="en">Days 1–3</span><span class="cs">Dny 1–3</span></td><td><span class="en">Workspace access, first data received</span><span class="cs">Přístup do workspace, první data dorazí</span></td></tr>
+        <tr><td class="muted"><span class="en">Week 1</span><span class="cs">Týden 1</span></td><td><span class="en">2-hour workshop with your category experts</span><span class="cs">2hodinový workshop s vašimi experty na sortiment</span></td></tr>
+        <tr><td class="muted"><span class="en">End W1</span><span class="cs">Konec T1</span></td><td><b><span class="en">G1: data quality readout (D1)</span><span class="cs">G1: vyhodnocení kvality dat (D1)</span></b></td></tr>
+        <tr><td class="muted"><span class="en">Every Friday</span><span class="cs">Každý pátek</span></td><td><span class="en">Demo of something working + steering</span><span class="cs">Ukázka něčeho funkčního + steering</span></td></tr>
+      </tbody></table>
+      <p class="small muted" style="margin-top:.8em"><span class="en">In the meantime: try the prototype on the next page, built on your data.</span><span class="cs">Mezitím: vyzkoušejte prototyp na další stránce, postavený na vašich datech.</span></p>
     </div>
   </div>
   <div class="foot"><span>DataSentics × Online Book Shop</span><span>12 / 12</span></div>
 </div></section>
 
-<!-- TRY -->
+<!-- try -->
 <section class="slide" id="try"><div class="s" style="justify-content:center;gap:2cqw;background:var(--accent-soft)">
   <div class="kicker"><span class="n">→</span><span class="en">Try it yourself</span><span class="cs">Vyzkoušejte si to</span></div>
   <h2 style="font-size:3.2em;max-width:18em"><span class="en">Now see it work on real data</span><span class="cs">Teď to uvidíte fungovat na skutečných datech</span></h2>
-  <p class="lead"><span class="en">The prototype runs the PoC approach on the shared Book-Crossing data. Pick a book and see similar titles, switch between a loyal reader and a new visitor, and compare with the bestseller list.</span><span class="cs">Prototyp běží na sdílených datech Book-Crossing stejným přístupem jako PoC. Vyberte knihu a uvidíte podobné tituly, přepněte mezi věrným čtenářem a novým návštěvníkem a porovnejte se žebříčkem bestsellerů.</span></p>
+  <p class="lead"><span class="en">The prototype shows your shop with the recommendation engine switched on, built on your data. Open a book page, switch between a loyal reader and a new visitor, and compare with the bestseller list.</span><span class="cs">Prototyp ukazuje váš e-shop se zapnutým doporučovacím enginem, postavený na vašich datech. Otevřete detail knihy, přepněte mezi věrným čtenářem a novým návštěvníkem a porovnejte se žebříčkem bestsellerů.</span></p>
   <div style="display:flex;gap:1em;flex-wrap:wrap">
-    <a class="cta" href="#prototype"><span class="en">Open the prototype →</span><span class="cs">Otevřít prototyp →</span></a>
+    <a class="cta" href="https://dvorpet.github.io/Recommend-book/#prototype"><span class="en">Open the prototype →</span><span class="cs">Otevřít prototyp →</span></a>
   </div>
 </div></section>
 
-<!-- A1 appendix -->
+<!-- a1 -->
 <section class="slide" id="a1"><div class="s">
   <div class="kicker"><span class="n">A1 · <span class="en">Appendix</span><span class="cs">Příloha</span></span><span class="en">Solution for the PoC · does it make sense?</span><span class="cs">Řešení PoC · dává to smysl?</span></div>
   <h2><span class="en">Metrics are not enough: a bookseller should nod at the lists</span><span class="cs">Metriky nestačí: knihkupec musí nad seznamy přikývnout</span></h2>
@@ -776,10 +935,10 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
     </div>
   </div>
   <p class="small muted"><span class="en">In the PoC these lists go to your category experts as a blind test: our list vs. the bestseller list, without labels. Their verdict is a success criterion.</span><span class="cs">V PoC tyto seznamy dostanou vaši odborníci na sortiment jako slepý test: náš seznam vs. bestsellery, bez označení. Jejich verdikt je kritérium úspěchu.</span></p>
-  <div class="foot"><span><span class="en">Real output of the item-kNN model on the shared data</span><span class="cs">Skutečný výstup modelu item-kNN na sdílených datech</span></span><span>A1</span></div>
+  <div class="foot"><span><span class="en">Real output of the item-kNN model on your ratings</span><span class="cs">Skutečný výstup modelu item-kNN na vašich hodnoceních</span></span><span>A1</span></div>
 </div></section>
 
-<!-- A2 appendix -->
+<!-- a2 -->
 <section class="slide" id="a2"><div class="s">
   <div class="kicker"><span class="n">A2 · <span class="en">Appendix</span><span class="cs">Příloha</span></span><span class="en">How we run delivery</span><span class="cs">Jak řídíme dodávku</span></div>
   <h2><span class="en">Short loops, visible budget, decisions written down</span><span class="cs">Krátké cykly, viditelný rozpočet, rozhodnutí na papíře</span></h2>
@@ -813,10 +972,81 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
     </div>
   </div>
   <div class="card warn small" style="padding:.6em 1em">
-    <span class="en"><b>Top risks:</b> data access slips (we build on Book-Crossing in the meantime) · weak order history (G1 re-scope) · offline result does not hold online (A/B pilot before any rollout) · no integration capacity on your side (agree owner at kick-off).</span>
-    <span class="cs"><b>Hlavní rizika:</b> zpoždění přístupu k datům (mezitím stavíme na Book-Crossing) · slabá historie objednávek (úprava rozsahu v G1) · offline výsledek neplatí online (A/B pilot před plošným nasazením) · chybí kapacita na integraci (vlastníka určíme na kick-offu).</span>
+    <span class="en"><b>Top risks:</b> data access slips (we keep building on the ratings export) · weak order history (G1 re-scope) · offline result does not hold online (A/B pilot before any rollout) · no integration capacity on your side (agree owner at kick-off).</span>
+    <span class="cs"><b>Hlavní rizika:</b> zpoždění přístupu k datům (mezitím stavíme na exportu hodnocení) · slabá historie objednávek (úprava rozsahu v G1) · offline výsledek neplatí online (A/B pilot před plošným nasazením) · chybí kapacita na integraci (vlastníka určíme na kick-offu).</span>
   </div>
   <div class="foot"><span>DataSentics × Online Book Shop</span><span>A2</span></div>
+</div></section>
+
+<!-- a3 -->
+<section class="slide" id="a3"><div class="s">
+  <div class="kicker"><span class="n">A3 · <span class="en">Appendix</span><span class="cs">Příloha</span></span><span class="en">How the model works</span><span class="cs">Jak model funguje</span></div>
+  <h2><span class="en">Item-kNN with BM25, step by step</span><span class="cs">Item-kNN s BM25, krok za krokem</span></h2>
+  <div class="body" style="align-content:start;gap:1.1em">
+    <div class="ladder">
+      <div class="step"><span class="pill">1</span><div class="q"><span class="en">Reader × book matrix</span><span class="cs">Matice čtenář × kniha</span></div><p class="small"><span class="en">15.6 k readers × 29.4 k works. A cell is 1 if the reader interacted, weighted up to 3 for a high explicit rating.</span><span class="cs">15,6 tis. čtenářů × 29,4 tis. děl. Buňka je 1, pokud čtenář s knihou interagoval, s váhou až 3 za vysoké explicitní hodnocení.</span></p></div>
+      <div class="step"><span class="pill">2</span><div class="q"><span class="en">BM25 weighting</span><span class="cs">Váhování BM25</span></div><p class="small"><span class="en">Borrowed from search engines: a reader who read 1,000 books says less about each one, and a book everyone read says less about taste.</span><span class="cs">Převzato z vyhledávačů: čtenář, který přečetl 1 000 knih, o každé řekne méně, a kniha, kterou četl každý, řekne méně o vkusu.</span></p></div>
+      <div class="step"><span class="pill">3</span><div class="q"><span class="en">Book-to-book similarity</span><span class="cs">Podobnost kniha–kniha</span></div><p class="small"><span class="en">Compare the weighted reader columns of two books; keep the 200 most similar per book (K tuned on validation).</span><span class="cs">Porovnáme vážené sloupce čtenářů dvou knih; ke každé knize necháme 200 nejpodobnějších (K vyladěno na validaci).</span></p></div>
+      <div class="step"><span class="pill">4</span><div class="q"><span class="en">Recommend + explain</span><span class="cs">Doporučit + vysvětlit</span></div><p class="small"><span class="en">Book page: top similar books. Person: sum similarities over their history; the book that contributed most is the “because you read” reason.</span><span class="cs">Detail knihy: nejpodobnější knihy. Člověk: součet podobností přes jeho historii; kniha, která přispěla nejvíc, je důvod „protože jste četli“.</span></p></div>
+    </div>
+    <div class="g3" style="display:grid;gap:1em">
+      <div class="card small"><h3><span class="en">Example</span><span class="cs">Příklad</span></h3><p><span class="en"><i>The Hobbit</i> → <i>The Two Towers</i>: 111 readers read both. Next come the other Tolkien volumes, then other fantasy.</span><span class="cs"><i>Hobit</i> → <i>Dvě věže</i>: obě četlo 111 čtenářů. Následují další Tolkienovy svazky, pak jiná fantasy.</span></p></div>
+      <div class="card small"><h3><span class="en">Why not deep learning?</span><span class="cs">Proč ne deep learning?</span></h3><p><span class="en">Very sparse data (0.1 % density), no sequences or text to exploit, and a 30-MD budget. A neural model would cost more and be harder to explain, with no evidence it wins here.</span><span class="cs">Velmi řídká data (hustota 0,1 %), žádné sekvence ani text k využití a rozpočet 30 MD. Neuronový model by stál víc, hůř by se vysvětloval a nic nenaznačuje, že by tu vyhrál.</span></p></div>
+      <div class="card small"><h3><span class="en">Cost to run</span><span class="cs">Náklady na provoz</span></h3><p><span class="en">Training takes seconds on a laptop CPU. Output is a lookup table, so serving is a key-value read.</span><span class="cs">Trénink trvá sekundy na CPU notebooku. Výstupem je vyhledávací tabulka, takže servírování je jen čtení z key-value úložiště.</span></p></div>
+    </div>
+  </div>
+  <div class="foot"><span><span class="en">Code: src/experiment.py, src/export_prototype.py · library: implicit</span><span class="cs">Kód: src/experiment.py, src/export_prototype.py · knihovna: implicit</span></span><span>A3</span></div>
+</div></section>
+
+<!-- a4 -->
+<section class="slide" id="a4"><div class="s">
+  <div class="kicker"><span class="n">A4 · <span class="en">Appendix</span><span class="cs">Příloha</span></span><span class="en">How we tested</span><span class="cs">Jak jsme testovali</span></div>
+  <h2><span class="en">Offline test on your ratings: setup and full results</span><span class="cs">Offline test na vašich hodnoceních: nastavení a celé výsledky</span></h2>
+  <div class="body g-4-6">
+    <div class="card small" style="align-content:start">
+      <h3><span class="en">Setup</span><span class="cs">Nastavení</span></h3>
+      <ul class="clean">
+        <li><span class="en"><b>Data:</b> cleaned 5-core, 536 k interactions</span><span class="cs"><b>Data:</b> vyčištěné 5-core, 536 tis. interakcí</span></li>
+        <li><span class="en"><b>Split:</b> 20 % of each reader’s books hidden at random (no dates exist)</span><span class="cs"><b>Split:</b> u každého čtenáře náhodně skryto 20 % knih (data nejsou)</span></li>
+        <li><span class="en"><b>Tuning:</b> on a second hidden 20 %, never on the test set</span><span class="cs"><b>Ladění:</b> na druhých skrytých 20 %, nikdy na testu</span></li>
+        <li><span class="en"><b>Question asked:</b> are the hidden books in the model’s top 10?</span><span class="cs"><b>Otázka:</b> jsou skryté knihy v top 10 modelu?</span></li>
+      </ul>
+      <h3 style="margin-top:.6em"><span class="en">Metrics in plain words</span><span class="cs">Metriky lidsky</span></h3>
+      <ul class="clean">
+        <li><span class="en"><b>Hit rate@10:</b> share of readers with at least one hit</span><span class="cs"><b>Hit rate@10:</b> podíl čtenářů s aspoň jedním zásahem</span></li>
+        <li><span class="en"><b>NDCG@10:</b> hits, rewarded more near the top</span><span class="cs"><b>NDCG@10:</b> zásahy, víc oceněné nahoře</span></li>
+        <li><span class="en"><b>Coverage:</b> share of the catalogue ever recommended</span><span class="cs"><b>Pokrytí:</b> podíl katalogu, který se kdy doporučí</span></li>
+      </ul>
+      <p class="muted" style="margin-top:.6em"><span class="en">On your data we switch to a time split: train on the past, test on the last weeks.</span><span class="cs">Na vašich datech přejdeme na časový split: trénink na minulosti, test na posledních týdnech.</span></p>
+    </div>
+    <div style="display:grid;gap:1em;align-content:start">
+      <div class="card">
+        <table class="small">
+          <thead><tr><th><span class="en">Model</span><span class="cs">Model</span></th><th class="r">P@10</th><th class="r">R@10</th><th class="r">NDCG@10</th><th class="r">Hit@10</th><th class="r"><span class="en">Coverage</span><span class="cs">Pokrytí</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="en">Bestsellers (count)</span><span class="cs">Bestsellery (počet)</span></td><td class="r"><span class="en">0.010</span><span class="cs">0,010</span></td><td class="r"><span class="en">0.020</span><span class="cs">0,020</span></td><td class="r"><span class="en">0.019</span><span class="cs">0,019</span></td><td class="r"><span class="en">8.1 %</span><span class="cs">8,1 %</span></td><td class="r"><span class="en">0.1 %</span><span class="cs">0,1 %</span></td></tr>
+            <tr><td><span class="en">Bestsellers (quality)</span><span class="cs">Bestsellery (kvalita)</span></td><td class="r"><span class="en">0.005</span><span class="cs">0,005</span></td><td class="r"><span class="en">0.008</span><span class="cs">0,008</span></td><td class="r"><span class="en">0.008</span><span class="cs">0,008</span></td><td class="r"><span class="en">3.8 %</span><span class="cs">3,8 %</span></td><td class="r"><span class="en">0.1 %</span><span class="cs">0,1 %</span></td></tr>
+            <tr><td>Item-kNN (cosine)</td><td class="r"><span class="en">0.013</span><span class="cs">0,013</span></td><td class="r"><span class="en">0.040</span><span class="cs">0,040</span></td><td class="r"><span class="en">0.035</span><span class="cs">0,035</span></td><td class="r"><span class="en">9.7 %</span><span class="cs">9,7 %</span></td><td class="r"><span class="en">58.6 %</span><span class="cs">58,6 %</span></td></tr>
+            <tr><td>ALS</td><td class="r"><span class="en">0.026</span><span class="cs">0,026</span></td><td class="r"><span class="en">0.062</span><span class="cs">0,062</span></td><td class="r"><span class="en">0.054</span><span class="cs">0,054</span></td><td class="r"><span class="en">18.2 %</span><span class="cs">18,2 %</span></td><td class="r"><span class="en">8.5 %</span><span class="cs">8,5 %</span></td></tr>
+            <tr class="best"><td><b>Item-kNN (BM25)</b></td><td class="r"><span class="en">0.031</span><span class="cs">0,031</span></td><td class="r"><span class="en">0.067</span><span class="cs">0,067</span></td><td class="r"><b><span class="en">0.066</span><span class="cs">0,066</span></b></td><td class="r"><b><span class="en">19.2 %</span><span class="cs">19,2 %</span></b></td><td class="r"><b><span class="en">76.5 %</span><span class="cs">76,5 %</span></b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span class="en">NDCG@10 by reader history size</span><span class="cs">NDCG@10 podle velikosti historie</span></h3>
+        <table class="small">
+          <thead><tr><th><span class="en">Books in history</span><span class="cs">Knih v historii</span></th><th class="r">4–9</th><th class="r">10–49</th><th class="r">50+</th></tr></thead>
+          <tbody>
+            <tr><td class="muted"><span class="en">Readers</span><span class="cs">Čtenářů</span></td><td class="r muted"><span class="en">8,220</span><span class="cs">8 220</span></td><td class="r muted"><span class="en">5,688</span><span class="cs">5 688</span></td><td class="r muted"><span class="en">1,734</span><span class="cs">1 734</span></td></tr>
+            <tr><td><span class="en">Bestsellers (count)</span><span class="cs">Bestsellery (počet)</span></td><td class="r"><span class="en">0.012</span><span class="cs">0,012</span></td><td class="r"><span class="en">0.016</span><span class="cs">0,016</span></td><td class="r"><span class="en">0.061</span><span class="cs">0,061</span></td></tr>
+            <tr class="best"><td><b>Item-kNN (BM25)</b></td><td class="r"><span class="en">0.045</span><span class="cs">0,045</span></td><td class="r"><span class="en">0.071</span><span class="cs">0,071</span></td><td class="r"><span class="en">0.148</span><span class="cs">0,148</span></td></tr>
+          </tbody>
+        </table>
+        <p class="small muted" style="margin-top:.5em"><span class="en">The model wins most where it matters most: readers with short histories (3.8× the baseline).</span><span class="cs">Model vítězí nejvíc tam, kde na tom nejvíc záleží: u čtenářů s krátkou historií (3,8× baseline).</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><span class="en">Reproduce: python src/prep.py · python src/experiment.py (GitHub repo)</span><span class="cs">Reprodukce: python src/prep.py · python src/experiment.py (GitHub repo)</span></span><span>A4</span></div>
 </div></section>
 
 </main>
@@ -824,71 +1054,39 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
 <section class="proto-view" id="proto-view" aria-labelledby="proto-h">
   <div class="pv-head">
     <div>
-      <span class="pill"><span class="en">Prototype · v1</span><span class="cs">Prototyp · v1</span></span>
-      <h1 id="proto-h"><span class="en">See the PoC model at work</span><span class="cs">Model z PoC v akci</span></h1>
-      <p class="lead"><span class="en">The same item-to-item similarity model as in the presentation, trained on the cleaned Book-Crossing data. Recommendations are computed in Python and served as a static file, so nothing you do here is stored.</span><span class="cs">Stejný model podobnosti knih jako v prezentaci, natrénovaný na vyčištěných datech Book-Crossing. Doporučení jsou spočítaná v Pythonu a servírovaná jako statický soubor, nic z toho, co tu uděláte, se neukládá.</span></p>
+      <span class="pill"><span class="en">Prototype · v2</span><span class="cs">Prototyp · v2</span></span>
+      <h1 id="proto-h"><span class="en">Your shop, with recommendations switched on</span><span class="cs">Váš e-shop se zapnutým doporučováním</span></h1>
+      <p class="lead"><span class="en">A mock-up of your online book shop running the PoC model on your data. Everything marked <span class="rec-mark">✦ Recommendation engine</span> is new. The rest is what a shop already has. Switch the customer to see how the page changes.</span><span class="cs">Maketa vašeho online knihkupectví, ve které běží model z PoC na vašich datech. Vše označené <span class="rec-mark">✦ Doporučovací engine</span> je nové. Zbytek už e-shop má. Přepněte zákazníka a uvidíte, jak se stránka změní.</span></p>
     </div>
     <div class="pv-stats" id="pv-stats"></div>
   </div>
-  <div class="pv-tabs" role="tablist" aria-label="Prototype views">
-    <button role="tab" id="pt-book" aria-selected="true" data-p="book"><span class="en">1 · Book page</span><span class="cs">1 · Detail knihy</span></button>
-    <button role="tab" id="pt-you" aria-selected="false" data-p="you"><span class="en">2 · Picked for you</span><span class="cs">2 · Vybráno pro vás</span></button>
-    <button role="tab" id="pt-how" aria-selected="false" data-p="how"><span class="en">3 · How it works</span><span class="cs">3 · Jak to funguje</span></button>
+  <div class="pv-controls">
+    <div class="pv-tabs" role="tablist" aria-label="Prototype views">
+      <button role="tab" id="pt-home" aria-selected="true" data-p="home"><span class="en">Homepage</span><span class="cs">Úvodní stránka</span></button>
+      <button role="tab" id="pt-book" aria-selected="false" data-p="book"><span class="en">Book page</span><span class="cs">Detail knihy</span></button>
+      <button role="tab" id="pt-how" aria-selected="false" data-p="how"><span class="en">How it works</span><span class="cs">Jak to funguje</span></button>
+    </div>
+    <label class="hl-toggle"><input type="checkbox" id="hl" checked> <span class="en">Highlight what is new</span><span class="cs">Zvýraznit, co je nové</span></label>
   </div>
   <div class="pv-loading" id="pv-loading"><span class="en">Loading the model output…</span><span class="cs">Načítám výstup modelu…</span></div>
 
-  <!-- panel 1: book page -->
-  <div class="pv-panel" id="pp-book" role="tabpanel" aria-labelledby="pt-book">
-    <div class="pv-search">
-      <label for="q-book"><span class="en">Pick any of the 2,500 most-read books</span><span class="cs">Vyberte kteroukoli z 2 500 nejčtenějších knih</span></label>
-      <input id="q-book" type="search" autocomplete="off" placeholder="The Hobbit, Grisham, Harry Potter…">
-      <div class="sugg" id="sg-book" role="listbox"></div>
-    </div>
-    <div class="pv-book">
-      <div class="hero" id="hero"></div>
-      <div class="pv-cols">
-        <div>
-          <h3><span class="en">Readers who liked this also enjoyed</span><span class="cs">Čtenářům této knihy se líbilo také</span> <span class="pill"><span class="en">model</span><span class="cs">model</span></span></h3>
-          <div class="grid" id="sim-grid"></div>
-        </div>
-        <aside class="vs">
-          <h3><span class="en">What a naive bestseller list would show</span><span class="cs">Co by ukázal naivní žebříček bestsellerů</span></h3>
-          <p class="small muted"><span class="en">Same list for every book. Note the top title.</span><span class="cs">Stejný seznam u každé knihy. Všimněte si prvního titulu.</span></p>
-          <ol class="mini" id="naive-list"></ol>
-        </aside>
+  <div class="shop hl" id="shop" hidden>
+    <header class="shop-top">
+      <button class="shop-logo" id="shop-logo" aria-label="Shop homepage"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Zm9-1.5h5.5c.8 0 1.5.7 1.5 1.5v13c0 .8-.7 1.5-1.5 1.5H13V4Z" fill="currentColor"/></svg><span>Online Book Shop</span></button>
+      <div class="pv-search shop-search">
+        <label for="q-shop" class="sr"><span class="en">Search books</span><span class="cs">Hledat knihy</span></label>
+        <input id="q-shop" type="search" autocomplete="off">
+        <div class="sugg" id="sg-shop" role="listbox"></div>
       </div>
-    </div>
+      <label class="persona"><span class="en">Customer:</span><span class="cs">Zákazník:</span>
+        <select id="persona"></select>
+      </label>
+      <span class="basket" id="basket" aria-live="polite"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 7h12l-1.2 11.1a1 1 0 0 1-1 .9H8.2a1 1 0 0 1-1-.9L6 7Zm3 0a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><b id="basket-n">0</b></span>
+    </header>
+    <div class="shop-body" id="shop-home"></div>
+    <div class="shop-body" id="shop-book" hidden></div>
   </div>
 
-  <!-- panel 2: picked for you -->
-  <div class="pv-panel" id="pp-you" role="tabpanel" aria-labelledby="pt-you" hidden>
-    <div class="presets" role="group" aria-label="Example readers">
-      <span class="small muted"><span class="en">Try a reader:</span><span class="cs">Zkuste čtenáře:</span></span>
-      <button data-s="fantasy"><span class="en">Fantasy reader</span><span class="cs">Čtenář fantasy</span></button>
-      <button data-s="thriller"><span class="en">Thriller reader</span><span class="cs">Čtenář thrillerů</span></button>
-      <button data-s="womens"><span class="en">Women’s fiction reader</span><span class="cs">Čtenářka ženských románů</span></button>
-      <button data-s="real"><span class="en">Real reader from the data</span><span class="cs">Skutečný čtenář z dat</span></button>
-      <button data-s="new"><span class="en">New visitor</span><span class="cs">Nový návštěvník</span></button>
-    </div>
-    <div class="shelf-box">
-      <div class="shelf-head">
-        <h3><span class="en">Reading history</span><span class="cs">Historie čtení</span> <span class="small muted" id="shelf-note"></span></h3>
-        <div class="pv-search inline">
-          <label for="q-you" class="sr"><span class="en">Add a book</span><span class="cs">Přidat knihu</span></label>
-          <input id="q-you" type="search" autocomplete="off" placeholder="+ Add a book you liked">
-          <div class="sugg" id="sg-you" role="listbox"></div>
-        </div>
-      </div>
-      <div class="shelf" id="shelf"></div>
-    </div>
-    <div class="you-head">
-      <h3 id="you-title"></h3>
-      <span id="you-badge"></span>
-    </div>
-    <div class="grid" id="you-grid"></div>
-  </div>
-
-  <!-- panel 3: how it works -->
   <div class="pv-panel" id="pp-how" role="tabpanel" aria-labelledby="pt-how" hidden>
     <div class="how">
       <div class="how-step"><b>1</b><h3><span class="en">Clean the data</span><span class="cs">Vyčistit data</span></h3><p><span class="en">Keep ratings with catalogue metadata, merge editions into works, drop bulk-upload accounts and explicit dislikes, keep readers and books with 5+ interactions.</span><span class="cs">Ponecháme hodnocení s metadaty z katalogu, sloučíme edice do děl, vyřadíme hromadné účty a explicitní „nelíbilo se“, necháme čtenáře a knihy s 5+ interakcemi.</span></p></div>
@@ -909,9 +1107,9 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
       <div class="card warn">
         <h3><span class="en">What this prototype is not</span><span class="cs">Čím tento prototyp není</span></h3>
         <ul class="clean small">
-          <li><span class="en">Not your customers: public 2004 community data, English-language heavy</span><span class="cs">Nejsou to vaši zákazníci: veřejná komunitní data z roku 2004, převážně v angličtině</span></li>
+          <li><span class="en">Ratings only: no orders, prices, dates or clicks yet</span><span class="cs">Jen hodnocení: zatím bez objednávek, cen, dat a kliků</span></li>
           <li><span class="en">No stock, price, age or business rules yet</span><span class="cs">Zatím bez skladu, cen, věkových omezení a byznysových pravidel</span></li>
-          <li><span class="en">Covers come from 2004 Amazon links; missing ones are drawn</span><span class="cs">Obálky jsou z odkazů Amazonu z roku 2004; chybějící se vykreslí</span></li>
+          <li><span class="en">Covers come from the image links in your export; missing ones are drawn</span><span class="cs">Obálky jsou z odkazů na obrázky ve vašem exportu; chybějící se vykreslí</span></li>
           <li><span class="en">It shows the approach is feasible, not that it sells. That is the A/B pilot.</span><span class="cs">Ukazuje, že přístup je proveditelný, ne že prodává. To ukáže A/B pilot.</span></li>
         </ul>
       </div>
@@ -921,14 +1119,22 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
 <div class="pnav"><button class="btn" id="prev" aria-label="Previous slide">←</button><button class="btn" id="next" aria-label="Next slide">→</button><button class="btn" id="exit"><span class="en">Exit</span><span class="cs">Konec</span></button></div>
 
 <script>
-/* ---------- prototype ---------- */
-const P = {data: null, book: null, shelf: [], preset: "fantasy", loading: null};
+/* ---------- prototype v2: shop mock-up ---------- */
+const P = {data: null, book: null, persona: "new", viewed: [], basket: 0, loading: null, view: "home"};
 const bi = (en, cs) => `<span class="en">${en}</span><span class="cs">${cs}</span>`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
 const short = t => t.replace(/\s*\((?:[^()]|\([^()]*\))*\)\s*/g, " ").replace(/\s*:\s.*$/, "").trim() || t;
 const fmtInt = n => lang() === "cs" ? n.toLocaleString("cs-CZ") : n.toLocaleString("en-GB");
+const dec1 = x => lang() === "cs" ? String(x).replace(".", ",") : String(x);
 const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 function hue(s){ let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) % 360; return h; }
+const PERSONAS = [
+  ["new", "New visitor (no history)", "Nový návštěvník (bez historie)"],
+  ["fantasy", "Fantasy reader", "Čtenář fantasy"],
+  ["thriller", "Thriller reader", "Čtenář thrillerů"],
+  ["womens", "Women’s fiction reader", "Čtenářka ženských románů"],
+  ["real", "Real customer from your data", "Skutečný zákazník z vašich dat"],
+];
 
 function cover(id){
   const w = P.data.works[id];
@@ -939,6 +1145,24 @@ function card(id, why){
   const w = P.data.works[id];
   return `<button class="bk" data-id="${id}" title="${esc(w.t)} · ${esc(w.a)}">${cover(id)}<span class="t">${esc(short(w.t))}</span><span class="a">${esc(w.a)}</span>${why ? `<span class="why">${why}</span>` : ""}</button>`;
 }
+function block(title, sub, isNew, method, cards){
+  const tag = isNew ? `<span class="tag new">✦ ${bi("Recommendation engine", "Doporučovací engine")} · ${method}</span>` : `<span class="tag old">${bi("existing shop element", "stávající prvek e-shopu")}</span>`;
+  return `<section class="blk ${isNew ? "rec" : ""}"><div class="blk-head"><div><h3>${title}</h3>${sub ? `<div class="sub">${sub}</div>` : ""}</div>${tag}</div><div class="row">${cards}</div></section>`;
+}
+function history(){
+  const base = P.persona === "new" ? [] : [...P.data.shelves[P.persona]];
+  for (const v of P.viewed) if (!base.includes(v)) base.push(v);
+  return base;
+}
+function recommend(shelf, n = 12){
+  const D = P.data, score = new Map(), why = new Map(), on = new Set(shelf);
+  for (const h of shelf) for (const [j, s] of (D.neighbours[h] || [])) {
+    if (on.has(j)) continue;
+    score.set(j, (score.get(j) || 0) + s);
+    if (!why.has(j) || why.get(j)[1] < s) why.set(j, [h, s]);
+  }
+  return [...score].sort((a, b) => b[1] - a[1]).slice(0, n).map(([j]) => [j, why.get(j)[0]]);
+}
 
 async function protoInit(){
   if (P.data) return;
@@ -946,86 +1170,97 @@ async function protoInit(){
   try { P.data = await P.loading; }
   catch (e) { document.getElementById("pv-loading").innerHTML = bi("The model output could not be loaded. Reload the page to try again.", "Výstup modelu se nepodařilo načíst. Zkuste stránku načíst znovu."); return; }
   document.getElementById("pv-loading").hidden = true;
-  const m = P.data.meta;
-  P.sel = P.data.selectable;
+  document.getElementById("shop").hidden = false;
+  P.sel = P.data.selectable; P.selSet = new Set(P.sel);
   P.index = P.sel.map(id => ({id, k: norm(P.data.works[id].t + " " + P.data.works[id].a)}));
-  P.stats = m;
-  const hobbit = P.data.shelves.fantasy[0];
-  P.book = hobbit; P.shelf = [...P.data.shelves.fantasy];
-  wireSearch("q-book", "sg-book", id => { P.book = id; renderBook(); });
-  wireSearch("q-you", "sg-you", id => { if (!P.shelf.includes(id)) P.shelf.push(id); P.preset = null; renderYou(); });
-  document.querySelectorAll(".presets button").forEach(b => b.onclick = () => {
-    P.preset = b.dataset.s; P.shelf = b.dataset.s === "new" ? [] : [...P.data.shelves[b.dataset.s]]; renderYou();
-  });
+  P.byAuthor = {}; for (const id of P.sel) { const a = norm(P.data.works[id].a); (P.byAuthor[a] = P.byAuthor[a] || []).push(id); }
+  P.book = P.data.shelves.fantasy[0];
+  wireSearch("q-shop", "sg-shop", id => openBook(id));
+  document.getElementById("persona").onchange = e => { P.persona = e.target.value; P.viewed = []; renderShop(); };
+  document.getElementById("hl").onchange = e => document.getElementById("shop").classList.toggle("hl", e.target.checked);
+  document.getElementById("shop-logo").onclick = () => showPanel("home");
   protoRender();
 }
 function protoPlaceholders(){
-  const cs = lang() === "cs";
-  const q1 = document.getElementById("q-book"), q2 = document.getElementById("q-you");
-  if (q1) q1.placeholder = cs ? "Hobit, Grisham, Harry Potter…" : "The Hobbit, Grisham, Harry Potter…";
-  if (q2) q2.placeholder = cs ? "+ Přidat knihu, která se vám líbila" : "+ Add a book you liked";
+  const q = document.getElementById("q-shop");
+  if (q) q.placeholder = lang() === "cs" ? "Hledat název nebo autora…" : "Search title or author…";
+  const sel = document.getElementById("persona");
+  if (sel) { const v = P.persona; sel.innerHTML = PERSONAS.map(([k, e, c]) => `<option value="${k}">${lang() === "cs" ? c : e}</option>`).join(""); sel.value = v; }
 }
 function protoRender(){
   protoPlaceholders();
   if (!P.data) return;
-  const m = P.stats;
+  const m = P.data.meta;
   document.getElementById("pv-stats").innerHTML =
-    `<div><b>${fmtInt(m.users)}</b><span>${bi("readers", "čtenářů")}</span></div>` +
-    `<div><b>${fmtInt(m.works_in_model)}</b><span>${bi("works in the model", "děl v modelu")}</span></div>` +
+    `<div><b>${fmtInt(m.users)}</b><span>${bi("customers", "zákazníků")}</span></div>` +
+    `<div><b>${fmtInt(m.works_in_model)}</b><span>${bi("books in the model", "knih v modelu")}</span></div>` +
     `<div><b>${fmtInt(m.interactions)}</b><span>${bi("interactions", "interakcí")}</span></div>`;
-  renderBook(); renderYou();
+  renderShop();
+}
+function renderShop(){ renderHome(); renderBook(); }
+
+function renderHome(){
+  const D = P.data, h = history(), out = [];
+  out.push(`<div class="banner"><div><h2>${bi("Find your next favourite book", "Najděte svou další oblíbenou knihu")}</h2><p>${bi("Autumn reading, delivered tomorrow", "Podzimní čtení s doručením zítra")}</p></div><span class="tag old" style="color:#fff;border-color:rgba(255,255,255,.5)">${bi("existing shop element", "stávající prvek e-shopu")}</span></div>`);
+  if (h.length) {
+    out.push(block(bi("Picked for you", "Vybráno pro vás"), bi("Based on everything this customer read or viewed", "Podle všeho, co zákazník četl nebo prohlížel"), true, bi("item-to-item", "podobnost knih"),
+      recommend(h).map(([j, src]) => card(j, bi(`Because you read ${esc(short(D.works[src].t))}`, `Protože jste četli ${esc(short(D.works[src].t))}`))).join("")));
+    if (P.viewed.length) {
+      const last = P.viewed[P.viewed.length - 1];
+      out.push(block(bi(`Because you viewed ${esc(short(D.works[last].t))}`, `Protože jste si prohlíželi ${esc(short(D.works[last].t))}`), "", true, bi("item-to-item", "podobnost knih"),
+        (D.neighbours[last] || []).filter(([j]) => !h.includes(j)).slice(0, 10).map(([j, s, c]) => card(j, bi(`${fmtInt(c)} readers read both`, `obě četlo ${fmtInt(c)} čtenářů`))).join("")));
+    }
+    out.push(block(bi("Your reading history", "Vaše historie"), P.persona === "real" ? bi(`Customer #${D.shelves.real_id}, exactly as in your data`, `Zákazník č. ${D.shelves.real_id}, přesně podle vašich dat`) : "", false, "", h.slice().reverse().map(j => card(j)).join("")));
+  } else {
+    out.push(block(bi("Loved by readers", "Oblíbené u čtenářů"), bi("No history yet, so we show books that are both popular and well rated. Open any book and watch this page adapt.", "Zatím žádná historie, proto ukazujeme knihy populární a zároveň dobře hodnocené. Otevřete jakoukoli knihu a sledujte, jak se stránka přizpůsobí."), true, bi("fallback · quality-weighted bestsellers", "záloha · bestsellery vážené kvalitou"),
+      D.lists.quality.slice(0, 12).map(j => card(j, D.works[j].r ? bi(`★ ${D.works[j].r}/10 · ${fmtInt(D.works[j].n)} readers`, `★ ${dec1(D.works[j].r)}/10 · ${fmtInt(D.works[j].n)} čtenářů`) : "")).join("")));
+  }
+  out.push(block(bi("Bestsellers", "Bestsellery"), bi("Ranked by number of interactions, the same for everyone. Note the first title: a mass giveaway readers rated 4.4/10.", "Řazeno podle počtu interakcí, stejné pro všechny. Všimněte si prvního titulu: masově rozdávaná kniha s hodnocením 4,4/10."), false, "",
+    D.lists.naive.slice(0, 10).map(j => card(j)).join("")));
+  const el = document.getElementById("shop-home"); el.innerHTML = out.join("");
+  bindCards(el);
 }
 
 function renderBook(){
-  const D = P.data, id = P.book, w = D.works[id];
-  const rating = w.r ? bi(`avg. rating ${w.r}/10`, `prům. hodnocení ${String(w.r).replace(".", ",")}/10`) : "";
-  document.getElementById("hero").innerHTML = `${cover(id)}<div>
-    <div class="small muted">${bi("Book detail page", "Detail knihy")}</div>
-    <h2>${esc(short(w.t))}</h2><div>${esc(w.a)}${w.y ? " · " + w.y : ""}</div>
-    <div class="facts"><span>${bi(`${fmtInt(w.n)} readers in the data`, `${fmtInt(w.n)} čtenářů v datech`)}</span><span>${rating}</span></div></div>`;
-  document.getElementById("sim-grid").innerHTML = (D.neighbours[id] || []).slice(0, 10)
-    .map(([j, s, c]) => card(j, bi(`${fmtInt(c)} shared readers`, `${fmtInt(c)} společných čtenářů`))).join("");
-  document.getElementById("naive-list").innerHTML = D.lists.naive.slice(0, 6).map((j, k) => {
-    const x = D.works[j];
-    const note = k === 0 ? `<small>${bi(`mass giveaway, avg. rating ${x.r}/10`, `masově rozdávaná, prům. hodnocení ${String(x.r).replace(".", ",")}/10`)}</small>` : "";
-    return `<li class="${k === 0 ? "trap" : ""}">${esc(short(x.t))}${note}</li>`;
-  }).join("");
-  bindCards("sim-grid", j => { P.book = j; renderBook(); scrollTo({top: document.getElementById("proto-view").offsetTop, behavior: "smooth"}); });
+  const D = P.data, id = P.book, w = D.works[id], h = history();
+  const stars = w.r ? "★".repeat(Math.round(w.r / 2)) + "☆".repeat(5 - Math.round(w.r / 2)) : "";
+  const sims = (D.neighbours[id] || []).slice(0, 10);
+  const author = (P.byAuthor[norm(w.a)] || []).filter(j => j !== id).slice(0, 8);
+  const out = [];
+  out.push(`<div class="crumbs"><button data-home>${bi("Home", "Domů")}</button> › ${esc(w.a)} › ${esc(short(w.t))}</div>`);
+  out.push(`<div class="pdp">${cover(id)}<div>
+      <h2>${esc(short(w.t))}</h2><div class="by">${esc(w.a)}${w.y ? ` · ${w.y}` : ""}</div>
+      ${w.r ? `<div><span class="stars">${stars}</span> <span class="muted small">${bi(`${w.r}/10 · ${fmtInt(w.n)} readers`, `${dec1(w.r)}/10 · ${fmtInt(w.n)} čtenářů`)}</span></div>` : ""}
+      <p class="muted small" style="margin-top:12px;max-width:52ch">${esc(w.t)}</p>
+      <button class="buy" id="buy">${bi("Add to basket", "Přidat do košíku")}</button>
+      <div class="buy-note muted">${bi("Price, stock and blurb come from your catalogue, which this mock-up does not have.", "Cena, sklad a anotace přijdou z vašeho katalogu, který tato maketa nemá.")}</div>
+    </div>
+    <aside class="side-box"><h4>${bi("Bestsellers", "Bestsellery")}</h4><span class="tag old">${bi("existing shop element", "stávající prvek e-shopu")}</span>
+      <ol style="margin-top:8px">${D.lists.naive.slice(0, 5).map((j, k) => `<li class="${k === 0 ? "trap" : ""}">${esc(short(D.works[j].t))}</li>`).join("")}</ol>
+      <p class="muted small" style="margin-top:8px">${bi("Same list on every page.", "Stejný seznam na každé stránce.")}</p></aside></div>`);
+  if (sims.length) out.push(block(bi("Readers who liked this also enjoyed", "Čtenářům této knihy se líbilo také"), bi("Ranked by how strongly the same readers connect the two books", "Seřazeno podle toho, jak silně knihy spojují stejní čtenáři"), true, bi("item-to-item", "podobnost knih"),
+    sims.map(([j, s, c]) => card(j, bi(`${fmtInt(c)} readers read both`, `obě četlo ${fmtInt(c)} čtenářů`))).join("")));
+  if (author.length) out.push(block(bi(`More from ${esc(w.a)}`, `Další od autora ${esc(w.a)}`), bi("Simple rule that also covers brand-new titles with no readers yet", "Jednoduché pravidlo, které pokryje i úplně nové tituly bez čtenářů"), true, bi("rule · same author", "pravidlo · stejný autor"),
+    author.map(j => card(j)).join("")));
+  if (h.length) out.push(block(bi("Picked for you", "Vybráno pro vás"), "", true, bi("item-to-item", "podobnost knih"),
+    recommend(h, 8).filter(([j]) => j !== id).map(([j, src]) => card(j, bi(`Because you read ${esc(short(D.works[src].t))}`, `Protože jste četli ${esc(short(D.works[src].t))}`))).join("")));
+  const el = document.getElementById("shop-book"); el.innerHTML = out.join("");
+  bindCards(el);
+  el.querySelector("[data-home]").onclick = () => showPanel("home");
+  document.getElementById("buy").onclick = () => { P.basket++; document.getElementById("basket-n").textContent = P.basket; toast(bi("Added to basket", "Přidáno do košíku")); };
 }
-
-function recommend(shelf){
-  const D = P.data, score = new Map(), why = new Map(), on = new Set(shelf);
-  for (const h of shelf) for (const [j, s] of (D.neighbours[h] || [])) {
-    if (on.has(j)) continue;
-    score.set(j, (score.get(j) || 0) + s);
-    if (!why.has(j) || why.get(j)[1] < s) why.set(j, [h, s]);
-  }
-  return [...score].sort((a, b) => b[1] - a[1]).slice(0, 12).map(([j]) => [j, why.get(j)[0]]);
+function openBook(id){
+  P.book = id;
+  if (!P.viewed.includes(id) && !history().includes(id)) P.viewed.push(id);
+  P.viewed = P.viewed.slice(-5);
+  renderShop(); showPanel("book");
+  document.getElementById("shop").scrollIntoView({behavior: "smooth", block: "start"});
 }
-function renderYou(){
-  const D = P.data;
-  document.querySelectorAll(".presets button").forEach(b => b.setAttribute("aria-pressed", b.dataset.s === P.preset));
-  const sh = document.getElementById("shelf");
-  sh.innerHTML = P.shelf.length ? P.shelf.map(id => `<div class="it"><button class="x" data-rm="${id}" aria-label="Remove">×</button>${cover(id)}${esc(short(D.works[id].t))}</div>`).join("")
-    : `<div class="empty">${bi("No history yet. This is how most visitors arrive.", "Zatím žádná historie. Takhle přichází většina návštěvníků.")}</div>`;
-  sh.querySelectorAll("[data-rm]").forEach(b => b.onclick = () => { P.shelf = P.shelf.filter(x => x !== +b.dataset.rm); P.preset = null; renderYou(); });
-  const note = P.preset === "real" ? bi(`· reader #${D.shelves.real_id}, as recorded in the data`, `· čtenář č. ${D.shelves.real_id}, tak jak je v datech`)
-    : P.preset && P.preset !== "new" ? bi("· example shelf", "· ukázková polička") : "";
-  document.getElementById("shelf-note").innerHTML = note;
-  const t = document.getElementById("you-title"), badge = document.getElementById("you-badge"), grid = document.getElementById("you-grid");
-  if (P.shelf.length) {
-    t.innerHTML = bi("Picked for you", "Vybráno pro vás");
-    badge.innerHTML = `<span class="pill">${bi("model · item-to-item similarity", "model · podobnost knih")}</span>`;
-    grid.innerHTML = recommend(P.shelf).map(([j, h]) => card(j, bi(`Because you read ${esc(short(D.works[h].t))}`, `Protože jste četli ${esc(short(D.works[h].t))}`))).join("");
-  } else {
-    t.innerHTML = bi("Loved by readers", "Oblíbené u čtenářů");
-    badge.innerHTML = `<span class="pill w">${bi("fallback · quality-weighted bestsellers", "záloha · bestsellery vážené kvalitou")}</span>`;
-    grid.innerHTML = D.lists.quality.slice(0, 12).map(j => card(j, D.works[j].r ? bi(`avg. ${D.works[j].r}/10 from ${fmtInt(D.works[j].n)} readers`, `prům. ${String(D.works[j].r).replace(".", ",")}/10 od ${fmtInt(D.works[j].n)} čtenářů`) : "")).join("");
-  }
-  bindCards("you-grid", j => { if (!P.sel.includes(j)) return; P.book = j; showPanel("book"); renderBook(); });
+function bindCards(root){ root.querySelectorAll(".bk").forEach(b => b.onclick = () => openBook(+b.dataset.id)); }
+function toast(html){
+  let t = document.getElementById("toast"); if (!t) { t = document.createElement("div"); t.id = "toast"; t.className = "toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
+  t.innerHTML = html; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 1600);
 }
-function bindCards(gridId, fn){ document.querySelectorAll(`#${gridId} .bk`).forEach(b => b.onclick = () => fn(+b.dataset.id)); }
-
 function wireSearch(inputId, boxId, pick){
   const inp = document.getElementById(inputId), box = document.getElementById(boxId); let act = -1, res = [];
   const draw = () => {
@@ -1042,19 +1277,24 @@ function wireSearch(inputId, boxId, pick){
   inp.addEventListener("blur", () => box.classList.remove("on"));
   inp.addEventListener("keydown", e => {
     const items = box.querySelectorAll("[data-k]");
-    if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); act = (act + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length; items.forEach((b, k) => b.classList.toggle("act", k === act)); }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (!items.length) return; act = (act + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length; items.forEach((b, k) => b.classList.toggle("act", k === act)); }
     if (e.key === "Enter") { e.preventDefault(); choose(act < 0 ? 0 : act); }
     if (e.key === "Escape") box.classList.remove("on");
   });
 }
 function showPanel(p){
+  P.view = p;
   document.querySelectorAll(".pv-tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.p === p));
-  ["book", "you", "how"].forEach(x => document.getElementById("pp-" + x).hidden = x !== p);
+  const shop = document.getElementById("shop");
+  document.getElementById("pp-how").hidden = p !== "how";
+  if (P.data) shop.hidden = p === "how";
+  document.getElementById("shop-home").hidden = p !== "home";
+  document.getElementById("shop-book").hidden = p !== "book";
 }
 document.querySelectorAll(".pv-tabs button").forEach(b => b.onclick = () => showPanel(b.dataset.p));
 
 /* release info: bump on every publish */
-const RELEASE = {version: "0.5", date: "2026-11-01", time: "22:38"};
+const RELEASE = {version: "1.0", date: "2026-11-02", time: "00:36"};
 function renderVersion(){
   const d = new Date(RELEASE.date + "T12:00:00");
   const txt = lang() === "cs"
@@ -1080,7 +1320,7 @@ const RESULTS = [
   {en:"Item-kNN (BM25)", cs:"Item-kNN (BM25)", ndcg:0.0658, cov:0.7652, best:true}
 ];
 function bars(id, key, max, fmt){
-  const el = document.getElementById(id); el.innerHTML = "";
+  const el = document.getElementById(id); if (!el) return; el.innerHTML = "";
   RESULTS.forEach(r => {
     const lab = document.createElement("div");
     lab.innerHTML = `<span class="en">${r.en}</span><span class="cs">${r.cs}</span>`;
