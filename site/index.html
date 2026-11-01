@@ -36,7 +36,7 @@ body{background:var(--desk);color:var(--ink);font-family:var(--body);line-height
 /* ---------- top bar ---------- */
 .bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--desk) 88%,transparent);
   backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.bar-in{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.bar-in{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .brand{font-family:var(--display);font-weight:600;font-size:18px;margin-right:auto}
 .brand small{font-family:var(--body);font-weight:400;color:var(--muted);font-size:13px;margin-left:8px}
 .tabs,.seg{display:flex;gap:4px;align-items:center}
@@ -142,7 +142,8 @@ body.present .slide{display:none;position:fixed;inset:0;margin:auto;border:0;bor
 body.present .slide.on{display:block}
 .pnav{display:none;position:fixed;right:14px;bottom:12px;z-index:9;gap:6px}
 body.present .pnav{display:flex}
-.deck-hint{max-width:1180px;margin:14px auto 0;padding:0 20px;color:var(--muted);font-size:14px}
+.deck-hint{max-width:1180px;margin:14px auto 0;padding:0 20px;color:var(--muted);font-size:14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.ver{font:500 12px var(--mono);color:var(--accent);background:var(--accent-soft);padding:3px 8px;border-radius:99px}
 
 @media (max-width: 760px){
   .slide{aspect-ratio:auto}
@@ -167,10 +168,13 @@ body.present .pnav{display:flex}
   <div class="seg" role="group" aria-label="Language">
     <button id="lang-en" aria-pressed="true">EN</button><button id="lang-cs" aria-pressed="false">CZ</button>
   </div>
-  <a class="tab" href="https://github.com/Dvorpet/recommend-book"><span class="en">Code on GitHub ↗</span><span class="cs">Kód na GitHubu ↗</span></a>
+  <a class="tab" href="https://github.com/Dvorpet/recommend-book">GitHub ↗</a>
+  <div class="seg" role="group" aria-label="Theme">
+    <button id="theme-light" aria-pressed="false" title="Light mode" aria-label="Light mode">☀</button><button id="theme-dark" aria-pressed="false" title="Dark mode" aria-label="Dark mode">☾</button>
+  </div>
   <button class="btn" id="present"><span class="en">Present ▶</span><span class="cs">Prezentovat ▶</span></button>
 </div></header>
-<p class="deck-hint"><span class="en">15 slides. Scroll to read, or press “Present” and use ← → keys.</span><span class="cs">15 slidů. Čtěte scrollováním, nebo stiskněte „Prezentovat“ a ovládejte šipkami ← →.</span></p>
+<p class="deck-hint"><span class="ver" id="version"></span><span class="en">15 slides. Scroll to read, or press “Present” and use ← → keys.</span><span class="cs">15 slidů. Čtěte scrollováním, nebo stiskněte „Prezentovat“ a ovládejte šipkami ← →.</span></p>
 
 <main class="deck" id="deck">
 
@@ -697,6 +701,24 @@ body.present .pnav{display:flex}
 <div class="pnav"><button class="btn" id="prev" aria-label="Previous slide">←</button><button class="btn" id="next" aria-label="Next slide">→</button><button class="btn" id="exit"><span class="en">Exit</span><span class="cs">Konec</span></button></div>
 
 <script>
+/* release info: bump on every publish */
+const RELEASE = {version: "0.2", date: "2026-11-01"};
+function renderVersion(){
+  const d = new Date(RELEASE.date + "T12:00:00");
+  const txt = lang() === "cs"
+    ? `Verze ${RELEASE.version} · aktualizováno ${d.getDate()}. ${d.getMonth() + 1}. ${d.getFullYear()}`
+    : `Version ${RELEASE.version} · updated ${d.toLocaleDateString("en-GB", {day: "numeric", month: "short", year: "numeric"})}`;
+  document.getElementById("version").textContent = txt;
+}
+/* theme: follows the system until the viewer picks one */
+function setTheme(t, save){
+  const root = document.documentElement;
+  if (t) root.dataset.theme = t; else delete root.dataset.theme;
+  const eff = t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.getElementById("theme-light").setAttribute("aria-pressed", eff === "light");
+  document.getElementById("theme-dark").setAttribute("aria-pressed", eff === "dark");
+  if (save) { try { localStorage.setItem("deck-theme", t); } catch (e) {} }
+}
 /* offline experiment results (src/experiment.py → artifacts/experiment_results.json) */
 const RESULTS = [
   {en:"Bestsellers (count)", cs:"Bestsellery (počet)", ndcg:0.0186, cov:0.0012},
@@ -732,10 +754,15 @@ function setLang(l){
   document.getElementById("lang-en").setAttribute("aria-pressed", l === "en");
   document.getElementById("lang-cs").setAttribute("aria-pressed", l === "cs");
   try { localStorage.setItem("deck-lang", l); } catch (e) {}
-  draw();
+  draw(); renderVersion();
 }
 document.getElementById("lang-en").onclick = () => setLang("en");
 document.getElementById("lang-cs").onclick = () => setLang("cs");
+document.getElementById("theme-light").onclick = () => setTheme("light", true);
+document.getElementById("theme-dark").onclick = () => setTheme("dark", true);
+let savedTheme = null; try { savedTheme = localStorage.getItem("deck-theme"); } catch (e) {}
+setTheme(savedTheme === "light" || savedTheme === "dark" ? savedTheme : document.documentElement.dataset.theme || null, false);
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (!savedTheme) setTheme(null, false); });
 let saved = "en"; try { saved = localStorage.getItem("deck-lang") || "en"; } catch (e) {}
 setLang(saved);
 
