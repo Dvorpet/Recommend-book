@@ -1,0 +1,343 @@
+{
+  "books": {
+    "rows": 271360,
+    "cols": 8,
+    "dtypes": {
+      "ISBN": "str",
+      "Book-Title": "str",
+      "Book-Author": "str",
+      "Year-Of-Publication": "str",
+      "Publisher": "str",
+      "Image-URL-S": "str",
+      "Image-URL-M": "str",
+      "Image-URL-L": "str"
+    },
+    "missing": {
+      "ISBN": 0,
+      "Book-Title": 0,
+      "Book-Author": 1,
+      "Year-Of-Publication": 0,
+      "Publisher": 2,
+      "Image-URL-S": 0,
+      "Image-URL-M": 0,
+      "Image-URL-L": 3
+    },
+    "full_dup_rows": 0,
+    "dup_isbn": 0,
+    "isbn_valid_format_share": 0.9980505601415094,
+    "year_non_numeric": 3,
+    "year_zero": 4618,
+    "year_future": 23,
+    "year_valid_range": [
+      1806,
+      2006
+    ],
+    "year_p50": 1996.0,
+    "non_numeric_examples": [
+      {
+        "ISBN": "078946697X",
+        "Book-Title": "DK Readers: Creating the X-Men, How It All Began (Level 4: Proficient Readers)\\\";Michael Teitelbaum\"",
+        "Book-Author": "2000",
+        "Year-Of-Publication": "DK Publishing Inc",
+        "Publisher": "http://images.amazon.com/images/P/078946697X.01.THUMBZZZ.jpg"
+      },
+      {
+        "ISBN": "2070426769",
+        "Book-Title": "Peuple du ciel, suivi de 'Les Bergers\\\";Jean-Marie Gustave Le ClÃ?Â©zio\"",
+        "Book-Author": "2003",
+        "Year-Of-Publication": "Gallimard",
+        "Publisher": "http://images.amazon.com/images/P/2070426769.01.THUMBZZZ.jpg"
+      },
+      {
+        "ISBN": "0789466953",
+        "Book-Title": "DK Readers: Creating the X-Men, How Comic Books Come to Life (Level 4: Proficient Readers)\\\";James Buckley\"",
+        "Book-Author": "2000",
+        "Year-Of-Publication": "DK Publishing Inc",
+        "Publisher": "http://images.amazon.com/images/P/0789466953.01.THUMBZZZ.jpg"
+      }
+    ],
+    "unique_authors": 102023,
+    "unique_publishers": 16807,
+    "unique_titles": 242135,
+    "isbns_sharing_title_author": 40675,
+    "title_author_groups_with_multiple_isbns": 17554,
+    "img_url_missing": 0,
+    "genre_or_description_column": false
+  },
+  "users": {
+    "rows": 278858,
+    "cols": 3,
+    "dtypes": {
+      "User-ID": "int64",
+      "Location": "str",
+      "Age": "float64"
+    },
+    "missing": {
+      "User-ID": 0,
+      "Location": 0,
+      "Age": 110762
+    },
+    "full_dup_rows": 0,
+    "dup_user_id": 0,
+    "age_missing_share": 0.3971985741847105,
+    "age_implausible": 1248,
+    "age_plausible_median": 32.0,
+    "top_countries": {
+      "usa": 139711,
+      "canada": 21658,
+      "united kingdom": 18538,
+      "germany": 17043,
+      "spain": 13147,
+      "australia": 11784,
+      "italy": 11266,
+      "france": 3455,
+      "portugal": 3325,
+      "new zealand": 3097
+    },
+    "country_missing_or_blank": 4578,
+    "top_countries_active": {
+      "usa": 59600,
+      "canada": 9928,
+      "germany": 6312,
+      "united kingdom": 5685,
+      "australia": 3676,
+      "spain": 3669,
+      "italy": 3178,
+      "france": 1284
+    }
+  },
+  "ratings": {
+    "rows": 1149780,
+    "cols": 3,
+    "dtypes": {
+      "User-ID": "int64",
+      "ISBN": "str",
+      "Book-Rating": "int64"
+    },
+    "missing": {
+      "User-ID": 0,
+      "ISBN": 0,
+      "Book-Rating": 0
+    },
+    "full_dup_rows": 0,
+    "dup_user_isbn": 0,
+    "isbn_valid_format_share": 0.9906086381742594,
+    "distribution": {
+      "0": 716109,
+      "1": 1770,
+      "2": 2759,
+      "3": 5996,
+      "4": 8904,
+      "5": 50974,
+      "6": 36924,
+      "7": 76457,
+      "8": 103736,
+      "9": 67541,
+      "10": 78610
+    },
+    "implicit_share": 0.6228226269373272,
+    "explicit_mean": 7.601066246071331,
+    "explicit_median": 8.0
+  },
+  "join": {
+    "ratings_rows_matching_books": 1031136,
+    "ratings_rows_matching_books_share": 0.8968115639513646,
+    "unique_rated_isbns": 340556,
+    "unique_rated_isbns_in_books": 270151,
+    "share_after_normalisation": 0.897229035119762,
+    "users_in_ratings_not_in_users": 0
+  },
+  "activity": {
+    "per_user_all": {
+      "n": 105283,
+      "mean": 10.920851419507423,
+      "max": 13602,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 4.0,
+      "p90": 12.0,
+      "p99": 174.0,
+      "eq1_share": 0.5619710684535965,
+      "ge5_share": 0.21671114994823476,
+      "ge10_share": 0.12439805096739265,
+      "ge20_share": 0.06999230645023413
+    },
+    "per_book_all": {
+      "n": 340556,
+      "mean": 3.376184827164989,
+      "max": 2502,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 2.0,
+      "p90": 6.0,
+      "p99": 36.0,
+      "eq1_share": 0.5785979398395565,
+      "ge5_share": 0.12851043587545075,
+      "ge10_share": 0.05379144692796486,
+      "ge20_share": 0.02199344601181597
+    },
+    "per_user_explicit": {
+      "n": 77805,
+      "mean": 5.573819163292847,
+      "max": 8524,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 3.0,
+      "p90": 9.0,
+      "p99": 73.0,
+      "eq1_share": 0.5832787095944991,
+      "ge5_share": 0.1827646038172354,
+      "ge10_share": 0.09426129426129426,
+      "ge20_share": 0.047606194974616024
+    },
+    "per_book_explicit": {
+      "n": 185973,
+      "mean": 2.3319030181800584,
+      "max": 707,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 2.0,
+      "p90": 4.0,
+      "p99": 22.0,
+      "eq1_share": 0.6969882724911681,
+      "ge5_share": 0.07815650658966625,
+      "ge10_share": 0.03035386857231964,
+      "ge20_share": 0.011716754582654471
+    },
+    "users_with_no_ratings": 173575,
+    "top1pct_users_share_of_ratings": 0.4826601610742925,
+    "top10pct_users_share_of_ratings": 0.8156595174729079,
+    "top1pct_books_share_of_ratings": 0.2506905668910574,
+    "top10pct_books_share_of_ratings": 0.5651542034128268,
+    "top10_users": {
+      "11676": 13602,
+      "198711": 7550,
+      "153662": 6109,
+      "98391": 5891,
+      "35859": 5850,
+      "212898": 4785,
+      "278418": 4533,
+      "76352": 3367,
+      "110973": 3100,
+      "235105": 3067
+    }
+  },
+  "sparsity": {
+    "users": 105283,
+    "items": 340556,
+    "interactions": 1149780,
+    "density": 3.206771109452608e-05
+  },
+  "kcore": {
+    "5u_5i": {
+      "interactions": 564718,
+      "users": 15223,
+      "items": 36039,
+      "density": 0.001029339530477957,
+      "share_of_interactions_kept": 0.49115309015637776,
+      "implicit_share": 0.6603030184977281
+    },
+    "10u_10i": {
+      "interactions": 365894,
+      "users": 6605,
+      "items": 13228,
+      "density": 0.00418782263301734,
+      "share_of_interactions_kept": 0.3182295743533545,
+      "implicit_share": 0.6792076393709654
+    },
+    "20u_20i": {
+      "interactions": 195445,
+      "users": 2559,
+      "items": 4273,
+      "density": 0.017873984862921913,
+      "share_of_interactions_kept": 0.16998469272382544,
+      "implicit_share": 0.7067410268873596
+    }
+  },
+  "top_books": [
+    {
+      "ISBN": "0971880107",
+      "n": 2502,
+      "n_expl": 581,
+      "mean_expl": 4.3907056798623065,
+      "Book-Title": "Wild Animus",
+      "Book-Author": "Rich Shapero"
+    },
+    {
+      "ISBN": "0316666343",
+      "n": 1295,
+      "n_expl": 707,
+      "mean_expl": 8.185289957567186,
+      "Book-Title": "The Lovely Bones: A Novel",
+      "Book-Author": "Alice Sebold"
+    },
+    {
+      "ISBN": "0385504209",
+      "n": 883,
+      "n_expl": 487,
+      "mean_expl": 8.435318275154003,
+      "Book-Title": "The Da Vinci Code",
+      "Book-Author": "Dan Brown"
+    },
+    {
+      "ISBN": "0060928336",
+      "n": 732,
+      "n_expl": 320,
+      "mean_expl": 7.8875,
+      "Book-Title": "Divine Secrets of the Ya-Ya Sisterhood: A Novel",
+      "Book-Author": "Rebecca Wells"
+    },
+    {
+      "ISBN": "0312195516",
+      "n": 723,
+      "n_expl": 383,
+      "mean_expl": 8.182767624020888,
+      "Book-Title": "The Red Tent (Bestselling Backlist)",
+      "Book-Author": "Anita Diamant"
+    },
+    {
+      "ISBN": "044023722X",
+      "n": 647,
+      "n_expl": 281,
+      "mean_expl": 7.338078291814947,
+      "Book-Title": "A Painted House",
+      "Book-Author": "John Grisham"
+    },
+    {
+      "ISBN": "0142001740",
+      "n": 615,
+      "n_expl": 307,
+      "mean_expl": 8.452768729641694,
+      "Book-Title": "The Secret Life of Bees",
+      "Book-Author": "Sue Monk Kidd"
+    },
+    {
+      "ISBN": "067976402X",
+      "n": 614,
+      "n_expl": 256,
+      "mean_expl": 7.80859375,
+      "Book-Title": "Snow Falling on Cedars",
+      "Book-Author": "David Guterson"
+    },
+    {
+      "ISBN": "0671027360",
+      "n": 586,
+      "n_expl": 269,
+      "mean_expl": 8.100371747211897,
+      "Book-Title": "Angels &amp; Demons",
+      "Book-Author": "Dan Brown"
+    },
+    {
+      "ISBN": "0446672211",
+      "n": 585,
+      "n_expl": 295,
+      "mean_expl": 8.142372881355932,
+      "Book-Title": "Where the Heart Is (Oprah's Book Club (Paperback))",
+      "Book-Author": "Billie Letts"
+    }
+  ],
+  "work_level": {
+    "unique_works_rated": 247144,
+    "unique_isbns_rated": 270151
+  }
+}

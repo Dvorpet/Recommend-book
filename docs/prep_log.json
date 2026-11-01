@@ -1,0 +1,14 @@
+{
+  "raw_interactions": 1149780,
+  "after_join": 1031136,
+  "isbns_in_ratings": 270151,
+  "works_in_ratings": 227427,
+  "explicit_dislikes_dropped": 16591,
+  "user_work_pairs": 1005565,
+  "bulk_users_removed": 46,
+  "bulk_users_interactions": 86463,
+  "core_interactions": 535990,
+  "core_users": 15642,
+  "core_items": 29408,
+  "core_density": 0.0011651958142881132
+}

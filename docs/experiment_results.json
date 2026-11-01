@@ -1,0 +1,322 @@
+{
+  "setup": {
+    "users": 15642,
+    "items": 29408,
+    "train": 434093,
+    "test": 101897,
+    "split": "random 20 % per-user hold-out (seed 42); params tuned on a 2nd hold-out"
+  },
+  "results": {
+    "pop": {
+      "precision@10": 0.010280015343306484,
+      "recall@10": 0.020205862601734154,
+      "ndcg@10": 0.018609669576818186,
+      "hit_rate@10": 0.08138345480117631,
+      "coverage@10": 0.0012241566920565832,
+      "avg_pop_percentile": 0.999837456281733,
+      "users": 15642,
+      "ndcg_by_segment": {
+        "4-9": 0.0119,
+        "10-49": 0.0155,
+        "50+": 0.0605
+      },
+      "users_by_segment": {
+        "4-9": 8220,
+        "10-49": 5688,
+        "50+": 1734
+      },
+      "params": {},
+      "name": "Most popular (count)"
+    },
+    "popq": {
+      "precision@10": 0.004845927630737758,
+      "recall@10": 0.008448785451192615,
+      "ndcg@10": 0.007764894744138488,
+      "hit_rate@10": 0.03810254443165836,
+      "coverage@10": 0.0009181175190424375,
+      "avg_pop_percentile": 0.9975119759581879,
+      "users": 15642,
+      "ndcg_by_segment": {
+        "4-9": 0.0039,
+        "10-49": 0.0068,
+        "50+": 0.0291
+      },
+      "users_by_segment": {
+        "4-9": 8220,
+        "10-49": 5688,
+        "50+": 1734
+      },
+      "params": {
+        "m": 50,
+        "min_n": 50
+      },
+      "name": "Popularity, quality-weighted"
+    },
+    "cos": {
+      "precision@10": 0.013425393172228616,
+      "recall@10": 0.03980934199554715,
+      "ndcg@10": 0.03539606980947226,
+      "hit_rate@10": 0.09679069172740058,
+      "coverage@10": 0.5859970076169749,
+      "avg_pop_percentile": 0.3286662842057439,
+      "users": 15642,
+      "ndcg_by_segment": {
+        "4-9": 0.0291,
+        "10-49": 0.0415,
+        "50+": 0.0453
+      },
+      "users_by_segment": {
+        "4-9": 8220,
+        "10-49": 5688,
+        "50+": 1734
+      },
+      "params": {
+        "k": 50
+      },
+      "name": "Item-kNN (cosine)"
+    },
+    "bm25": {
+      "precision@10": 0.03070579209819716,
+      "recall@10": 0.06741877517929183,
+      "ndcg@10": 0.0657601490281897,
+      "hit_rate@10": 0.19217491369390102,
+      "coverage@10": 0.765233949945593,
+      "avg_pop_percentile": 0.7390333951046464,
+      "users": 15642,
+      "ndcg_by_segment": {
+        "4-9": 0.0451,
+        "10-49": 0.0708,
+        "50+": 0.1475
+      },
+      "users_by_segment": {
+        "4-9": 8220,
+        "10-49": 5688,
+        "50+": 1734
+      },
+      "params": {
+        "k": 200
+      },
+      "name": "Item-kNN (BM25)"
+    },
+    "als": {
+      "precision@10": 0.02605804884285897,
+      "recall@10": 0.06173226103945186,
+      "ndcg@10": 0.05359896745810624,
+      "hit_rate@10": 0.18200997314921366,
+      "coverage@10": 0.08521490750816105,
+      "avg_pop_percentile": 0.9851853020692592,
+      "users": 15642,
+      "ndcg_by_segment": {
+        "4-9": 0.0387,
+        "10-49": 0.0568,
+        "50+": 0.1136
+      },
+      "users_by_segment": {
+        "4-9": 8220,
+        "10-49": 5688,
+        "50+": 1734
+      },
+      "params": {
+        "f": 128,
+        "reg": 0.05,
+        "alpha": 5
+      },
+      "name": "ALS (matrix factorisation)"
+    }
+  },
+  "tuning": {
+    "pop": [
+      {
+        "params": {},
+        "valid_ndcg@10": 0.0178,
+        "sec": 1.0
+      }
+    ],
+    "popq": [
+      {
+        "params": {
+          "m": 20,
+          "min_n": 30
+        },
+        "valid_ndcg@10": 0.0062,
+        "sec": 1.0
+      },
+      {
+        "params": {
+          "m": 50,
+          "min_n": 50
+        },
+        "valid_ndcg@10": 0.0067,
+        "sec": 1.0
+      }
+    ],
+    "cos": [
+      {
+        "params": {
+          "k": 50
+        },
+        "valid_ndcg@10": 0.0192,
+        "sec": 1.8
+      },
+      {
+        "params": {
+          "k": 200
+        },
+        "valid_ndcg@10": 0.0185,
+        "sec": 3.1
+      }
+    ],
+    "bm25": [
+      {
+        "params": {
+          "k": 50
+        },
+        "valid_ndcg@10": 0.0413,
+        "sec": 1.9
+      },
+      {
+        "params": {
+          "k": 200
+        },
+        "valid_ndcg@10": 0.0422,
+        "sec": 2.9
+      }
+    ],
+    "als": [
+      {
+        "params": {
+          "f": 64,
+          "reg": 0.05,
+          "alpha": 5
+        },
+        "valid_ndcg@10": 0.0388,
+        "sec": 8.5
+      },
+      {
+        "params": {
+          "f": 64,
+          "reg": 0.05,
+          "alpha": 20
+        },
+        "valid_ndcg@10": 0.0359,
+        "sec": 6.3
+      },
+      {
+        "params": {
+          "f": 128,
+          "reg": 0.05,
+          "alpha": 5
+        },
+        "valid_ndcg@10": 0.0423,
+        "sec": 10.0
+      },
+      {
+        "params": {
+          "f": 128,
+          "reg": 0.05,
+          "alpha": 20
+        },
+        "valid_ndcg@10": 0.0403,
+        "sec": 9.6
+      }
+    ]
+  },
+  "similar_items_examples": {
+    "Harry Potter and the Sorcerer's Stone (Harry Potter (Paperback)) \u2014 J. K. Rowling": {
+      "ALS": [
+        "Harry Potter and the Chamber of Secrets (Book 2) \u2014 J. K. Rowling",
+        "Harry Potter and the Prisoner of Azkaban (Book 3) \u2014 J. K. Rowling",
+        "Harry Potter and the Goblet of Fire (Book 4) \u2014 J. K. Rowling",
+        "The Pinballs (Apple Paperbacks) \u2014 Betsy Byars",
+        "Downriver \u2014 WILL HOBBS"
+      ],
+      "item-kNN": [
+        "Harry Potter and the Chamber of Secrets (Book 2) \u2014 J. K. Rowling",
+        "Harry Potter and the Prisoner of Azkaban (Book 3) \u2014 J. K. Rowling",
+        "Harry Potter and the Goblet of Fire (Book 4) \u2014 J. K. Rowling",
+        "Harry Potter and the Order of the Phoenix (Book 5) \u2014 J. K. Rowling",
+        "The Fellowship of the Ring (The Lord of the Rings, Part 1) \u2014 J.R.R. TOLKIEN"
+      ]
+    },
+    "The Da Vinci Code \u2014 Dan Brown": {
+      "ALS": [
+        "Angels & Demons \u2014 Dan Brown",
+        "Stupid White Men : ...And Other Sorry Excuses for the State of the Nation! \u2014 Michael Moore",
+        "The Five People You Meet in Heaven \u2014 Mitch Albom",
+        "Burning Marguerite \u2014 Elizabeth Inness-Brown",
+        "El guardi\u00c3\u00a1n entre el centeno \u2014 J. D. Salinger"
+      ],
+      "item-kNN": [
+        "Angels & Demons \u2014 Dan Brown",
+        "The Time Traveler's Wife (Today Show Book Club #15) \u2014 Audrey Niffenegger",
+        "All He Ever Wanted \u2014 Anita Shreve",
+        "Stupid White Men : ...And Other Sorry Excuses for the State of the Nation! \u2014 Michael Moore",
+        "White Death (NUMA Files (Paperback)) \u2014 Clive Cussler"
+      ]
+    },
+    "The Lovely Bones: A Novel \u2014 Alice Sebold": {
+      "ALS": [
+        "Cuentos del sol, la luna y las estrellas: Mitos, leyendas y tradiciones de todas las culturas \u2014 Mary Hoffman",
+        "Garzanti - Gli Elefanti: Gabbiano Jonathan Livingston \u2014 Bach",
+        "Space Opera \u2014 Anne McCaffrey",
+        "Casi Un Objeto \u2014 Jose Saramago",
+        "Lucky : A Memoir \u2014 Alice Sebold"
+      ],
+      "item-kNN": [
+        "The Dogs of Babel (Today Show Book Club #12) \u2014 Carolyn Parkhurst",
+        "Lucky : A Memoir \u2014 Alice Sebold",
+        "The Master Butchers Singing Club : A Novel (Erdrich, Louise) \u2014 Louise Erdrich",
+        "Sea Glass: A Novel \u2014 Anita Shreve",
+        "Angry Housewives Eating Bon Bons (Ballantine Reader's Circle) \u2014 LORNA LANDVIK"
+      ]
+    },
+    "The Hobbit : The Enchanting Prelude to The Lord of the Rings \u2014 J.R.R. TOLKIEN": {
+      "ALS": [
+        "The Fellowship of the Ring (The Lord of the Rings, Part 1) \u2014 J.R.R. TOLKIEN",
+        "The Return of the King (The Lord of the Rings, Part 3) \u2014 J.R.R. TOLKIEN",
+        "The Two Towers (The Lord of the Rings, Part 2) \u2014 J.R.R. TOLKIEN",
+        "The Lord of the Rings (Movie Art Cover) \u2014 J.R.R. Tolkien",
+        "The Silmarillion \u2014 J.R.R. TOLKIEN"
+      ],
+      "item-kNN": [
+        "The Two Towers (The Lord of the Rings, Part 2) \u2014 J.R.R. TOLKIEN",
+        "The Return of the King (The Lord of the Rings, Part 3) \u2014 J.R.R. TOLKIEN",
+        "The Fellowship of the Ring (The Lord of the Rings, Part 1) \u2014 J.R.R. TOLKIEN",
+        "The Lord of the Rings (Movie Art Cover) \u2014 J.R.R. Tolkien",
+        "The Last Battle \u2014 C. S. Lewis"
+      ]
+    },
+    "Bridget Jones's Diary \u2014 Helen Fielding": {
+      "ALS": [
+        "Bridget Jones: The Edge of Reason \u2014 Helen Fielding",
+        "Miguel Street \u2014 V. S. Naipaul",
+        "On Mystic Lake \u2014 Kristin Hannah",
+        "Mount Misery \u2014 Samuel Shem",
+        "Remains of the Day \u2014 Kazuo Ishiguro"
+      ],
+      "item-kNN": [
+        "Bridget Jones: The Edge of Reason \u2014 Helen Fielding",
+        "Last Chance Saloon \u2014 Marian Keyes",
+        "Jemima J: A Novel About Ugly Ducklings and Swans \u2014 Jane Green",
+        "Smart Vs. Pretty \u2014 Valerie Frankel",
+        "Behind the Scenes at the Museum \u2014 Kate Atkinson"
+      ]
+    },
+    "The Firm \u2014 John Grisham": {
+      "ALS": [
+        "The Pelican Brief \u2014 John Grisham",
+        "The Rainmaker \u2014 JOHN GRISHAM",
+        "A Time to Kill \u2014 JOHN GRISHAM",
+        "The Client \u2014 John Grisham",
+        "Doctor Who: The Robots of Death (Target Doctor Who Library, No 53) \u2014 Terrance Dicks"
+      ],
+      "item-kNN": [
+        "The Pelican Brief \u2014 John Grisham",
+        "The Rainmaker \u2014 JOHN GRISHAM",
+        "The Client \u2014 John Grisham",
+        "Shadow Watch (Tom Clancy's Power Plays (Paperback)) \u2014 Tom Clancy",
+        "A Time to Kill \u2014 JOHN GRISHAM"
+      ]
+    }
+  }
+}
