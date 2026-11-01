@@ -189,7 +189,74 @@ body.present .layout{display:block;max-width:none}
   body.side-open .side{transform:none}
   .gh,.brand .ver{display:none}
 }
-@media (max-width: 640px){ .tabs .tab:first-child{display:none} #present{display:none} .brief{display:none} }
+@media (max-width: 640px){ .brand{display:none} #present{display:none} .brief{display:none} }
+
+/* ---------- prototype ---------- */
+.proto-view{max-width:1240px;padding:28px 20px 80px}
+.pv-head{display:flex;gap:24px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap}
+.pv-head h1{font-size:34px;margin:.3em 0 .25em}
+.pv-head .lead{max-width:62ch;font-size:15px}
+.pv-stats{display:flex;gap:18px}
+.pv-stats div{display:flex;flex-direction:column}
+.pv-stats b{font:700 22px var(--display);color:var(--accent);font-variant-numeric:tabular-nums}
+.pv-stats span{font-size:12px;color:var(--muted)}
+.pv-tabs{display:flex;gap:4px;margin:22px 0 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.pv-tabs button{font:500 14px var(--body);background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);padding:9px 12px;cursor:pointer;margin-bottom:-1px}
+.pv-tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--accent)}
+.pv-loading{color:var(--muted);padding:30px 0}
+.pv-panel[hidden]{display:none}
+.pv-search{position:relative;display:grid;gap:6px;max-width:520px;margin-bottom:18px}
+.pv-search label{font-size:13px;color:var(--muted)}
+.pv-search input{font:15px var(--body);padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--page);color:var(--ink)}
+.pv-search input:focus{outline:2px solid var(--accent);outline-offset:0}
+.pv-search.inline{margin:0;min-width:260px;max-width:340px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.sugg{position:absolute;top:100%;left:0;right:0;z-index:4;background:var(--page);border:1px solid var(--line);border-radius:8px;margin-top:4px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:none;max-height:340px;overflow:auto}
+.sugg.on{display:block}
+.sugg button{display:flex;gap:10px;width:100%;text-align:left;background:none;border:0;padding:7px 10px;cursor:pointer;color:var(--ink);font:14px var(--body);align-items:center}
+.sugg button:hover,.sugg button.act{background:var(--accent-soft)}
+.sugg small{color:var(--muted)}
+.hero{display:flex;gap:20px;align-items:flex-end;margin-bottom:22px}
+.hero .cover{width:110px}
+.hero h2{font-size:26px;margin:0 0 .2em}
+.hero .facts{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:8px}
+.pv-cols{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:24px;align-items:start}
+.pv-cols h3,.you-head h3,.shelf-head h3{font-size:18px;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:18px 14px}
+.bk{display:flex;flex-direction:column;gap:6px;background:none;border:0;padding:0;text-align:left;cursor:pointer;color:var(--ink);font:inherit}
+.bk .t{font-weight:600;font-size:13.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bk .a{font-size:12.5px;color:var(--muted)}
+.bk .why{font-size:12px;color:var(--accent);line-height:1.3}
+.bk:hover .t{text-decoration:underline}
+.cover{position:relative;aspect-ratio:2/3;border-radius:4px;overflow:hidden;background:var(--line);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover .gen{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:10% 9%;color:#fff;font-family:var(--display)}
+.cover .gen b{font-size:13px;line-height:1.15;font-weight:600}
+.cover .gen i{font:400 10px var(--body);opacity:.85;font-style:normal}
+.hero .cover .gen b{font-size:15px}
+.vs{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--page)}
+.vs h3{font-size:15px!important}
+ol.mini{margin:10px 0 0;padding-left:1.3em;font-size:13px;display:grid;gap:5px}
+ol.mini li.trap{color:var(--warn);font-weight:600}
+ol.mini small{display:block;font-weight:400;color:var(--muted)}
+.presets{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.presets button{font:500 13px var(--body);border:1px solid var(--line);background:var(--page);color:var(--ink);padding:6px 11px;border-radius:99px;cursor:pointer}
+.presets button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.shelf-box{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--page);margin-bottom:22px}
+.shelf-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.shelf{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 4px;min-height:40px}
+.shelf .it{position:relative;width:78px;flex:none;font-size:11.5px;line-height:1.2}
+.shelf .it .cover{margin-bottom:4px}
+.shelf .x{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;border:1px solid var(--line);background:var(--page);color:var(--ink);cursor:pointer;font-size:13px;line-height:1;z-index:2}
+.shelf .empty{color:var(--muted);font-size:14px;padding:10px 0}
+.you-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:12px}
+.you-head h3{margin:0}
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.how-step{border-top:3px solid var(--accent);padding-top:10px;font-size:14px}
+.how-step b{font:500 12px var(--mono);color:var(--muted)}
+.how-step h3{font-size:17px;margin:4px 0 6px}
+.how-cols{display:grid;gap:16px}
+@media (max-width:900px){.pv-cols,.how,.how-cols{grid-template-columns:1fr}.hero .cover{width:84px}}
 
 @media (max-width: 760px){
   .slide{aspect-ratio:auto}
@@ -755,23 +822,239 @@ body.present .layout{display:block;max-width:none}
 </main>
 </div></div>
 <section class="proto-view" id="proto-view" aria-labelledby="proto-h">
-  <div class="proto-in">
-    <span class="pill w"><span class="en">In progress</span><span class="cs">Rozpracováno</span></span>
-    <h1 id="proto-h"><span class="en">Interactive prototype</span><span class="cs">Interaktivní prototyp</span></h1>
-    <p class="lead"><span class="en">The prototype is being built and will appear here in the next version. It will run the PoC approach on the shared Book-Crossing data:</span><span class="cs">Prototyp právě vzniká a objeví se tady v příští verzi. Poběží na sdílených datech Book-Crossing stejným přístupem jako PoC:</span></p>
-    <ul class="clean">
-      <li><span class="en">Pick a book and see “readers also enjoyed”, with the reason for each pick</span><span class="cs">Vyberte knihu a uvidíte „čtenářům se líbilo také“ i s důvodem každého tipu</span></li>
-      <li><span class="en">Switch between a loyal reader and a new visitor</span><span class="cs">Přepínejte mezi věrným čtenářem a novým návštěvníkem</span></li>
-      <li><span class="en">Compare the model with the bestseller list, side by side</span><span class="cs">Porovnejte model se žebříčkem bestsellerů vedle sebe</span></li>
-    </ul>
-    <a class="cta" href="#deck"><span class="en">← Back to the presentation</span><span class="cs">← Zpět na prezentaci</span></a>
+  <div class="pv-head">
+    <div>
+      <span class="pill"><span class="en">Prototype · v1</span><span class="cs">Prototyp · v1</span></span>
+      <h1 id="proto-h"><span class="en">See the PoC model at work</span><span class="cs">Model z PoC v akci</span></h1>
+      <p class="lead"><span class="en">The same item-to-item similarity model as in the presentation, trained on the cleaned Book-Crossing data. Recommendations are computed in Python and served as a static file, so nothing you do here is stored.</span><span class="cs">Stejný model podobnosti knih jako v prezentaci, natrénovaný na vyčištěných datech Book-Crossing. Doporučení jsou spočítaná v Pythonu a servírovaná jako statický soubor, nic z toho, co tu uděláte, se neukládá.</span></p>
+    </div>
+    <div class="pv-stats" id="pv-stats"></div>
+  </div>
+  <div class="pv-tabs" role="tablist" aria-label="Prototype views">
+    <button role="tab" id="pt-book" aria-selected="true" data-p="book"><span class="en">1 · Book page</span><span class="cs">1 · Detail knihy</span></button>
+    <button role="tab" id="pt-you" aria-selected="false" data-p="you"><span class="en">2 · Picked for you</span><span class="cs">2 · Vybráno pro vás</span></button>
+    <button role="tab" id="pt-how" aria-selected="false" data-p="how"><span class="en">3 · How it works</span><span class="cs">3 · Jak to funguje</span></button>
+  </div>
+  <div class="pv-loading" id="pv-loading"><span class="en">Loading the model output…</span><span class="cs">Načítám výstup modelu…</span></div>
+
+  <!-- panel 1: book page -->
+  <div class="pv-panel" id="pp-book" role="tabpanel" aria-labelledby="pt-book">
+    <div class="pv-search">
+      <label for="q-book"><span class="en">Pick any of the 2,500 most-read books</span><span class="cs">Vyberte kteroukoli z 2 500 nejčtenějších knih</span></label>
+      <input id="q-book" type="search" autocomplete="off" placeholder="The Hobbit, Grisham, Harry Potter…">
+      <div class="sugg" id="sg-book" role="listbox"></div>
+    </div>
+    <div class="pv-book">
+      <div class="hero" id="hero"></div>
+      <div class="pv-cols">
+        <div>
+          <h3><span class="en">Readers who liked this also enjoyed</span><span class="cs">Čtenářům této knihy se líbilo také</span> <span class="pill"><span class="en">model</span><span class="cs">model</span></span></h3>
+          <div class="grid" id="sim-grid"></div>
+        </div>
+        <aside class="vs">
+          <h3><span class="en">What a naive bestseller list would show</span><span class="cs">Co by ukázal naivní žebříček bestsellerů</span></h3>
+          <p class="small muted"><span class="en">Same list for every book. Note the top title.</span><span class="cs">Stejný seznam u každé knihy. Všimněte si prvního titulu.</span></p>
+          <ol class="mini" id="naive-list"></ol>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- panel 2: picked for you -->
+  <div class="pv-panel" id="pp-you" role="tabpanel" aria-labelledby="pt-you" hidden>
+    <div class="presets" role="group" aria-label="Example readers">
+      <span class="small muted"><span class="en">Try a reader:</span><span class="cs">Zkuste čtenáře:</span></span>
+      <button data-s="fantasy"><span class="en">Fantasy reader</span><span class="cs">Čtenář fantasy</span></button>
+      <button data-s="thriller"><span class="en">Thriller reader</span><span class="cs">Čtenář thrillerů</span></button>
+      <button data-s="womens"><span class="en">Women’s fiction reader</span><span class="cs">Čtenářka ženských románů</span></button>
+      <button data-s="real"><span class="en">Real reader from the data</span><span class="cs">Skutečný čtenář z dat</span></button>
+      <button data-s="new"><span class="en">New visitor</span><span class="cs">Nový návštěvník</span></button>
+    </div>
+    <div class="shelf-box">
+      <div class="shelf-head">
+        <h3><span class="en">Reading history</span><span class="cs">Historie čtení</span> <span class="small muted" id="shelf-note"></span></h3>
+        <div class="pv-search inline">
+          <label for="q-you" class="sr"><span class="en">Add a book</span><span class="cs">Přidat knihu</span></label>
+          <input id="q-you" type="search" autocomplete="off" placeholder="+ Add a book you liked">
+          <div class="sugg" id="sg-you" role="listbox"></div>
+        </div>
+      </div>
+      <div class="shelf" id="shelf"></div>
+    </div>
+    <div class="you-head">
+      <h3 id="you-title"></h3>
+      <span id="you-badge"></span>
+    </div>
+    <div class="grid" id="you-grid"></div>
+  </div>
+
+  <!-- panel 3: how it works -->
+  <div class="pv-panel" id="pp-how" role="tabpanel" aria-labelledby="pt-how" hidden>
+    <div class="how">
+      <div class="how-step"><b>1</b><h3><span class="en">Clean the data</span><span class="cs">Vyčistit data</span></h3><p><span class="en">Keep ratings with catalogue metadata, merge editions into works, drop bulk-upload accounts and explicit dislikes, keep readers and books with 5+ interactions.</span><span class="cs">Ponecháme hodnocení s metadaty z katalogu, sloučíme edice do děl, vyřadíme hromadné účty a explicitní „nelíbilo se“, necháme čtenáře a knihy s 5+ interakcemi.</span></p></div>
+      <div class="how-step"><b>2</b><h3><span class="en">Learn which books go together</span><span class="cs">Naučit se, které knihy patří k sobě</span></h3><p><span class="en">Item-kNN with BM25 weighting: two books are similar when the same readers read both, discounted for very popular titles so bestsellers do not drown everything.</span><span class="cs">Item-kNN s váhováním BM25: dvě knihy jsou si podobné, když je čtou stejní čtenáři, se srážkou za velmi populární tituly, aby bestsellery nepřehlušily vše ostatní.</span></p></div>
+      <div class="how-step"><b>3</b><h3><span class="en">Recommend</span><span class="cs">Doporučit</span></h3><p><span class="en">Book page: the most similar books. Personal picks: add up similarities from everything in the reader’s history, and keep the book that contributed most as the reason. No history: quality-weighted bestsellers.</span><span class="cs">Detail knihy: nejpodobnější knihy. Osobní tipy: sečteme podobnosti ke všemu v historii čtenáře a knihu, která přispěla nejvíc, uvedeme jako důvod. Bez historie: bestsellery vážené kvalitou.</span></p></div>
+      <div class="how-step"><b>4</b><h3><span class="en">Serve</span><span class="cs">Servírovat</span></h3><p><span class="en">Here: a static JSON file read by this page. In production: a nightly batch job writes the lists to a fast key-value store behind an API with business rules (slide 10).</span><span class="cs">Tady: statický JSON soubor, který čte tato stránka. V produkci: noční dávka zapíše seznamy do rychlého key-value úložiště za API s byznysovými pravidly (slide 10).</span></p></div>
+    </div>
+    <div class="g2 how-cols">
+      <div class="card">
+        <h3><span class="en">Offline result on this data</span><span class="cs">Offline výsledek na těchto datech</span></h3>
+        <table class="small"><thead><tr><th><span class="en">Model</span><span class="cs">Model</span></th><th class="r">NDCG@10</th><th class="r">Hit rate@10</th><th class="r"><span class="en">Coverage</span><span class="cs">Pokrytí</span></th></tr></thead>
+        <tbody>
+          <tr><td><span class="en">Bestsellers (count)</span><span class="cs">Bestsellery (počet)</span></td><td class="r"><span class="en">0.019</span><span class="cs">0,019</span></td><td class="r"><span class="en">8.1 %</span><span class="cs">8,1 %</span></td><td class="r"><span class="en">0.1 %</span><span class="cs">0,1 %</span></td></tr>
+          <tr><td>ALS</td><td class="r"><span class="en">0.054</span><span class="cs">0,054</span></td><td class="r"><span class="en">18.2 %</span><span class="cs">18,2 %</span></td><td class="r"><span class="en">8.5 %</span><span class="cs">8,5 %</span></td></tr>
+          <tr class="best"><td><b>Item-kNN (BM25)</b></td><td class="r"><span class="en">0.066</span><span class="cs">0,066</span></td><td class="r"><span class="en">19.2 %</span><span class="cs">19,2 %</span></td><td class="r"><span class="en">76.5 %</span><span class="cs">76,5 %</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="card warn">
+        <h3><span class="en">What this prototype is not</span><span class="cs">Čím tento prototyp není</span></h3>
+        <ul class="clean small">
+          <li><span class="en">Not your customers: public 2004 community data, English-language heavy</span><span class="cs">Nejsou to vaši zákazníci: veřejná komunitní data z roku 2004, převážně v angličtině</span></li>
+          <li><span class="en">No stock, price, age or business rules yet</span><span class="cs">Zatím bez skladu, cen, věkových omezení a byznysových pravidel</span></li>
+          <li><span class="en">Covers come from 2004 Amazon links; missing ones are drawn</span><span class="cs">Obálky jsou z odkazů Amazonu z roku 2004; chybějící se vykreslí</span></li>
+          <li><span class="en">It shows the approach is feasible, not that it sells. That is the A/B pilot.</span><span class="cs">Ukazuje, že přístup je proveditelný, ne že prodává. To ukáže A/B pilot.</span></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 <div class="pnav"><button class="btn" id="prev" aria-label="Previous slide">←</button><button class="btn" id="next" aria-label="Next slide">→</button><button class="btn" id="exit"><span class="en">Exit</span><span class="cs">Konec</span></button></div>
 
 <script>
+/* ---------- prototype ---------- */
+const P = {data: null, book: null, shelf: [], preset: "fantasy", loading: null};
+const bi = (en, cs) => `<span class="en">${en}</span><span class="cs">${cs}</span>`;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const short = t => t.replace(/\s*\((?:[^()]|\([^()]*\))*\)\s*/g, " ").replace(/\s*:\s.*$/, "").trim() || t;
+const fmtInt = n => lang() === "cs" ? n.toLocaleString("cs-CZ") : n.toLocaleString("en-GB");
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+function hue(s){ let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) % 360; return h; }
+
+function cover(id){
+  const w = P.data.works[id];
+  const gen = `<div class="gen" style="background:hsl(${hue(w.t)} 38% 34%)"><b>${esc(short(w.t))}</b><i>${esc(w.a)}</i></div>`;
+  return `<div class="cover">${gen}<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://images.amazon.com/images/P/${encodeURIComponent(w.isbn)}.01.MZZZZZZZ.jpg" onload="if(this.naturalWidth<5)this.remove()" onerror="this.remove()"></div>`;
+}
+function card(id, why){
+  const w = P.data.works[id];
+  return `<button class="bk" data-id="${id}" title="${esc(w.t)} · ${esc(w.a)}">${cover(id)}<span class="t">${esc(short(w.t))}</span><span class="a">${esc(w.a)}</span>${why ? `<span class="why">${why}</span>` : ""}</button>`;
+}
+
+async function protoInit(){
+  if (P.data) return;
+  if (!P.loading) P.loading = fetch("proto-data.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  try { P.data = await P.loading; }
+  catch (e) { document.getElementById("pv-loading").innerHTML = bi("The model output could not be loaded. Reload the page to try again.", "Výstup modelu se nepodařilo načíst. Zkuste stránku načíst znovu."); return; }
+  document.getElementById("pv-loading").hidden = true;
+  const m = P.data.meta;
+  P.sel = P.data.selectable;
+  P.index = P.sel.map(id => ({id, k: norm(P.data.works[id].t + " " + P.data.works[id].a)}));
+  P.stats = m;
+  const hobbit = P.data.shelves.fantasy[0];
+  P.book = hobbit; P.shelf = [...P.data.shelves.fantasy];
+  wireSearch("q-book", "sg-book", id => { P.book = id; renderBook(); });
+  wireSearch("q-you", "sg-you", id => { if (!P.shelf.includes(id)) P.shelf.push(id); P.preset = null; renderYou(); });
+  document.querySelectorAll(".presets button").forEach(b => b.onclick = () => {
+    P.preset = b.dataset.s; P.shelf = b.dataset.s === "new" ? [] : [...P.data.shelves[b.dataset.s]]; renderYou();
+  });
+  protoRender();
+}
+function protoPlaceholders(){
+  const cs = lang() === "cs";
+  const q1 = document.getElementById("q-book"), q2 = document.getElementById("q-you");
+  if (q1) q1.placeholder = cs ? "Hobit, Grisham, Harry Potter…" : "The Hobbit, Grisham, Harry Potter…";
+  if (q2) q2.placeholder = cs ? "+ Přidat knihu, která se vám líbila" : "+ Add a book you liked";
+}
+function protoRender(){
+  protoPlaceholders();
+  if (!P.data) return;
+  const m = P.stats;
+  document.getElementById("pv-stats").innerHTML =
+    `<div><b>${fmtInt(m.users)}</b><span>${bi("readers", "čtenářů")}</span></div>` +
+    `<div><b>${fmtInt(m.works_in_model)}</b><span>${bi("works in the model", "děl v modelu")}</span></div>` +
+    `<div><b>${fmtInt(m.interactions)}</b><span>${bi("interactions", "interakcí")}</span></div>`;
+  renderBook(); renderYou();
+}
+
+function renderBook(){
+  const D = P.data, id = P.book, w = D.works[id];
+  const rating = w.r ? bi(`avg. rating ${w.r}/10`, `prům. hodnocení ${String(w.r).replace(".", ",")}/10`) : "";
+  document.getElementById("hero").innerHTML = `${cover(id)}<div>
+    <div class="small muted">${bi("Book detail page", "Detail knihy")}</div>
+    <h2>${esc(short(w.t))}</h2><div>${esc(w.a)}${w.y ? " · " + w.y : ""}</div>
+    <div class="facts"><span>${bi(`${fmtInt(w.n)} readers in the data`, `${fmtInt(w.n)} čtenářů v datech`)}</span><span>${rating}</span></div></div>`;
+  document.getElementById("sim-grid").innerHTML = (D.neighbours[id] || []).slice(0, 10)
+    .map(([j, s, c]) => card(j, bi(`${fmtInt(c)} shared readers`, `${fmtInt(c)} společných čtenářů`))).join("");
+  document.getElementById("naive-list").innerHTML = D.lists.naive.slice(0, 6).map((j, k) => {
+    const x = D.works[j];
+    const note = k === 0 ? `<small>${bi(`mass giveaway, avg. rating ${x.r}/10`, `masově rozdávaná, prům. hodnocení ${String(x.r).replace(".", ",")}/10`)}</small>` : "";
+    return `<li class="${k === 0 ? "trap" : ""}">${esc(short(x.t))}${note}</li>`;
+  }).join("");
+  bindCards("sim-grid", j => { P.book = j; renderBook(); scrollTo({top: document.getElementById("proto-view").offsetTop, behavior: "smooth"}); });
+}
+
+function recommend(shelf){
+  const D = P.data, score = new Map(), why = new Map(), on = new Set(shelf);
+  for (const h of shelf) for (const [j, s] of (D.neighbours[h] || [])) {
+    if (on.has(j)) continue;
+    score.set(j, (score.get(j) || 0) + s);
+    if (!why.has(j) || why.get(j)[1] < s) why.set(j, [h, s]);
+  }
+  return [...score].sort((a, b) => b[1] - a[1]).slice(0, 12).map(([j]) => [j, why.get(j)[0]]);
+}
+function renderYou(){
+  const D = P.data;
+  document.querySelectorAll(".presets button").forEach(b => b.setAttribute("aria-pressed", b.dataset.s === P.preset));
+  const sh = document.getElementById("shelf");
+  sh.innerHTML = P.shelf.length ? P.shelf.map(id => `<div class="it"><button class="x" data-rm="${id}" aria-label="Remove">×</button>${cover(id)}${esc(short(D.works[id].t))}</div>`).join("")
+    : `<div class="empty">${bi("No history yet. This is how most visitors arrive.", "Zatím žádná historie. Takhle přichází většina návštěvníků.")}</div>`;
+  sh.querySelectorAll("[data-rm]").forEach(b => b.onclick = () => { P.shelf = P.shelf.filter(x => x !== +b.dataset.rm); P.preset = null; renderYou(); });
+  const note = P.preset === "real" ? bi(`· reader #${D.shelves.real_id}, as recorded in the data`, `· čtenář č. ${D.shelves.real_id}, tak jak je v datech`)
+    : P.preset && P.preset !== "new" ? bi("· example shelf", "· ukázková polička") : "";
+  document.getElementById("shelf-note").innerHTML = note;
+  const t = document.getElementById("you-title"), badge = document.getElementById("you-badge"), grid = document.getElementById("you-grid");
+  if (P.shelf.length) {
+    t.innerHTML = bi("Picked for you", "Vybráno pro vás");
+    badge.innerHTML = `<span class="pill">${bi("model · item-to-item similarity", "model · podobnost knih")}</span>`;
+    grid.innerHTML = recommend(P.shelf).map(([j, h]) => card(j, bi(`Because you read ${esc(short(D.works[h].t))}`, `Protože jste četli ${esc(short(D.works[h].t))}`))).join("");
+  } else {
+    t.innerHTML = bi("Loved by readers", "Oblíbené u čtenářů");
+    badge.innerHTML = `<span class="pill w">${bi("fallback · quality-weighted bestsellers", "záloha · bestsellery vážené kvalitou")}</span>`;
+    grid.innerHTML = D.lists.quality.slice(0, 12).map(j => card(j, D.works[j].r ? bi(`avg. ${D.works[j].r}/10 from ${fmtInt(D.works[j].n)} readers`, `prům. ${String(D.works[j].r).replace(".", ",")}/10 od ${fmtInt(D.works[j].n)} čtenářů`) : "")).join("");
+  }
+  bindCards("you-grid", j => { if (!P.sel.includes(j)) return; P.book = j; showPanel("book"); renderBook(); });
+}
+function bindCards(gridId, fn){ document.querySelectorAll(`#${gridId} .bk`).forEach(b => b.onclick = () => fn(+b.dataset.id)); }
+
+function wireSearch(inputId, boxId, pick){
+  const inp = document.getElementById(inputId), box = document.getElementById(boxId); let act = -1, res = [];
+  const draw = () => {
+    const q = norm(inp.value.trim()); act = -1;
+    if (q.length < 2) { box.classList.remove("on"); return; }
+    res = P.index.filter(x => x.k.includes(q)).slice(0, 8).map(x => x.id);
+    box.innerHTML = res.length ? res.map((id, k) => `<button role="option" data-k="${k}">${esc(short(P.data.works[id].t))} <small>${esc(P.data.works[id].a)}</small></button>`).join("")
+      : `<button disabled>${bi("No match among the 2,500 most-read books", "Mezi 2 500 nejčtenějšími knihami nic není")}</button>`;
+    box.classList.add("on");
+    box.querySelectorAll("[data-k]").forEach(b => b.onmousedown = e => { e.preventDefault(); choose(+b.dataset.k); });
+  };
+  const choose = k => { if (res[k] === undefined) return; pick(res[k]); inp.value = ""; box.classList.remove("on"); };
+  inp.addEventListener("input", draw);
+  inp.addEventListener("blur", () => box.classList.remove("on"));
+  inp.addEventListener("keydown", e => {
+    const items = box.querySelectorAll("[data-k]");
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); act = (act + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length; items.forEach((b, k) => b.classList.toggle("act", k === act)); }
+    if (e.key === "Enter") { e.preventDefault(); choose(act < 0 ? 0 : act); }
+    if (e.key === "Escape") box.classList.remove("on");
+  });
+}
+function showPanel(p){
+  document.querySelectorAll(".pv-tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.p === p));
+  ["book", "you", "how"].forEach(x => document.getElementById("pp-" + x).hidden = x !== p);
+}
+document.querySelectorAll(".pv-tabs button").forEach(b => b.onclick = () => showPanel(b.dataset.p));
+
 /* release info: bump on every publish */
-const RELEASE = {version: "0.4", date: "2026-11-01", time: "22:22"};
+const RELEASE = {version: "0.5", date: "2026-11-01", time: "22:38"};
 function renderVersion(){
   const d = new Date(RELEASE.date + "T12:00:00");
   const txt = lang() === "cs"
@@ -823,7 +1106,7 @@ function setLang(l){
   document.getElementById("lang-en").setAttribute("aria-pressed", l === "en");
   document.getElementById("lang-cs").setAttribute("aria-pressed", l === "cs");
   try { localStorage.setItem("deck-lang", l); } catch (e) {}
-  draw(); renderVersion();
+  draw(); renderVersion(); protoRender();
 }
 document.getElementById("lang-en").onclick = () => setLang("en");
 document.getElementById("lang-cs").onclick = () => setLang("cs");
@@ -841,7 +1124,7 @@ function route(){
   const proto = location.hash === "#prototype";
   document.body.classList.toggle("view-proto", proto);
   const td = document.getElementById("tab-deck"), tp = document.getElementById("tab-proto");
-  if (proto) { td.removeAttribute("aria-current"); tp.setAttribute("aria-current", "page"); window.scrollTo(0, 0); }
+  if (proto) { td.removeAttribute("aria-current"); tp.setAttribute("aria-current", "page"); window.scrollTo(0, 0); protoInit(); }
   else { tp.removeAttribute("aria-current"); td.setAttribute("aria-current", "page"); }
   if (location.hash === "#deck") window.scrollTo(0, 0);
 }

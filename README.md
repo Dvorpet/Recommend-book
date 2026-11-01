@@ -5,7 +5,7 @@ Hiring task for the AI Consultant / Architect role at DataSentics. The client is
 The deliverable is a small website with two parts:
 
 - **Kick-off presentation** (`site/index.html`), 12 slides + 2 appendix in English with a Czech toggle, light/dark theme and an outline mapped to the brief. Live: https://dvorpet.github.io/Recommend-book/ It covers scoping, team, delivery management, validation, PoC focus vs. later improvements, open questions, the PoC solution architecture and the production design.
-- **Interactive prototype**: next step.
+- **Interactive prototype** (Prototype tab, data in `site/proto-data.json`): book page with similar books, personal picks with reasons, cold-start fallback and a naive-bestseller comparison. Built by `src/export_prototype.py`.
 
 ## Repository layout
 
@@ -17,7 +17,9 @@ The deliverable is a small website with two parts:
 | `src/experiment.py` | Offline comparison: popularity, quality-weighted popularity, item-kNN (cosine, BM25), ALS |
 | `docs/eda/eda_findings.md` | Written data findings and what they mean for the solution |
 | `docs/experiment_results.json` | Offline metrics, tuning grid, similar-item examples |
-| `site/index.html` | The presentation (single self-contained page) |
+| `src/export_prototype.py` | Trains the chosen model on all cleaned data and exports the prototype JSON |
+| `site/index.html` | The website: presentation + prototype |
+| `site/proto-data.json` | Model output used by the prototype |
 
 ## Reproduce
 
@@ -30,6 +32,7 @@ python src/eda.py data docs/eda
 python src/charts.py data docs/eda
 python src/prep.py data artifacts
 python src/experiment.py artifacts
+python src/export_prototype.py artifacts site/proto-data.json
 ```
 
 ## Headline results (offline, 15.6 k users × 29.4 k works)
