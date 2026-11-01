@@ -147,11 +147,16 @@ body.present .pnav{display:flex}
 
 
 /* ---------- layout B: sticky bar + outline ---------- */
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600;padding:6px 14px}
+.cta{border:0;cursor:pointer}
+.title-start{font-size:1.15em;margin:0 0 1.6em}
+.title-s h1 + .title-start{margin-top:0}
+body.present .title-start{display:none}
+
 .bar-in{max-width:1480px}
 .brand{white-space:nowrap}
 .ver{font:500 11px var(--mono);color:var(--accent);background:var(--accent-soft);padding:3px 8px;border-radius:99px;margin-left:8px;vertical-align:2px}
-.tab.proto{color:var(--accent);font-weight:600;box-shadow:0 0 0 1px var(--accent)}
-.tab.proto[aria-current="page"]{background:var(--accent);color:var(--on-accent)}
+.tab[aria-current="page"]{color:var(--ink);background:var(--page);box-shadow:0 0 0 1px var(--line)}
 .menu{display:none}
 .layout{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1480px;margin:0 auto;gap:8px}
 .side{position:sticky;top:var(--barh,53px);height:calc(100vh - var(--barh,53px));padding:16px 8px 18px 20px;display:flex;flex-direction:column;gap:4px;overflow:auto}
@@ -205,7 +210,7 @@ body.present .layout{display:block;max-width:none}
   <div class="brand">Book Recommendations PoC <span class="ver" id="version"></span></div>
   <nav class="tabs" aria-label="Views">
     <a class="tab" id="tab-deck" href="#deck" aria-current="page"><span class="en">Presentation</span><span class="cs">Prezentace</span></a>
-    <a class="tab proto" id="tab-proto" href="#prototype"><span class="en">Prototype →</span><span class="cs">Prototyp →</span></a>
+    <a class="tab" id="tab-proto" href="#prototype"><span class="en">Prototype →</span><span class="cs">Prototyp →</span></a>
   </nav>
   <div class="seg" role="group" aria-label="Language">
     <button id="lang-en" aria-pressed="true">EN</button><button id="lang-cs" aria-pressed="false">CZ</button>
@@ -214,7 +219,7 @@ body.present .layout{display:block;max-width:none}
   <div class="seg" role="group" aria-label="Theme">
     <button id="theme-light" aria-pressed="false" title="Light mode" aria-label="Light mode">☀</button><button id="theme-dark" aria-pressed="false" title="Dark mode" aria-label="Dark mode">☾</button>
   </div>
-  <button class="btn" id="present"><span class="en">Present ▶</span><span class="cs">Prezentovat ▶</span></button>
+  <button class="btn primary" id="present"><span class="en">▶ Start presentation</span><span class="cs">▶ Spustit prezentaci</span></button>
 </div></header>
 <div class="layout" id="layout">
 <aside class="side" id="side"><nav aria-label="Outline"><a href="#s1" data-for="s1"><i>01</i><span class="en">Title</span><span class="cs">Titul</span></a>
@@ -223,9 +228,9 @@ body.present .layout{display:block;max-width:none}
   <div class="g"><span class="en">Productionalization</span><span class="cs">Produkce</span></div><a href="#s10" data-for="s10"><i>10</i><span class="en">Production design</span><span class="cs">Návrh produkce</span></a>
   <div class="g"><span class="en">Team &amp; delivery</span><span class="cs">Tým a dodávka</span></div><a href="#s11" data-for="s11"><i>11</i><span class="en">Team &amp; delivery</span><span class="cs">Tým a řízení</span></a><a href="#s12" data-for="s12"><i>12</i><span class="en">Plan &amp; next steps</span><span class="cs">Plán a další kroky</span></a><a href="#try" data-for="try"><i>→</i><span class="en">Try it yourself</span><span class="cs">Vyzkoušejte si to</span></a>
   <div class="g"><span class="en">Appendix</span><span class="cs">Přílohy</span></div><a href="#a1" data-for="a1"><i>A1</i><span class="en">Example lists</span><span class="cs">Ukázky doporučení</span></a><a href="#a2" data-for="a2"><i>A2</i><span class="en">Delivery detail &amp; risks</span><span class="cs">Detail řízení a rizika</span></a>
-</nav><a class="cta side-cta" href="#prototype"><span class="en">Try the prototype →</span><span class="cs">Vyzkoušet prototyp →</span></a></aside>
+</nav><button class="cta side-cta start-present"><span class="en">▶ Start presentation</span><span class="cs">▶ Spustit prezentaci</span></button></aside>
 <div class="main-col">
-<p class="deck-hint"><span class="en">12 slides + 2 appendix. Scroll to read, or press “Present” and use ← → keys.</span><span class="cs">12 slidů + 2 přílohy. Čtěte scrollováním, nebo stiskněte „Prezentovat“ a ovládejte šipkami ← →.</span></p>
+<p class="deck-hint"><span class="en">12 slides + 2 appendix. Scroll to read, or press “Start presentation” and use ← → keys.</span><span class="cs">12 slidů + 2 přílohy. Čtěte scrollováním, nebo stiskněte „Spustit prezentaci“ a ovládejte šipkami ← →.</span></p>
 
 <main class="deck" id="deck">
 
@@ -235,6 +240,7 @@ body.present .layout{display:block;max-width:none}
   <div>
     <h1><span class="en">Recommendations that help readers find their next book</span><span class="cs">Doporučování, které čtenářům pomůže najít další knihu</span></h1>
     <p class="sub"><span class="en">A 30-man-day proof of concept to test one belief: that recommendations will help you sell more books. What we will prove, how, and what it takes to run it in production.</span><span class="cs">Proof of concept za 30 MD, který ověří jedno přesvědčení: že doporučování vám pomůže prodat víc knih. Co ověříme, jak, a co bude potřeba pro provoz v produkci.</span></p>
+    <button class="cta start-present title-start" style="margin-top:1.4em"><span class="en">▶ Start presentation</span><span class="cs">▶ Spustit prezentaci</span></button>
   </div>
   <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:2em">
     <div class="meta">
@@ -669,7 +675,6 @@ body.present .layout{display:block;max-width:none}
   <p class="lead"><span class="en">The prototype runs the PoC approach on the shared Book-Crossing data. Pick a book and see similar titles, switch between a loyal reader and a new visitor, and compare with the bestseller list.</span><span class="cs">Prototyp běží na sdílených datech Book-Crossing stejným přístupem jako PoC. Vyberte knihu a uvidíte podobné tituly, přepněte mezi věrným čtenářem a novým návštěvníkem a porovnejte se žebříčkem bestsellerů.</span></p>
   <div style="display:flex;gap:1em;flex-wrap:wrap">
     <a class="cta" href="#prototype"><span class="en">Open the prototype →</span><span class="cs">Otevřít prototyp →</span></a>
-    <a class="cta ghost" href="https://github.com/Dvorpet/Recommend-book"><span class="en">See the code on GitHub</span><span class="cs">Kód na GitHubu</span></a>
   </div>
 </div></section>
 
@@ -766,12 +771,12 @@ body.present .layout{display:block;max-width:none}
 
 <script>
 /* release info: bump on every publish */
-const RELEASE = {version: "0.3", date: "2026-11-01"};
+const RELEASE = {version: "0.4", date: "2026-11-01", time: "22:22"};
 function renderVersion(){
   const d = new Date(RELEASE.date + "T12:00:00");
   const txt = lang() === "cs"
-    ? `Verze ${RELEASE.version} · aktualizováno ${d.getDate()}. ${d.getMonth() + 1}. ${d.getFullYear()}`
-    : `Version ${RELEASE.version} · updated ${d.toLocaleDateString("en-GB", {day: "numeric", month: "short", year: "numeric"})}`;
+    ? `Verze ${RELEASE.version} · aktualizováno ${d.getDate()}. ${d.getMonth() + 1}. ${d.getFullYear()} ${RELEASE.time} SEČ`
+    : `Version ${RELEASE.version} · updated ${d.toLocaleDateString("en-GB", {day: "numeric", month: "short", year: "numeric"})}, ${RELEASE.time} CET`;
   document.getElementById("version").textContent = txt;
 }
 /* theme: follows the system until the viewer picks one */
@@ -867,6 +872,7 @@ function present(on){
 document.getElementById("present").onclick = () => {
   const y = window.scrollY; cur = slides.findIndex(s => s.offsetTop + s.offsetHeight / 2 > y + 60); if (cur < 0) cur = 0; present(true);
 };
+document.querySelectorAll(".start-present").forEach(b => b.onclick = () => { cur = 0; present(true); });
 document.getElementById("exit").onclick = () => present(false);
 document.getElementById("prev").onclick = () => show(cur - 1);
 document.getElementById("next").onclick = () => show(cur + 1);
