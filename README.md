@@ -4,7 +4,7 @@ Hiring task for the AI Consultant / Architect role at DataSentics. The client is
 
 The deliverable is a small website with two parts:
 
-- **Kick-off presentation** (`site/index.html`), 15 slides in English with a Czech toggle. It covers scoping, team, delivery management, validation, PoC focus vs. later improvements, open questions, the PoC solution architecture and the production design.
+- **Kick-off presentation** (`site/index.html`), 12 slides + 2 appendix in English with a Czech toggle, light/dark theme and an outline mapped to the brief. Live: https://dvorpet.github.io/Recommend-book/ It covers scoping, team, delivery management, validation, PoC focus vs. later improvements, open questions, the PoC solution architecture and the production design.
 - **Interactive prototype**: next step.
 
 ## Repository layout
