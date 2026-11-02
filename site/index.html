@@ -199,9 +199,13 @@ table.roles{font-size:1em}table.roles td{padding:.5em .5em;vertical-align:top}ta
 .pb.hi{background:var(--accent-soft);border-color:var(--accent)}
 .road{display:flex;gap:.5em;flex-wrap:wrap;align-items:center}.road .pill{font-size:.85em;padding:.3em .8em}
 .s.client{font-size:1.5cqw}
+@media (max-width: 760px){.s.client{font-size:15px}.hood{font-size:12px}}
 .s.client .body.g2,.s.client .body.g3,.s.client .body.g-6-4,.s.client .body.big3{align-items:start}
 .s.client .body>.card{align-self:start}
 .appx-toggle{display:grid;gap:10px;justify-items:start;padding:8px 0;color:var(--muted)}
+.hood{margin-top:.7em;padding-top:.55em;border-top:1px dashed var(--line);font:400 .8em/1.4 var(--mono);color:var(--accent)}
+.st4,.pb{display:flex;flex-direction:column}
+.st4 p,.pb p{flex:1}
 .appx{display:grid;gap:28px}
 .appx[hidden]{display:none}
 @media (max-width: 760px){.big3,.steps4,.phases,.prod{grid-template-columns:1fr}.st4::after,.prod .arr{display:none}}
@@ -470,8 +474,8 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
   <h2><span class="en">Your data is enough to start. To prove sales, we need your orders</span><span class="cs">Vaše data stačí na start. Na důkaz prodejů potřebujeme objednávky</span></h2>
   <div class="body g3">
     <div class="card tint"><h3><span class="en">What we have</span><span class="cs">Co máme</span></h3>
-      <ul class="ticks"><li><span class="en"><b>1.1 M</b> ratings from <b>105 k</b> readers</span><span class="cs"><b>1,1 mil.</b> hodnocení od <b>105 tis.</b> čtenářů</span></li><li><span class="en"><b>270 k</b> books with titles and covers</span><span class="cs"><b>270 tis.</b> knih s názvy a obálkami</span></li></ul></div>
-    <div class="card"><div class="num">56 %</div><p><span class="en">of readers rated just one book. Most customers are new or occasional, so recommendations must work without a history.</span><span class="cs">čtenářů ohodnotilo jen jednu knihu. Většina zákazníků je nových nebo občasných, doporučení tedy musí fungovat i bez historie.</span></p></div>
+      <ul class="ticks"><li><span class="en"><b>1.1 M</b> ratings from <b>105 k</b> readers</span><span class="cs"><b>1,1 mil.</b> hodnocení od <b>105 tis.</b> čtenářů</span></li><li><span class="en"><b>271 k</b> books with titles and covers</span><span class="cs"><b>271 tis.</b> knih s názvy a obálkami</span></li></ul></div>
+    <div class="card"><div class="num">56 %</div><p><span class="en">of readers have just one book on record. Most customers are new or occasional, so recommendations must work without a history.</span><span class="cs">čtenářů má v datech jen jednu knihu. Většina zákazníků je nových nebo občasných, doporučení tedy musí fungovat i bez historie.</span></p></div>
     <div class="card warn"><h3><span class="en">What we need from you</span><span class="cs">Co potřebujeme od vás</span></h3>
       <ul class="todo"><li><span class="en">Order history with dates and prices</span><span class="cs">Historii objednávek s daty a cenami</span></li><li><span class="en">Product page views</span><span class="cs">Zobrazení produktů</span></li><li><span class="en">Genres and stock from your catalogue</span><span class="cs">Žánry a sklad z katalogu</span></li></ul></div>
   </div>
@@ -485,17 +489,17 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
   <div class="body g-6-4">
     <div class="card" style="align-content:start">
       <p class="small muted"><span class="en">“Readers who liked this also enjoyed…”</span><span class="cs">„Čtenářům této knihy se líbilo také…“</span></p>
-      <div class="chain"><span class="bkk main">The Hobbit</span><span class="arr">→</span><span class="bkk">The Two Towers</span><span class="bkk">The Return of the King</span><span class="bkk">The Silmarillion</span></div>
+      <div class="chain"><span class="bkk main">The Hobbit</span><span class="arr">→</span><span class="bkk">The Two Towers</span><span class="bkk">The Return of the King</span><span class="bkk">The Fellowship of the Ring</span></div>
       <p style="margin-top:1em"><span class="en">Books go together when the <b>same readers</b> enjoy both. No genre data needed, and every tip can say why.</span><span class="cs">Knihy k sobě patří, když se líbí <b>stejným čtenářům</b>. Nepotřebuje to žánry a každý tip umí říct proč.</span></p>
     </div>
     <div class="card tint" style="align-content:start">
       <h3><span class="en">Tested on your data</span><span class="cs">Otestováno na vašich datech</span></h3>
       <div class="cmp"><span><span class="en">Bestseller list</span><span class="cs">Bestsellery</span></span><div><i style="width:42%"></i></div><b>8 %</b></div>
       <div class="cmp best"><span><span class="en">Our model</span><span class="cs">Náš model</span></span><div><i style="width:100%"></i></div><b>19 %</b></div>
-      <p class="small" style="margin-top:.7em"><span class="en">of readers got a pick they actually read. <b>2.4× more often</b>, using 77 % of the catalogue instead of ~35 bestsellers.</span><span class="cs">čtenářů dostalo tip, který opravdu četli. <b>2,4× častěji</b> a s využitím 77 % katalogu místo ~35 bestsellerů.</span></p>
+      <p class="small" style="margin-top:.7em"><span class="en">of readers found a book they really read among 10 picks. <b>2.4× more often</b>, drawing on 77 % of the books instead of the same 36 bestsellers.</span><span class="cs">čtenářů našlo mezi 10 tipy knihu, kterou opravdu četli. <b>2,4× častěji</b> a z 77 % knih místo stále stejných 36 bestsellerů.</span></p>
     </div>
   </div>
-  <div class="foot"><span><span class="en">Five approaches compared: appendix A2–A4</span><span class="cs">Srovnání pěti přístupů: příloha A2–A4</span></span><span>03 / 11</span></div>
+  <div class="foot"><span><span class="en">Test: 15.6 k readers with 5+ books, 20 % of each history hidden · five approaches compared: appendix A2–A4</span><span class="cs">Test: 15,6 tis. čtenářů s 5+ knihami, 20 % historie skryto · srovnání pěti přístupů: příloha A2–A4</span></span><span>03 / 11</span></div>
 </div></section>
 
 <!-- s4 -->
@@ -504,10 +508,10 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
   <h2><span class="en">Four steps from your data to recommendations</span><span class="cs">Čtyři kroky od vašich dat k doporučením</span></h2>
   <div class="body" style="align-content:center">
     <div class="steps4">
-      <div class="st4"><b>1</b><h3><span class="en">Your data</span><span class="cs">Vaše data</span></h3><p><span class="en">Orders, catalogue, ratings</span><span class="cs">Objednávky, katalog, hodnocení</span></p></div>
-      <div class="st4"><b>2</b><h3><span class="en">Clean &amp; connect</span><span class="cs">Vyčistit a propojit</span></h3><p><span class="en">Merge editions, remove errors</span><span class="cs">Sloučit edice, odstranit chyby</span></p></div>
-      <div class="st4"><b>3</b><h3><span class="en">Learn</span><span class="cs">Naučit se</span></h3><p><span class="en">Which books go together</span><span class="cs">Které knihy patří k sobě</span></p></div>
-      <div class="st4 hi"><b>4</b><h3><span class="en">Recommend</span><span class="cs">Doporučit</span></h3><p><span class="en">Book page · “For you” · newsletter</span><span class="cs">Detail knihy · „Pro vás“ · newsletter</span></p></div>
+      <div class="st4"><b>1</b><h3><span class="en">Your data</span><span class="cs">Vaše data</span></h3><p><span class="en">Orders, catalogue, ratings</span><span class="cs">Objednávky, katalog, hodnocení</span></p><div class="hood"><span class="en">Secure exports (CSV / Parquet) into Databricks or your cloud</span><span class="cs">Zabezpečené exporty (CSV / Parquet) do Databricks nebo vašeho cloudu</span></div></div>
+      <div class="st4"><b>2</b><h3><span class="en">Clean &amp; connect</span><span class="cs">Vyčistit a propojit</span></h3><p><span class="en">Merge editions, remove errors</span><span class="cs">Sloučit edice, odstranit chyby</span></p><div class="hood"><span class="en">Python, pandas · automated data-quality checks</span><span class="cs">Python, pandas · automatické kontroly kvality dat</span></div></div>
+      <div class="st4"><b>3</b><h3><span class="en">Learn</span><span class="cs">Naučit se</span></h3><p><span class="en">Which books go together</span><span class="cs">Které knihy patří k sobě</span></p><div class="hood"><span class="en">item-kNN (BM25) vs. bestseller baseline and ALS · tracked in MLflow</span><span class="cs">item-kNN (BM25) vs. baseline bestsellerů a ALS · sledováno v MLflow</span></div></div>
+      <div class="st4 hi"><b>4</b><h3><span class="en">Recommend</span><span class="cs">Doporučit</span></h3><p><span class="en">Book page · “For you” · newsletter</span><span class="cs">Detail knihy · „Pro vás“ · newsletter</span></p><div class="hood"><span class="en">Top-20 lists per book and customer · demo app · evaluation report</span><span class="cs">Top-20 seznamy pro knihu a zákazníka · demo · evaluační report</span></div></div>
     </div>
     <p class="punch" style="margin-top:1.4em"><span class="en">Runs on a secure copy of your data. Nothing changes in your live shop.</span><span class="cs">Běží na zabezpečené kopii vašich dat. Ve vašem živém e-shopu se nic nemění.</span></p>
   </div>
@@ -613,13 +617,13 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
   <h2><span class="en">After a “go”: recommendations run every day and measure their own revenue</span><span class="cs">Po „go“: doporučení běží každý den a měří si vlastní tržby</span></h2>
   <div class="body" style="align-content:start;gap:1.3em">
     <div class="prod">
-      <div class="pb"><h3><span class="en">Your systems</span><span class="cs">Vaše systémy</span></h3><p><span class="en">Shop, orders, catalogue, stock</span><span class="cs">E-shop, objednávky, katalog, sklad</span></p></div>
+      <div class="pb"><h3><span class="en">Your systems</span><span class="cs">Vaše systémy</span></h3><p><span class="en">Shop, orders, catalogue, stock</span><span class="cs">E-shop, objednávky, katalog, sklad</span></p><div class="hood"><span class="en">Daily feeds from ERP / PIM · web events streamed</span><span class="cs">Denní feedy z ERP / PIM · webové události streamem</span></div></div>
       <span class="arr">→</span>
-      <div class="pb"><h3><span class="en">Nightly update</span><span class="cs">Noční aktualizace</span></h3><p><span class="en">Learns from yesterday’s sales</span><span class="cs">Učí se ze včerejších prodejů</span></p></div>
+      <div class="pb"><h3><span class="en">Nightly update</span><span class="cs">Noční aktualizace</span></h3><p><span class="en">Learns from yesterday’s sales</span><span class="cs">Učí se ze včerejších prodejů</span></p><div class="hood"><span class="en">Scheduled pipeline · quality gates · retraining · model registry</span><span class="cs">Plánovaná pipeline · kontroly kvality · přetrénování · registr modelů</span></div></div>
       <span class="arr">→</span>
-      <div class="pb hi"><h3><span class="en">Recommendation service</span><span class="cs">Doporučovací služba</span></h3><p><span class="en">Instant, follows your rules: in stock, not yet bought</span><span class="cs">Okamžitá, podle vašich pravidel: skladem, ještě nekoupeno</span></p></div>
+      <div class="pb hi"><h3><span class="en">Recommendation service</span><span class="cs">Doporučovací služba</span></h3><p><span class="en">Instant, follows your rules: in stock, not yet bought</span><span class="cs">Okamžitá, podle vašich pravidel: skladem, ještě nekoupeno</span></p><div class="hood"><span class="en">REST API &lt; 50 ms · key-value cache · rules · fallback</span><span class="cs">REST API &lt; 50 ms · key-value cache · pravidla · záloha</span></div></div>
       <span class="arr">→</span>
-      <div class="pb"><h3><span class="en">Web · app · newsletter</span><span class="cs">Web · aplikace · newsletter</span></h3><p><span class="en">Revenue measured daily</span><span class="cs">Tržby měřené denně</span></p></div>
+      <div class="pb"><h3><span class="en">Web · app · newsletter</span><span class="cs">Web · aplikace · newsletter</span></h3><p><span class="en">Revenue measured daily</span><span class="cs">Tržby měřené denně</span></p><div class="hood"><span class="en">A/B flags · drift alerts · revenue dashboard · CI/CD</span><span class="cs">A/B přepínače · alerty driftu · dashboard tržeb · CI/CD</span></div></div>
     </div>
     <div class="road">
       <span class="small muted"><span class="en">Then, step by step:</span><span class="cs">Pak krok za krokem:</span></span>
@@ -1494,7 +1498,7 @@ function showPanel(p){
 document.querySelectorAll(".pv-tabs button").forEach(b => b.onclick = () => showPanel(b.dataset.p));
 
 /* release info: bump on every publish */
-const RELEASE = {version: "1.2", date: "2026-11-02", time: "01:37"};
+const RELEASE = {version: "1.3", date: "2026-11-02", time: "01:59"};
 function renderVersion(){
   const d = new Date(RELEASE.date + "T12:00:00");
   const txt = lang() === "cs"
