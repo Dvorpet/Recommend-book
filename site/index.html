@@ -475,7 +475,7 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
     <div class="card warn"><h3><span class="en">What we need from you</span><span class="cs">Co potřebujeme od vás</span></h3>
       <ul class="todo"><li><span class="en">Order history with dates and prices</span><span class="cs">Historii objednávek s daty a cenami</span></li><li><span class="en">Product page views</span><span class="cs">Zobrazení produktů</span></li><li><span class="en">Genres and stock from your catalogue</span><span class="cs">Žánry a sklad z katalogu</span></li></ul></div>
   </div>
-  <div class="foot"><span><span class="en">Data detail: appendix A1</span><span class="cs">Detail dat: příloha A1</span></span><span>02 / 11</span></div>
+  <div class="foot"><span><span class="en">Data detail and data issues: appendix A1, A14</span><span class="cs">Detail dat a problémy v datech: příloha A1, A14</span></span><span>02 / 11</span></div>
 </div></section>
 
 <!-- s3 -->
@@ -637,7 +637,7 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
 <!-- s10 -->
 <section class="slide" id="s10"><div class="s client">
   <div class="kicker"><span class="n">10</span><span class="en">Open questions</span><span class="cs">Otevřené otázky</span><span class="brief"><span class="en">Brief · Open questions</span><span class="cs">Zadání · Otevřené otázky</span></span></div>
-  <h2><span class="en">Six questions that shape the PoC</span><span class="cs">Šest otázek, které určí podobu PoC</span></h2>
+  <h2><span class="en">Seven questions that shape the PoC</span><span class="cs">Sedm otázek, které určí podobu PoC</span></h2>
   <div class="body g-6-4">
     <ol class="qs">
       <li><span class="en">How many years of <b>orders</b> do you keep, with dates and prices?</span><span class="cs">Kolik let <b>objednávek</b> máte, s daty a cenami?</span></li>
@@ -646,6 +646,7 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
       <li><span class="en">Does customer <b>consent</b> cover personalisation?</span><span class="cs">Pokrývá <b>souhlas</b> zákazníků personalizaci?</span></li>
       <li><span class="en">What <b>sales uplift</b> would make this worth it for you?</span><span class="cs">Jaký <b>nárůst tržeb</b> by se vám vyplatil?</span></li>
       <li><span class="en">Which <b>rules</b> must picks follow: own titles, publisher deals, age?</span><span class="cs">Jaká <b>pravidla</b> musí tipy dodržet: vlastní tituly, dohody s vydavateli, věk?</span></li>
+      <li><span class="en">How <b>fresh</b> is this export, and how often can you send data?</span><span class="cs">Jak <b>aktuální</b> je tento export a jak často umíte data posílat?</span></li>
     </ol>
     <div class="card warn" style="align-content:start">
       <span class="pill w"><span class="en">Our proposal</span><span class="cs">Náš návrh</span></span>
@@ -695,7 +696,7 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
   </div>
 </div></section>
 
-<div class="appx-toggle" id="appx-toggle"><p><span class="en">That is the end of the presentation. Technical detail is available if you need it.</span><span class="cs">Tím prezentace končí. Technické podrobnosti jsou k dispozici, pokud je potřebujete.</span></p><button class="btn" id="appx-btn" aria-expanded="false" aria-controls="appendix"><span class="en">Show technical appendix (13 slides)</span><span class="cs">Zobrazit technickou přílohu (13 slidů)</span></button></div>
+<div class="appx-toggle" id="appx-toggle"><p><span class="en">That is the end of the presentation. Technical detail is available if you need it.</span><span class="cs">Tím prezentace končí. Technické podrobnosti jsou k dispozici, pokud je potřebujete.</span></p><button class="btn" id="appx-btn" aria-expanded="false" aria-controls="appendix"><span class="en">Show technical appendix (14 slides)</span><span class="cs">Zobrazit technickou přílohu (14 slidů)</span></button></div>
 <div class="appx" id="appendix" hidden>
 <!-- a1 -->
 <section class="slide" id="a1"><div class="s">
@@ -1234,6 +1235,18 @@ ol.mini small{display:block;font-weight:400;color:var(--muted)}
   <p class="small muted"><span class="en">In the PoC these lists go to your category experts as a blind test: our list vs. the bestseller list, without labels. Their verdict is a success criterion.</span><span class="cs">V PoC tyto seznamy dostanou vaši odborníci na sortiment jako slepý test: náš seznam vs. bestsellery, bez označení. Jejich verdikt je kritérium úspěchu.</span></p>
   <div class="foot"><span><span class="en">Real output of the item-kNN model on your ratings</span><span class="cs">Skutečný výstup modelu item-kNN na vašich hodnoceních</span></span><span>A13</span></div>
 </div></section>
+
+<!-- a14 -->
+<section class="slide" id="a14"><div class="s">
+  <div class="kicker"><span class="n">A14 · <span class="en">Appendix</span><span class="cs">Příloha</span></span><span class="en">Data issues</span><span class="cs">Problémy v datech</span></div>
+  <h2><span class="en">Data issues we found, and how we handle each one</span><span class="cs">Problémy, které jsme v datech našli, a jak řešíme každý z nich</span></h2>
+  <div class="body g2" style="align-items:start">
+    <div class="card"><table class="small"><thead><tr><th><span class="en">Problem</span><span class="cs">Problém</span></th><th><span class="en">Size</span><span class="cs">Rozsah</span></th><th><span class="en">What we do</span><span class="cs">Co děláme</span></th></tr></thead><tbody><tr><td><span class="en">Ratings with no book in the catalogue</span><span class="cs">Hodnocení knih, které nejsou v katalogu</span></td><td class="muted"><span class="en">10 % of ratings</span><span class="cs">10 % hodnocení</span></td><td><span class="en">Dropped and counted</span><span class="cs">Vyřazeno a spočítáno</span></td></tr><tr><td><span class="en">Malformed ISBNs</span><span class="cs">Vadná ISBN</span></td><td class="muted"><span class="en">10 k ratings</span><span class="cs">10 tis. hodnocení</span></td><td><span class="en">Dropped</span><span class="cs">Vyřazeno</span></td></tr><tr><td><span class="en">One book under many ISBNs (editions)</span><span class="cs">Jedna kniha pod více ISBN (edice)</span></td><td class="muted"><span class="en">270 k → 227 k works</span><span class="cs">270 tis. → 227 tis. děl</span></td><td><span class="en">Merged into works</span><span class="cs">Sloučeno do děl</span></td></tr><tr><td><span class="en">“0” means interacted, not a bad score</span><span class="cs">„0“ znamená interakci, ne špatnou známku</span></td><td class="muted"><span class="en">62 % of ratings</span><span class="cs">62 % hodnocení</span></td><td><span class="en">Treated as interest</span><span class="cs">Bráno jako zájem</span></td></tr><tr><td><span class="en">Dislikes (scores 1–4)</span><span class="cs">Nelíbilo se (známky 1–4)</span></td><td class="muted"><span class="en">1.7 % of scores</span><span class="cs">1,7 % známek</span></td><td><span class="en">Not counted as interest</span><span class="cs">Nepočítáme jako zájem</span></td></tr><tr><td><span class="en">Bulk “catalogue upload” accounts</span><span class="cs">Hromadné účty (nahraný katalog)</span></td><td class="muted"><span class="en">46 accounts, 86 k rows</span><span class="cs">46 účtů, 86 tis. řádků</span></td><td><span class="en">Removed</span><span class="cs">Odstraněno</span></td></tr><tr><td><span class="en">A mass giveaway tops the popularity list</span><span class="cs">Rozdávaná kniha vede žebříček popularity</span></td><td class="muted"><span class="en">1 title, 2.5 k interactions</span><span class="cs">1 titul, 2,5 tis. interakcí</span></td><td><span class="en">Quality-weighted bestsellers</span><span class="cs">Bestsellery vážené kvalitou</span></td></tr></tbody></table></div>
+    <div class="card"><table class="small"><thead><tr><th><span class="en">Problem</span><span class="cs">Problém</span></th><th><span class="en">Size</span><span class="cs">Rozsah</span></th><th><span class="en">What we do</span><span class="cs">Co děláme</span></th></tr></thead><tbody><tr><td><span class="en">Extreme sparsity, one-off readers</span><span class="cs">Extrémní řídkost, jednorázoví čtenáři</span></td><td class="muted"><span class="en">56 % rated one book; 174 k users none</span><span class="cs">56 % jedna kniha; 174 tis. uživatelů žádná</span></td><td><span class="en">Train on 5+ interactions; book-page tips and fallback for the rest</span><span class="cs">Trénink na 5+ interakcích; tipy na detailu a záloha pro ostatní</span></td></tr><tr><td><span class="en">Shifted columns, year 0 or in the future (2050)</span><span class="cs">Posunuté sloupce, rok 0 nebo v budoucnosti (2050)</span></td><td class="muted"><span class="en">3 + 4.6 k + 23 books</span><span class="cs">3 + 4,6 tis. + 23 knih</span></td><td><span class="en">Year set to unknown; not used by the model</span><span class="cs">Rok nastaven jako neznámý; model ho nepoužívá</span></td></tr><tr><td><span class="en">Age missing or impossible (0, 244)</span><span class="cs">Věk chybí nebo je nesmyslný (0, 244)</span></td><td class="muted"><span class="en">40 % missing</span><span class="cs">40 % chybí</span></td><td><span class="en">Demographics not used (weak, GDPR)</span><span class="cs">Demografie nepoužita (slabá, GDPR)</span></td></tr><tr><td><span class="en">No dates, orders, prices, clicks or stock</span><span class="cs">Chybí data, objednávky, ceny, kliky, sklad</span></td><td class="muted"><span class="en">whole export</span><span class="cs">celý export</span></td><td><span class="en">Requested from you; random test split meanwhile</span><span class="cs">Žádáme od vás; mezitím náhodný testovací split</span></td></tr><tr><td><span class="en">No genres or descriptions; first author only</span><span class="cs">Chybí žánry a anotace; jen první autor</span></td><td class="muted"><span class="en">whole catalogue</span><span class="cs">celý katalog</span></td><td><span class="en">No content model in PoC; enrich after</span><span class="cs">Bez obsahového modelu v PoC; obohatit potom</span></td></tr><tr><td><span class="en">Empty or outdated cover links</span><span class="cs">Prázdné nebo staré odkazy na obálky</span></td><td class="muted"><span class="en">some books</span><span class="cs">část knih</span></td><td><span class="en">Drawn placeholder cover</span><span class="cs">Vykreslená náhradní obálka</span></td></tr><tr><td><span class="en">Broken characters and HTML in titles</span><span class="cs">Rozbitá diakritika a HTML v názvech</span></td><td class="muted"><span class="en">2–3 % of titles</span><span class="cs">2–3 % názvů</span></td><td><span class="en">Repaired</span><span class="cs">Opraveno</span></td></tr></tbody></table></div>
+  </div>
+  <p class="small muted"><span class="en">Principle: we never fix what we cannot verify, and everything we drop is counted and reported. On your order data the same checks run automatically and feed the week-1 decision.</span><span class="cs">Princip: neopravujeme nic, co neumíme ověřit, a vše vyřazené spočítáme a vykážeme. Na vašich objednávkách poběží stejné kontroly automaticky a podpoří rozhodnutí v týdnu 1.</span></p>
+  <div class="foot"><span><span class="en">Full analysis: docs/eda in the GitHub repo</span><span class="cs">Celá analýza: docs/eda v GitHub repu</span></span><span>A14</span></div>
+</div></section>
 </div>
 
 </main>
@@ -1481,7 +1494,7 @@ function showPanel(p){
 document.querySelectorAll(".pv-tabs button").forEach(b => b.onclick = () => showPanel(b.dataset.p));
 
 /* release info: bump on every publish */
-const RELEASE = {version: "1.1", date: "2026-11-02", time: "01:16"};
+const RELEASE = {version: "1.2", date: "2026-11-02", time: "01:37"};
 function renderVersion(){
   const d = new Date(RELEASE.date + "T12:00:00");
   const txt = lang() === "cs"
@@ -1551,7 +1564,7 @@ function route(){
   const proto = location.hash === "#prototype";
   document.body.classList.toggle("view-proto", proto);
   const td = document.getElementById("tab-deck"), tp = document.getElementById("tab-proto");
-  if (proto) { td.removeAttribute("aria-current"); tp.setAttribute("aria-current", "page"); window.scrollTo(0, 0); protoInit(); }
+  if (proto) { if (document.body.classList.contains("present")) present(false); td.removeAttribute("aria-current"); tp.setAttribute("aria-current", "page"); window.scrollTo(0, 0); protoInit(); }
   else { tp.removeAttribute("aria-current"); td.setAttribute("aria-current", "page"); }
   if (location.hash === "#deck") window.scrollTo(0, 0);
 }
